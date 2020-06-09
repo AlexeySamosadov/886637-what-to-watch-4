@@ -1,7 +1,7 @@
 # Личный проект «Что посмотреть» [![Build status][travis-image]][travis-url]
 
 * Студент: [Алексей Самосадов](https://up.htmlacademy.ru/react/4/user/886637).
-* Наставник: `Неизвестно`.
+* Наставник: [Алексей Самосадов](https://up.htmlacademy.ru/react/4/user/886637).
 
 ---
 
