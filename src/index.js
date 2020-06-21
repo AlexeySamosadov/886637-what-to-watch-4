@@ -1,15 +1,29 @@
 import React from "react";
-import ReacDom from "react-dom";
+import ReactDOM from "react-dom";
 import App from "./components/app/app.jsx";
+import {applyMiddleware, createStore} from "redux";
+import {Provider} from "react-redux";
+import {createAPI} from "./api/api.js";
+import {reducer, Operation} from "./reducer/data/data.js";
+import {composeWithDevTools} from "redux-devtools-extension";
+import thunk from "redux-thunk";
 
-const data = {
-  genre: `Комедия`,
-  dateOut: `2010`,
+const unUnAuthorized = () => {
+  // Здесь будет авторизация
 };
 
-ReacDom.render(
-    <App
-      data={data}
-    />,
+const api = createAPI(unUnAuthorized);
+
+const store = createStore(reducer, composeWithDevTools(
+    applyMiddleware(thunk.withExtraArgument(api))
+));
+
+store.dispatch(Operation.loadFilms());
+store.dispatch(Operation.loadPromoFilms());
+
+ReactDOM.render(
+    <Provider store={store}>
+      <App/>
+    </Provider>,
     document.querySelector(`#root`)
 );
