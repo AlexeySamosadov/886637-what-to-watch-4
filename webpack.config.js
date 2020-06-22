@@ -4,7 +4,7 @@ const projectLink = path.join(__dirname, `public`);
 module.exports = {
   entry: `./src/index.js`,
   output: {
-    filename: "bundle.js",
+    filename: "bundle.adapt-film-data.js",
     path: projectLink,
   },
   devServer: {

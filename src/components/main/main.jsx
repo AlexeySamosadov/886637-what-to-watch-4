@@ -3,16 +3,14 @@ import {connect} from "react-redux";
 import PageContent from "../page-content/page-content.jsx";
 import PropTypes from "prop-types";
 
-
-
 // eslint-disable-next-line react/prop-types
 const Main = ({promoFilm}) => {
-  const {name, genre, released, poster_image, background_image} = promoFilm;
+  const {name, genre, released, posterImage, backgroundImage} = promoFilm;
   return (
     <React.Fragment>
       <section className="movie-card">
         <div className="movie-card__bg">
-          <img src={background_image} alt={name}/>
+          <img src={backgroundImage} alt={name}/>
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -36,7 +34,7 @@ const Main = ({promoFilm}) => {
         <div className="movie-card__wrap">
           <div className="movie-card__info">
             <div className="movie-card__poster">
-              <img src={poster_image} alt={`${name} poster`} width="218"
+              <img src={posterImage} alt={`${name} poster`} width="218"
                 height="327"/>
             </div>
 
@@ -74,9 +72,9 @@ Main.propTypes = {
   promoFilm: PropTypes.shape({
     name: PropTypes.string,
     genre: PropTypes.string,
-    released: PropTypes.string,
-    poster_image: PropTypes.string,
-    background_image: PropTypes.string,
+    released: PropTypes.number,
+    posterImage: PropTypes.string,
+    backgroundImage: PropTypes.string,
   })
 };
 

@@ -5,7 +5,6 @@ import {connect} from "react-redux";
 import PropTypes from "prop-types";
 
 const PageContent = ({films}) => {
-  console.log(films);
   return (
     <div className="page-content">
       <section className="catalog">
@@ -17,7 +16,7 @@ const PageContent = ({films}) => {
             return (
               <article key={i} className="small-movie-card catalog__movies-card">
                 <div className="small-movie-card__image">
-                  <img src={film.preview_image}
+                  <img src={film.previewImage}
                     alt={film.name} width="280" height="175"/>
                 </div>
                 <h3 className="small-movie-card__title">

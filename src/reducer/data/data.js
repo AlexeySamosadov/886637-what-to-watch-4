@@ -1,4 +1,5 @@
 import {extend} from "../../components/utils/utils.js";
+import {adaptFilmData, adaptFilmsData} from "./adapt-data";
 
 const initializeState = {
   films: [],
@@ -18,13 +19,13 @@ const ActionCreators = {
   loadFilms: (films) => {
     return {
       type: ActionTypes.LOAD_FILMS,
-      payload: films,
+      payload: adaptFilmsData(films),
     };
   },
   loadPromoFilm: (film) => {
     return {
       type: ActionTypes.LOAD_PROMO_FILM,
-      payload: film,
+      payload: adaptFilmData(film),
     };
   },
   loadReviews: (reviews) => {
