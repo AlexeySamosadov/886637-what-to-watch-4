@@ -20,7 +20,6 @@ export const createAPI = (onUnresolved) => {
 
     if (response.status === Error.UNRESOLVED) {
       onUnresolved();
-      alert(`Вышла ошибка 401`);
     }
     throw err;
   };
