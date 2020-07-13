@@ -1,8 +1,8 @@
 import {extend} from "../../components/utils/utils";
 
-export const extend = (a, b) => {
-  return Object.assign({}, a, b);
-};
+// export const extend = (a, b) => {
+//   return Object.assign({}, a, b);
+// };
 
 const adaptFilmData = (data) => {
   const newFilm = extend(data, {
