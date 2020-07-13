@@ -4,6 +4,7 @@ import GenreList from "../genre-list/genre-list.jsx";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 
+
 const PageContent = ({films}) => {
   return (
     <div className="page-content">
