@@ -3,12 +3,15 @@ import React from "react";
 const GenreList = () => {
   return (
     <ul className="catalog__genres-list">
+
       <li className="catalog__genres-item catalog__genres-item--active">
         <a href="#" className="catalog__genres-link">All genres</a>
       </li>
+
       <li className="catalog__genres-item">
         <a href="#" className="catalog__genres-link">Comedies</a>
       </li>
+
       <li className="catalog__genres-item">
         <a href="#" className="catalog__genres-link">Crime</a>
       </li>
