@@ -4,11 +4,12 @@ const projectLink = path.join(__dirname, `public`);
 module.exports = {
   entry: `./src/index.js`,
   output: {
-    filename: "bundle.adapt-film-data.js",
+    filename: `bundle.js`,
     path: projectLink,
   },
   devServer: {
     contentBase: projectLink,
+    // historyApiFallback: true,
     open: true,
     inline: true,
     port: 1337,
