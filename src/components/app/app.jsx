@@ -1,6 +1,6 @@
 import React from "react";
 import Main from "../main/main.jsx";
-import {Switch, Route, Router, Redirect} from "react-router-dom";
+import {Router, Switch, Route, Redirect} from "react-router-dom";
 import history from "../../history/history.js";
 import FilmInfo from "../film-info/film-info.jsx";
 import {FilmRoute} from "../utils/utils.js";
@@ -11,6 +11,8 @@ const App = () => {
     <Router history={history}>
       <Switch>
         <Route exact path={FilmRoute.MAIN}
+          // render={()=><FilmInfo/>}
+
           render={()=><Main/>}
         />
         <Route exact path={FilmRoute.FILM_INFO}

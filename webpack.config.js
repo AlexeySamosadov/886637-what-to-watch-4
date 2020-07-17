@@ -9,10 +9,10 @@ module.exports = {
   },
   devServer: {
     contentBase: projectLink,
-    // historyApiFallback: true,
     open: true,
     inline: true,
     port: 1337,
+    historyApiFallback: true,
   },
   module: {
     rules: [
