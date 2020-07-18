@@ -5,7 +5,8 @@ const initializeState = {
   films: [],
   promoFilm: {},
   reviews: [],
-  favouriteFilmList: []
+  favouriteFilmList: [],
+  activeFilm: [],
 };
 
 const ActionTypes = {
@@ -13,9 +14,10 @@ const ActionTypes = {
   LOAD_PROMO_FILM: `LOAD_PROMO_FILM`,
   LOAD_REVIEWS: `LOAD_REVIEWS`,
   LOAD_FAVORITE_FILMS: `LOAD_FAVORITE_FILMS`,
+  GET_ACTIVE_FILM: `GET_ACTIVE_FILM`,
 };
 
-const ActionCreators = {
+export const ActionCreators = {
   loadFilms: (films) => {
     return {
       type: ActionTypes.LOAD_FILMS,
@@ -38,6 +40,12 @@ const ActionCreators = {
     return {
       type: ActionTypes.LOAD_FAVORITE_FILMS,
       payload: films,
+    };
+  },
+  getActiveFilm: (film) => {
+    return {
+      type: ActionTypes.GET_ACTIVE_FILM,
+      payload: film,
     };
   }
 };
@@ -75,6 +83,10 @@ const reducer = (state = initializeState, action) => {
     case ActionTypes.LOAD_FAVORITE_FILMS:
       return extend(state, {
         favouriteFilmList: action.payload,
+      });
+    case ActionTypes.GET_ACTIVE_FILM:
+      return extend(state, {
+        activeFilm: action.payload,
       });
   }
   return state;

@@ -3,9 +3,10 @@ import Footer from "../footer/footer.jsx";
 import GenreList from "../genre-list/genre-list.jsx";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
+import {ActionCreators} from "../../reducer/data/data";
 
 
-const PageContent = ({films}) => {
+const PageContent = ({films, getActiveFilm}) => {
   return (
     <div className="page-content">
       <section className="catalog">
@@ -15,7 +16,7 @@ const PageContent = ({films}) => {
         <div className="catalog__movies-list">
           {films.map((film, i)=>{
             return (
-              <article key={i} className="small-movie-card catalog__movies-card">
+              <article onClick={()=> getActiveFilm(film)} key={i} className="small-movie-card catalog__movies-card">
                 <div className="small-movie-card__image">
                   <img src={film.previewImage}
                     alt={film.name} width="280" height="175"/>
@@ -45,6 +46,13 @@ export {PageContent};
 
 const mapStateToProps = (state) => ({
   films: state.films,
+  activeFilm: state.activeFilm,
 });
 
-export default connect(mapStateToProps, null)(PageContent);
+const mapStateToDispatch = (dispatch) => ({
+  getActiveFilm(film) {
+    dispatch(ActionCreators.getActiveFilm(film));
+  }
+});
+
+export default connect(mapStateToProps, mapStateToDispatch)(PageContent);
