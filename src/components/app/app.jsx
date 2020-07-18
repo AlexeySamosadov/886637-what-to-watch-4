@@ -5,6 +5,7 @@ import history from "../../history/history.js";
 import FilmInfo from "../film-info/film-info.jsx";
 import {FilmRoute} from "../utils/utils.js";
 
+
 // eslint-disable-next-line react/prop-types
 const App = () => {
   return (

@@ -6,7 +6,7 @@ const initializeState = {
   promoFilm: {},
   reviews: [],
   favouriteFilmList: [],
-  activeFilm: [],
+  activeFilm: {},
 };
 
 const ActionTypes = {

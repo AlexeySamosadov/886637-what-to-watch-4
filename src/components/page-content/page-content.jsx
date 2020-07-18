@@ -4,6 +4,8 @@ import GenreList from "../genre-list/genre-list.jsx";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import {ActionCreators} from "../../reducer/data/data";
+import history from "../../history/history.js";
+import {FilmRoute} from "../utils/utils.js";
 
 
 const PageContent = ({films, getActiveFilm}) => {
@@ -16,7 +18,10 @@ const PageContent = ({films, getActiveFilm}) => {
         <div className="catalog__movies-list">
           {films.map((film, i)=>{
             return (
-              <article onClick={()=> getActiveFilm(film)} key={i} className="small-movie-card catalog__movies-card">
+              <article onClick={()=> {
+                getActiveFilm(film);
+                history.push(FilmRoute.FILM_INFO);
+              }} key={i} className="small-movie-card catalog__movies-card">
                 <div className="small-movie-card__image">
                   <img src={film.previewImage}
                     alt={film.name} width="280" height="175"/>
@@ -40,13 +45,13 @@ const PageContent = ({films, getActiveFilm}) => {
 
 PageContent.propTypes = {
   films: PropTypes.array.isRequired,
+  getActiveFilm: PropTypes.func.isRequired,
 };
 
 export {PageContent};
 
 const mapStateToProps = (state) => ({
   films: state.films,
-  activeFilm: state.activeFilm,
 });
 
 const mapStateToDispatch = (dispatch) => ({
