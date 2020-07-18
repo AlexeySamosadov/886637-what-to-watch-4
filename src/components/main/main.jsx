@@ -2,9 +2,13 @@ import React from "react";
 import {connect} from "react-redux";
 import PageContent from "../page-content/page-content.jsx";
 import PropTypes from "prop-types";
+import {ActionCreators} from "../../reducer/data/data";
+import history from "../../history/history.js";
+import {FilmRoute} from "../utils/utils.js";
+
 
 // eslint-disable-next-line react/prop-types
-const Main = ({promoFilm}) => {
+const Main = ({promoFilm, getActiveFilm}) => {
   const {name, genre, released, posterImage, backgroundImage} = promoFilm;
   return (
     <React.Fragment>
@@ -34,12 +38,18 @@ const Main = ({promoFilm}) => {
         <div className="movie-card__wrap">
           <div className="movie-card__info">
             <div className="movie-card__poster">
-              <img src={posterImage} alt={`${name} poster`} width="218"
-                height="327"/>
+              <img onClick={()=> {
+                getActiveFilm(promoFilm);
+                history.push(FilmRoute.FILM_INFO);
+              }} src={posterImage} alt={`${name} poster`} width="218"
+              height="327"/>
             </div>
 
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">{name}</h2>
+              <h2 onClick={()=> {
+                getActiveFilm(promoFilm);
+                history.push(FilmRoute.FILM_INFO);
+              }} className="movie-card__title">{name}</h2>
               <p className="movie-card__meta">
                 <span className="movie-card__genre">{genre}</span>
                 <span className="movie-card__year">{released}</span>
@@ -83,4 +93,10 @@ export {Main};
 const mapStateToProps = (state) => ({
   promoFilm: state.promoFilm,
 });
-export default connect(mapStateToProps, null)(Main);
+
+const mapStateToDispatch = (dispatch) => ({
+  getActiveFilm: (film) => {
+    dispatch(ActionCreators.getActiveFilm(film));
+  }
+});
+export default connect(mapStateToProps, mapStateToDispatch)(Main);
