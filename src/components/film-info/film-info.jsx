@@ -3,8 +3,11 @@ import {connect} from "react-redux";
 import PropTypes from "prop-types";
 
 
-const FilmInfo = ({activeFilm}) => {
-  console.log(activeFilm);
+const FilmInfo = ({activeFilm, films}) => {
+  // console.log(`films`, films);
+  // if (JSON.stringify(activeFilm) === `{}`) {
+  //   activeFilm = films[0];
+  // }
   const {name, backgroundImage, genre, released, posterImage, backgroundColor} = activeFilm;
   const styleCard = {
     backgroundColor,
@@ -183,6 +186,7 @@ export {FilmInfo};
 
 const mapStateToProps = (state) => ({
   activeFilm: state.activeFilm,
+  films: state.films,
 });
 
 export default connect(mapStateToProps, null)(FilmInfo);
