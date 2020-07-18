@@ -1,13 +1,14 @@
 import React from "react";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
+import history from "../../history/history.js";
+import {FilmRoute} from "../utils/utils.js";
 
 
-const FilmInfo = ({activeFilm, films}) => {
-  // console.log(`films`, films);
-  // if (JSON.stringify(activeFilm) === `{}`) {
-  //   activeFilm = films[0];
-  // }
+const FilmInfo = ({activeFilm}) => {
+  if (JSON.stringify(activeFilm) === `{}`) {
+    history.push(FilmRoute.MAIN);
+  }
   const {name, backgroundImage, genre, released, posterImage, backgroundColor} = activeFilm;
   const styleCard = {
     backgroundColor,
