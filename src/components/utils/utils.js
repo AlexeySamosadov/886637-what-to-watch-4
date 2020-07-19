@@ -7,3 +7,9 @@ export const FilmRoute = {
   MAIN: `/`,
   FILM_INFO: `/film-info`,
 };
+
+export const ActiveMenu = {
+  OVERVIEW: `OVERVIEW`,
+  DETAILS: `DETAILS`,
+  REVIEWS: `REVIEWS`,
+};

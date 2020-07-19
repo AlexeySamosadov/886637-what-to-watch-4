@@ -7,6 +7,7 @@ const initializeState = {
   reviews: [],
   favouriteFilmList: [],
   activeFilm: {},
+  activeMenuFilmInfo: `tex`,
 };
 
 const ActionTypes = {
@@ -15,6 +16,7 @@ const ActionTypes = {
   LOAD_REVIEWS: `LOAD_REVIEWS`,
   LOAD_FAVORITE_FILMS: `LOAD_FAVORITE_FILMS`,
   GET_ACTIVE_FILM: `GET_ACTIVE_FILM`,
+  GET_ACTIVE_MENU_FILM_INFO: `ACTIVE_MENU_FILM_INFO`,
 };
 
 export const ActionCreators = {
@@ -47,7 +49,13 @@ export const ActionCreators = {
       type: ActionTypes.GET_ACTIVE_FILM,
       payload: film,
     };
-  }
+  },
+  getActiveMenuFilmInfo: (activeMenu) => {
+    return {
+      type: ActionTypes.GET_ACTIVE_MENU_FILM_INFO,
+      payload: activeMenu,
+    };
+  },
 };
 
 const Operation = {
@@ -87,6 +95,10 @@ const reducer = (state = initializeState, action) => {
     case ActionTypes.GET_ACTIVE_FILM:
       return extend(state, {
         activeFilm: action.payload,
+      });
+    case ActionTypes.GET_ACTIVE_MENU_FILM_INFO:
+      return extend(state, {
+        activeMenuFilmInfo: action.payload,
       });
   }
   return state;

@@ -1,21 +1,40 @@
 import React from "react";
+import {connect} from "react-redux";
+import {ActionCreators} from "../../reducer/data/data";
+import {ActiveMenu} from "../utils/utils.js";
 
-const MovieCardDescriptionNav = () => {
+const MovieCardDescriptionNav = ({getActiveMenuFilmInfo}) => {
   return (
     <nav className="movie-nav movie-card__nav">
       <ul className="movie-nav__list">
         <li className="movie-nav__item movie-nav__item--active">
-          <a href="#" className="movie-nav__link">Overview</a>
+          <a onClick={(evt)=>{
+            evt.preventDefault();
+            getActiveMenuFilmInfo(ActiveMenu.OVERVIEW);
+          }} href="#" className="movie-nav__link">Overview</a>
         </li>
         <li className="movie-nav__item">
-          <a href="#" className="movie-nav__link">Details</a>
+          <a onClick={(evt)=>{
+            evt.preventDefault();
+            getActiveMenuFilmInfo(ActiveMenu.DETAILS);
+          }} href="#" className="movie-nav__link">Details</a>
         </li>
         <li className="movie-nav__item">
-          <a href="#" className="movie-nav__link">Reviews</a>
+          <a onClick={(evt)=>{
+            evt.preventDefault();
+            getActiveMenuFilmInfo(ActiveMenu.REVIEWS);
+          }} href="#" className="movie-nav__link">Reviews</a>
         </li>
       </ul>
     </nav>
   );
 };
 
-export default MovieCardDescriptionNav;
+export {MovieCardDescriptionNav};
+
+const mapStateToDispatch = (dispatch) => ({
+  getActiveMenuFilmInfo: (activeMenu) => {
+    dispatch(ActionCreators.getActiveMenuFilmInfo(activeMenu));
+  }
+});
+export default connect(null, mapStateToDispatch)(MovieCardDescriptionNav);
