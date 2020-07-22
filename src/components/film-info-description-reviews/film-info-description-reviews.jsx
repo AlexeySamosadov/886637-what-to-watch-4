@@ -1,6 +1,9 @@
 import React from "react";
+import {connect} from "react-redux";
 
-const FilmInfoDescriptionReviews = () => {
+
+const FilmInfoDescriptionReviews = ({activeFilm, reviews}) => {
+  console.log(reviews);
   return (
     <div className="movie-card__reviews movie-card__row">
       <div className="movie-card__reviews-col">
@@ -95,4 +98,13 @@ const FilmInfoDescriptionReviews = () => {
   );
 };
 
-export default FilmInfoDescriptionReviews;
+export {FilmInfoDescriptionReviews};
+
+const mapStateToProps = (state) => ({
+  reviews: state.reviews,
+});
+
+export default connect(mapStateToProps, null)(FilmInfoDescriptionReviews);
+
+
+

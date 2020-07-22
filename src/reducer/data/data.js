@@ -72,6 +72,12 @@ const Operation = {
         dispatch(ActionCreators.loadPromoFilm(response.data));
       });
   },
+  loadReviews: (id) => (dispatch, getState, api) => {
+    return api.get(`/comments/${id}`)
+      .then((response) => {
+        dispatch(ActionCreators.loadReviews(response.data));
+      });
+  }
 };
 
 

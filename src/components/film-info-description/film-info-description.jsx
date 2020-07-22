@@ -28,7 +28,7 @@ const FilmInfoDescription = ({activeFilm, activeMenuFilmInfo}) => {
   return (
     <div className="movie-card__desc">
       <MovieCardDescriptionNav/>
-      {renderAdditionalInfo(activeFilm ,activeMenuFilmInfo)}
+      {renderAdditionalInfo(activeFilm, activeMenuFilmInfo)}
     </div>
   );
 };
