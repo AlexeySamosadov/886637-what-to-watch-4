@@ -1,7 +1,10 @@
 import React from "react";
+import {changeFirstLetterUppercase, formatMovieDuration} from "../utils/utils.js";
 
 const FilmInfoDescriptionDetails = ({activeFilm}) => {
   const {director, starring, runTime, genre, released} = activeFilm;
+  const formattedGenre = changeFirstLetterUppercase(genre);
+  const formattedRunTime = formatMovieDuration(runTime);
   return (
     <div className="movie-card__text movie-card__row">
       <div className="movie-card__text-col">
@@ -12,7 +15,7 @@ const FilmInfoDescriptionDetails = ({activeFilm}) => {
         <p className="movie-card__details-item">
           <strong className="movie-card__details-name">Starring</strong>
           <span className="movie-card__details-value">
-            {starring}
+            {starring.join(`                                  `)}
           </span>
         </p>
       </div>
@@ -20,11 +23,11 @@ const FilmInfoDescriptionDetails = ({activeFilm}) => {
       <div className="movie-card__text-col">
         <p className="movie-card__details-item">
           <strong className="movie-card__details-name">Run Time</strong>
-          <span className="movie-card__details-value">{runTime}</span>
+          <span className="movie-card__details-value">{formattedRunTime}</span>
         </p>
         <p className="movie-card__details-item">
           <strong className="movie-card__details-name">Genre</strong>
-          <span className="movie-card__details-value">{genre}</span>
+          <span className="movie-card__details-value">{formattedGenre}</span>
         </p>
         <p className="movie-card__details-item">
           <strong className="movie-card__details-name">Released</strong>
