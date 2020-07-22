@@ -6,24 +6,29 @@ import {ActiveMenu} from "../utils/utils";
 import FilmInfoDescriptionReviews from "../film-info-description-reviews/film-info-description-reviews.jsx";
 import FilmInfoDescriptionDetails from "../film-info-description-details/film-info-description-details.jsx";
 
-const renderAdditionalInfo = (activeMenu) => {
+const renderAdditionalInfo = (activeFilm, activeMenu) => {
   switch (activeMenu) {
-
     case ActiveMenu.REVIEWS:
-      return <FilmInfoDescriptionReviews/>;
+      return <FilmInfoDescriptionReviews
+        activeFilm={activeFilm}
+      />;
     case ActiveMenu.DETAILS:
-      return <FilmInfoDescriptionDetails/>;
+      return <FilmInfoDescriptionDetails
+        activeFilm={activeFilm}
+      />;
     default:
-      return <FilmInfoDescriptionOverview/>;
+      return <FilmInfoDescriptionOverview
+        activeFilm={activeFilm}
+      />;
   }
 };
 
 
-const FilmInfoDescription = ({activeMenuFilmInfo}) => {
+const FilmInfoDescription = ({activeFilm, activeMenuFilmInfo}) => {
   return (
     <div className="movie-card__desc">
       <MovieCardDescriptionNav/>
-      {renderAdditionalInfo(activeMenuFilmInfo)}
+      {renderAdditionalInfo(activeFilm ,activeMenuFilmInfo)}
     </div>
   );
 };
@@ -32,6 +37,7 @@ export {FilmInfoDescription};
 
 const mapStateToProps = (state) => ({
   activeMenuFilmInfo: state.activeMenuFilmInfo,
+  activeFilm: state.activeFilm,
 });
 
 export default connect(mapStateToProps, null)(FilmInfoDescription);
