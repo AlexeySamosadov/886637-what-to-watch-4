@@ -2,7 +2,6 @@ export const extend = (a, b) => {
   return Object.assign({}, a, b);
 };
 
-
 export const FilmRoute = {
   MAIN: `/`,
   FILM_INFO: `/film-info`,
@@ -48,5 +47,15 @@ export const getRatingLevel = (rating) => {
       break;
   }
   return ratingLevel;
+};
+
+export const MONTHS = [`January`, `February`, `March`, `April`, `May`, `June`, `July`, `August`, `September`, `October`, `November`, `December`];
+
+export const formatDateForReview = (date) => {
+  const _date = new Date(date);
+  const day = _date.getDate();
+  const month = MONTHS[_date.getMonth()];
+  const year = _date.getFullYear();
+  return `${month} ${day}, ${year}`;
 };
 
