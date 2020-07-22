@@ -1,27 +1,5 @@
 import React, {Fragment} from "react";
-import {RatingLevels} from "../utils/utils.js";
-
-const getRatingLevel = (rating) => {
-  let ratingLevel;
-  switch (true) {
-    case rating > 2:
-      ratingLevel = RatingLevels.BAD;
-      break;
-    case rating > 4:
-      ratingLevel = RatingLevels.NORMAL;
-      break;
-    case rating > 6:
-      ratingLevel = RatingLevels.GOOD;
-      break;
-    case rating > 8:
-      ratingLevel = RatingLevels.VERY_GOOD;
-      break;
-    case rating > 9:
-      ratingLevel = RatingLevels.AWESOME;
-      break;
-  }
-  return ratingLevel;
-};
+import {getRatingLevel} from "../utils/utils.js";
 
 const FilmInfoDescriptionOverview = ({activeFilm}) => {
   const {rating, description, director, starring, scoresCount} = activeFilm;
