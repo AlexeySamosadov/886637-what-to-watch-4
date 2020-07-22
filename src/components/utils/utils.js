@@ -30,7 +30,7 @@ export const formatMovieDuration = (movieDuration) => {
 export const getRatingLevel = (rating) => {
   let ratingLevel;
   switch (true) {
-    case rating > 2:
+    case rating >= 0:
       ratingLevel = RatingLevels.BAD;
       break;
     case rating > 4:

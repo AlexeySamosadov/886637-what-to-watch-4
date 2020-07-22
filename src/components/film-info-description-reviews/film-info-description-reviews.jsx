@@ -29,7 +29,8 @@ const FilmInfoDescriptionReviews = ({activeFilm, reviews}) => {
       </div>
       <div className="movie-card__reviews-col">
         {reviews.slice(3).map((comment)=> renderComment(comment))}
-      </div>    </div>
+      </div>
+    </div>
   );
 };
 
