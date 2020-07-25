@@ -12,6 +12,7 @@ const initializeState = {
   activeGenre: genreType.ALL,
   showingFilmsNumber: 8,
   isRenderButton: true,
+  filmToWatch: null,
 };
 
 const ActionTypes = {
@@ -23,6 +24,8 @@ const ActionTypes = {
   GET_ACTIVE_MENU_FILM_INFO: `ACTIVE_MENU_FILM_INFO`,
   SET_ACTIVE_GENRE: `SET_ACTIVE_GENRE`,
   SHOW_MORE: `SHOW_MORE`,
+  SET_FILM_TO_WATCH: `SET_FILM_TO_WATCH`,
+
 };
 
 export const ActionCreators = {
@@ -71,6 +74,10 @@ export const ActionCreators = {
   showMore: () => ({
     type: ActionTypes.SHOW_MORE,
     payload: 8,
+  }),
+  setFilmToWatch: (film) => ({
+    type: ActionTypes.SET_FILM_TO_WATCH,
+    payload: film
   }),
 };
 
@@ -129,6 +136,10 @@ const reducer = (state = initializeState, action) => {
     case ActionTypes.SHOW_MORE:
       return extend(state, {
         showingFilmsNumber: state.showingFilmsNumber + action.payload,
+      });
+    case ActionTypes.SET_FILM_TO_WATCH:
+      return extend(state, {
+        filmToWatch: action.payload
       });
   }
   return state;

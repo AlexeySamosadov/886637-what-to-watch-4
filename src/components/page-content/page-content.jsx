@@ -36,7 +36,6 @@ PageContent.propTypes = {
   getActiveFilm: PropTypes.func.isRequired,
   activeGenre: PropTypes.string.isRequired,
   showingFilmsNumber: PropTypes.number.isRequired,
-
 };
 
 export {PageContent};

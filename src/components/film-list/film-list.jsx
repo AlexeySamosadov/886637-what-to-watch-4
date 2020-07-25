@@ -4,8 +4,13 @@ import history from "../../history/history";
 import {FilmRoute} from "../utils/utils.js";
 import {ActionCreators} from "../../reducer/data/data";
 import PropTypes from "prop-types";
+// import withVideoPlayer from "../hocs/with-video-player/with-video-player.js";
+// import MovieVideoPlayer from "../video-player/video-player.jsx";
+
+// const VideoPlayer = withVideoPlayer(MovieVideoPlayer);
 
 const FilmList = ({films, getActiveFilm}) => {
+  console.log(films);
   return (
     <div className="catalog__movies-list">
       {films.map((film, i)=>{
