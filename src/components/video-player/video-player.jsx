@@ -47,7 +47,6 @@ class VideoPlayer extends PureComponent {
   }
 
   _renderPlayer() {
-    console.log(`ffff`);
     const {children, onExitFilmButtonClick, setPercentFilm, onWheel, valueInPercent, progressInPercent, progressInSeconds, onMouseEnter, onMouseLeave, onClick,
       onPlayButtonClick, isPlaying, isIndicatorShow, setValue, onSoundClick, isSoundOff, isFullScreen, type} = this.props;
     switch (type) {

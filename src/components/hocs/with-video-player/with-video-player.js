@@ -31,6 +31,7 @@ const withVideoPlayer = (Component) => {
         valueInPercent: 100,
         isIndicatorShow: true,
       };
+      this.isPlaying = false;
 
       this._interval = null;
 
@@ -60,7 +61,6 @@ const withVideoPlayer = (Component) => {
 
     _handlerMouseEnter() {
       console.log(`Отработало наведение мыши`);
-
       this._timer = setTimeout(()=>{
         this.setState({
           isPlaying: true,
@@ -132,6 +132,8 @@ const withVideoPlayer = (Component) => {
     }
 
     componentDidMount() {
+      console.log(`Отработал СomponentDidMount`);
+
       const {srcVideo, isMuted = false, type} = this.props;
       const video = this.videoRef.current;
       video.src = srcVideo;
@@ -165,6 +167,8 @@ const withVideoPlayer = (Component) => {
     }
 
     componentDidUpdate() {
+      console.log(`Отработал ComponentDidUpdate`);
+
       const video = this.videoRef.current;
 
       video.muted = this.state.isSoundOff;
