@@ -3,8 +3,8 @@ import Footer from "../footer/footer.jsx";
 import GenreList from "../genre-list/genre-list.jsx";
 import FilmList from "../film-list/film-list.jsx";
 import ShowMoreButton from "../show-more-button/show-more-button.jsx";
-import {connect} from "react-redux";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
 import {ActionCreators} from "../../reducer/data/data";
 import {filterFilms} from "../utils/utils";
 
@@ -34,6 +34,9 @@ const PageContent = ({films, activeGenre, showingFilmsNumber}) => {
 PageContent.propTypes = {
   films: PropTypes.array.isRequired,
   getActiveFilm: PropTypes.func.isRequired,
+  activeGenre: PropTypes.string.isRequired,
+  showingFilmsNumber: PropTypes.number.isRequired,
+
 };
 
 export {PageContent};

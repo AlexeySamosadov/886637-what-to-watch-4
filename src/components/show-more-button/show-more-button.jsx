@@ -15,10 +15,6 @@ ShowMoreButton.propTypes = {
   onShowMore: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-
-});
-
 const mapStateToDispatch = (dispatch) => ({
   onShowMore() {
     dispatch(ActionCreators.showMore());

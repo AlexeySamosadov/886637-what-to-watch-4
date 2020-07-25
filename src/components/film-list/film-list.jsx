@@ -2,11 +2,10 @@ import React from "react";
 import {connect} from "react-redux";
 import history from "../../history/history";
 import {FilmRoute} from "../utils/utils.js";
- import {ActionCreators} from "../../reducer/data/data";
+import {ActionCreators} from "../../reducer/data/data";
+import PropTypes from "prop-types";
 
 const FilmList = ({films, getActiveFilm}) => {
-
-
   return (
     <div className="catalog__movies-list">
       {films.map((film, i)=>{
@@ -27,6 +26,14 @@ const FilmList = ({films, getActiveFilm}) => {
       })}
     </div>
   );
+};
+
+FilmList.propTypes = {
+  getActiveFilm: PropTypes.func.isRequired,
+  films: PropTypes.arrayOf(PropTypes.shape({
+    previewImage: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  })).isRequired,
 };
 
 export {FilmList};

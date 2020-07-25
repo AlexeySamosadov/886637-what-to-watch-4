@@ -1,6 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
-import {ActionCreators} from "../../reducer/data/data";
+import PropTypes from "prop-types";
+import {ActionCreators} from "../../reducer/data/data.js";
 import {genreType, changeFirstLetterUppercase} from "../utils/utils.js";
 
 const GenreList = ({films, activeGenre, setGenre}) => {
@@ -21,6 +22,14 @@ const GenreList = ({films, activeGenre, setGenre}) => {
       ))}
     </ul>
   );
+};
+
+GenreList.propTypes = {
+  films: PropTypes.arrayOf(PropTypes.shape({
+    genre: PropTypes.string.isRequired,
+  }).isRequired).isRequired,
+  activeGenre: PropTypes.string.isRequired,
+  setGenre: PropTypes.func.isRequired,
 };
 
 export {GenreList};

@@ -1,5 +1,6 @@
 import React, {Fragment} from "react";
 import {getRatingLevel} from "../utils/utils.js";
+import PropTypes from "prop-types";
 
 const FilmInfoDescriptionOverview = ({activeFilm}) => {
   const {rating, description, director, starring, scoresCount} = activeFilm;
@@ -21,6 +22,16 @@ const FilmInfoDescriptionOverview = ({activeFilm}) => {
       </div>
     </Fragment>
   );
+};
+
+FilmInfoDescriptionOverview.propTypes = {
+  activeFilm: PropTypes.shape({
+    rating: PropTypes.number.isRequired,
+    description: PropTypes.string.isRequired,
+    director: PropTypes.string.isRequired,
+    starring: PropTypes.array.isRequired,
+    scoresCount: PropTypes.number.isRequired,
+  })
 };
 
 export default FilmInfoDescriptionOverview;

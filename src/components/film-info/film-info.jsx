@@ -109,6 +109,7 @@ const FilmInfo = ({activeFilm, films}) => {
 
 FilmInfo.propTypes = {
   activeFilm: PropTypes.object.isRequired,
+  films: PropTypes.array.isRequired,
 };
 
 export {FilmInfo};

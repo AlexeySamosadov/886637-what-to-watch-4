@@ -5,6 +5,7 @@ import {connect} from "react-redux";
 import {ActiveMenu} from "../utils/utils";
 import FilmInfoDescriptionReviews from "../film-info-description-reviews/film-info-description-reviews.jsx";
 import FilmInfoDescriptionDetails from "../film-info-description-details/film-info-description-details.jsx";
+import PropTypes from "prop-types";
 
 const renderAdditionalInfo = (activeFilm, activeMenu) => {
   switch (activeMenu) {
@@ -31,6 +32,11 @@ const FilmInfoDescription = ({activeFilm, activeMenuFilmInfo}) => {
       {renderAdditionalInfo(activeFilm, activeMenuFilmInfo)}
     </div>
   );
+};
+
+FilmInfoDescription.propTypes = {
+  activeFilm: PropTypes.array.isRequired,
+  activeMenuFilmInfo: PropTypes.string.isRequired,
 };
 
 export {FilmInfoDescription};

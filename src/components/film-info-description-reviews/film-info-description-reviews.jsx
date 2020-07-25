@@ -1,9 +1,9 @@
 import React from "react";
 import {connect} from "react-redux";
+import PropTypes from "prop-types";
 import {formatDateForReview} from "../utils/utils.js";
 
 const renderComment = (review) => {
-  console.log(`review`, review);
   const {id, comment, user, rating, date} = review;
   return (
     <div key={id} className="review">
@@ -20,18 +20,27 @@ const renderComment = (review) => {
   );
 };
 
-
-const FilmInfoDescriptionReviews = ({activeFilm, reviews}) => {
+const FilmInfoDescriptionReviews = ({reviews}) => {
   return (
     <div className="movie-card__reviews movie-card__row">
       <div className="movie-card__reviews-col">
         {reviews.slice(0, 3).map((review)=> renderComment(review))}
       </div>
       <div className="movie-card__reviews-col">
-        {reviews.slice(3).map((comment)=> renderComment(comment))}
+        {reviews.slice(3).map((review)=> renderComment(review))}
       </div>
     </div>
   );
+};
+
+FilmInfoDescriptionReviews.propTypes = {
+  reviews: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    comment: PropTypes.string.isRequired,
+    user: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+    date: PropTypes.number.isRequired,
+  }).isRequired).isRequired,
 };
 
 export {FilmInfoDescriptionReviews};
@@ -41,6 +50,3 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, null)(FilmInfoDescriptionReviews);
-
-
-

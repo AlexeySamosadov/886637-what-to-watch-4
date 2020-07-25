@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {changeFirstLetterUppercase, formatMovieDuration} from "../utils/utils.js";
 
 const FilmInfoDescriptionDetails = ({activeFilm}) => {
@@ -36,6 +37,18 @@ const FilmInfoDescriptionDetails = ({activeFilm}) => {
       </div>
     </div>
   );
+};
+
+
+FilmInfoDescriptionDetails.propTypes = {
+  activeFilm: PropTypes.shape({
+    starring: PropTypes.array.isRequired,
+    director: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    date: PropTypes.number.isRequired,
+    runTime: PropTypes.number.isRequired,
+    released: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default FilmInfoDescriptionDetails;

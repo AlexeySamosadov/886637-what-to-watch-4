@@ -2,6 +2,8 @@ import React from "react";
 import {connect} from "react-redux";
 import {ActionCreators, Operation} from "../../reducer/data/data.js";
 import {ActiveMenu} from "../utils/utils.js";
+import PropTypes from "prop-types";
+
 
 const MovieCardDescriptionNav = ({getActiveMenuFilmInfo, activeMenuFilmInfo, activeFilm, loadReviews}) => {
   return (
@@ -29,6 +31,13 @@ const MovieCardDescriptionNav = ({getActiveMenuFilmInfo, activeMenuFilmInfo, act
       </ul>
     </nav>
   );
+};
+
+MovieCardDescriptionNav.propTypes = {
+  getActiveMenuFilmInfo: PropTypes.func.isRequired,
+  activeMenuFilmInfo: PropTypes.string.isRequired,
+  activeFilm: PropTypes.array.isRequired,
+  loadReviews: PropTypes.func.isRequired,
 };
 
 export {MovieCardDescriptionNav};
