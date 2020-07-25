@@ -6,9 +6,12 @@ import PropTypes from "prop-types";
 import {ActionCreators} from "../../reducer/data/data";
 import history from "../../history/history.js";
 import {FilmRoute} from "../utils/utils.js";
+import {filterFilms} from "../utils/utils";
 
 
-const PageContent = ({films, getActiveFilm}) => {
+const PageContent = ({films, getActiveFilm, activeGenre}) => {
+  console.log(`activeGenre`, activeGenre);
+  const filteredFilms = filterFilms(films, activeGenre);
   return (
     <div className="page-content">
       <section className="catalog">
@@ -16,7 +19,7 @@ const PageContent = ({films, getActiveFilm}) => {
 
         <GenreList/>
         <div className="catalog__movies-list">
-          {films.map((film, i)=>{
+          {filteredFilms.map((film, i)=>{
             return (
               <article onClick={()=> {
                 getActiveFilm(film);
@@ -52,6 +55,7 @@ export {PageContent};
 
 const mapStateToProps = (state) => ({
   films: state.films,
+  activeGenre: state.activeGenre,
 });
 
 const mapStateToDispatch = (dispatch) => ({

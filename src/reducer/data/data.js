@@ -1,6 +1,6 @@
 import {extend} from "../../components/utils/utils.js";
 import {adaptFilmData, adaptFilmsData} from "./adapt-data";
-import {ActiveMenu} from "../../components/utils/utils.js";
+import {genreType, ActiveMenu} from "../../components/utils/utils.js";
 
 const initializeState = {
   films: [],
@@ -9,7 +9,7 @@ const initializeState = {
   favouriteFilmList: [],
   activeFilm: {},
   activeMenuFilmInfo: ActiveMenu.OVERVIEW,
-  activeGenre: ``,
+  activeGenre: genreType.ALL,
 };
 
 const ActionTypes = {

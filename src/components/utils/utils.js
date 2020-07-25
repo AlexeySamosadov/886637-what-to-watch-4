@@ -53,6 +53,14 @@ export const getRatingLevel = (rating) => {
   return ratingLevel;
 };
 
+export const filterFilms = (data, genres) => {
+  let films = data;
+  if (genres !== genreType.ALL) {
+    films = data.filter((it)=>it.genre === genres);
+  }
+  return films;
+};
+
 export const MONTHS = [`January`, `February`, `March`, `April`, `May`, `June`, `July`, `August`, `September`, `October`, `November`, `December`];
 
 export const formatDateForReview = (date) => {
