@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {ActionCreators} from "../../reducer/data/data";
 import {genreType, changeFirstLetterUppercase} from "../utils/utils.js";
 
-const GenreList = ({films, genre, setGenre}) => {
+const GenreList = ({films, activeGenre, setGenre}) => {
   console.log(`genre`, genre);
   const setGenres = new Set();
   setGenres.add(genreType.ALL);
@@ -16,7 +16,7 @@ const GenreList = ({films, genre, setGenre}) => {
         <li key={i} onClick={(evt)=>{
           evt.preventDefault();
           setGenre(it);
-        }} className={`catalog__genres-item ${genre === it && `catalog__genres-item--active`}`}>
+        }} className={`catalog__genres-item ${activeGenre === it && `catalog__genres-item--active`}`}>
           <a href="#" className="catalog__genres-link">{changeFirstLetterUppercase(it)}</a>
         </li>
       ))}
@@ -28,7 +28,7 @@ export {GenreList};
 
 const mapStateToProps = (state) => ({
   films: state.films,
-  genre: state.activeGenre,
+  activeGenre: state.activeGenre,
 });
 
 const mapStateToDispatch = (dispatch) => ({
