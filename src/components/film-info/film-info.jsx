@@ -2,11 +2,9 @@ import React from "react";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import history from "../../history/history.js";
-import {FilmRoute} from "../utils/utils.js";
+import {filterFilms, FilmRoute} from "../utils/utils.js";
 import FilmInfoDescription from "../film-info-description/film-info-description.jsx";
 import FilmList from "../film-list/film-list.jsx";
-import {filterFilms} from "../utils/utils.js";
-
 
 const FilmInfo = ({activeFilm, films}) => {
   if (JSON.stringify(activeFilm) === `{}`) {
@@ -30,7 +28,10 @@ const FilmInfo = ({activeFilm, films}) => {
 
           <header className="page-header movie-card__head">
             <div className="logo">
-              <a href="#" className="logo__link">
+              <a href="#" onClick={(e)=>{
+                e.preventDefault();
+                history.push(FilmRoute.MAIN);
+              }} className="logo__link">
                 <span className="logo__letter logo__letter--1">W</span>
                 <span className="logo__letter logo__letter--2">T</span>
                 <span className="logo__letter logo__letter--3">W</span>
