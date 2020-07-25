@@ -1,11 +1,14 @@
 import React from "react";
+import {connect} from "react-redux";
+import {ActionCreators} from "../../reducer/data/data";
 
-const GenreList = () => {
+const GenreList = ({films, filterType, getFilterType}) => {
+  console.log(`filterType`,filterType);
   return (
     <ul className="catalog__genres-list">
 
       <li className="catalog__genres-item catalog__genres-item--active">
-        <a href="#" className="catalog__genres-link">All genres</a>
+        <a onClick={()=> getFilterType(`All genres`)} href="#" className="catalog__genres-link">All genres</a>
       </li>
 
       <li className="catalog__genres-item">
@@ -40,4 +43,17 @@ const GenreList = () => {
   );
 };
 
-export default GenreList;
+export {GenreList};
+
+const mapStateToProps = (state) => ({
+  films: state.films,
+  filterType: state.filterType,
+});
+
+const mapStateToDispatch = (dispatch) => ({
+  getFilterType: (filterType) => {
+    dispatch(ActionCreators.getFilterType(filterType));
+  }
+});
+
+export default connect(mapStateToProps, mapStateToDispatch)(GenreList);
