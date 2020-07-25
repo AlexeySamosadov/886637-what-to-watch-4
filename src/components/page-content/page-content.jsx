@@ -2,25 +2,29 @@ import React from "react";
 import Footer from "../footer/footer.jsx";
 import GenreList from "../genre-list/genre-list.jsx";
 import FilmList from "../film-list/film-list.jsx";
+import ShowMoreButton from "../show-more-button/show-more-button.jsx";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import {ActionCreators} from "../../reducer/data/data";
-import history from "../../history/history.js";
-import {FilmRoute} from "../utils/utils.js";
 import {filterFilms} from "../utils/utils";
 
+const PageContent = ({films, activeGenre, showingFilmsNumber}) => {
+  const filteredFilms = filterFilms(films, activeGenre);
+  const cuttedFilmsData = filteredFilms.slice(0, showingFilmsNumber);
 
-const PageContent = ({films, getActiveFilm, activeGenre}) => {
+  let isRenderButton = true;
+  if (filteredFilms.length < showingFilmsNumber) {
+    isRenderButton = false;
+  }
+
   return (
     <div className="page-content">
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
         <GenreList/>
-        <FilmList/>
-        <div className="catalog__more">
-          <button className="catalog__button" type="button">Show more</button>
-        </div>
+        <FilmList films={cuttedFilmsData}/>
+        {isRenderButton && <ShowMoreButton/>}
       </section>
       <Footer/>
     </div>
@@ -37,6 +41,7 @@ export {PageContent};
 const mapStateToProps = (state) => ({
   films: state.films,
   activeGenre: state.activeGenre,
+  showingFilmsNumber: state.showingFilmsNumber,
 });
 
 const mapStateToDispatch = (dispatch) => ({

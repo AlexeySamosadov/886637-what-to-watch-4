@@ -1,16 +1,15 @@
 import React from "react";
 import {connect} from "react-redux";
 import history from "../../history/history";
-import {FilmRoute, filterFilms} from "../utils/utils.js";
+import {FilmRoute} from "../utils/utils.js";
  import {ActionCreators} from "../../reducer/data/data";
 
-const FilmList = ({films, getActiveFilm, activeGenre}) => {
-  const filteredFilms = filterFilms(films, activeGenre);
+const FilmList = ({films, getActiveFilm}) => {
 
 
   return (
     <div className="catalog__movies-list">
-      {filteredFilms.map((film, i)=>{
+      {films.map((film, i)=>{
         return (
           <article onClick={()=> {
             getActiveFilm(film);
@@ -32,15 +31,10 @@ const FilmList = ({films, getActiveFilm, activeGenre}) => {
 
 export {FilmList};
 
-const mapStateToProps = (state) => ({
-  films: state.films,
-  activeGenre: state.activeGenre,
-});
-
 const mapStateToDispatch = (dispatch) => ({
   getActiveFilm: (film) => {
-    dispatch(ActionCreators.getActiveFilm(film))
+    dispatch(ActionCreators.getActiveFilm(film));
   }
 });
 
-export default connect(mapStateToProps, mapStateToDispatch)(FilmList);
+export default connect(null, mapStateToDispatch)(FilmList);
