@@ -59,6 +59,8 @@ const withVideoPlayer = (Component) => {
     }
 
     _handlerMouseEnter() {
+      console.log(`Отработало наведение мыши`);
+
       this._timer = setTimeout(()=>{
         this.setState({
           isPlaying: true,

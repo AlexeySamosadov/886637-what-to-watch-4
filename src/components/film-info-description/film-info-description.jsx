@@ -35,7 +35,7 @@ const FilmInfoDescription = ({activeFilm, activeMenuFilmInfo}) => {
 };
 
 FilmInfoDescription.propTypes = {
-  activeFilm: PropTypes.array.isRequired,
+  activeFilm: PropTypes.object.isRequired,
   activeMenuFilmInfo: PropTypes.string.isRequired,
 };
 

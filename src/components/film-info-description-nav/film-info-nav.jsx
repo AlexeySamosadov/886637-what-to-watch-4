@@ -5,7 +5,7 @@ import {ActiveMenu} from "../utils/utils.js";
 import PropTypes from "prop-types";
 
 
-const MovieCardDescriptionNav = ({getActiveMenuFilmInfo, activeMenuFilmInfo, activeFilm, loadReviews}) => {
+const FilmInfoDescriptionNav = ({getActiveMenuFilmInfo, activeMenuFilmInfo, activeFilm, loadReviews}) => {
   return (
     <nav className="movie-nav movie-card__nav">
       <ul className="movie-nav__list">
@@ -33,14 +33,14 @@ const MovieCardDescriptionNav = ({getActiveMenuFilmInfo, activeMenuFilmInfo, act
   );
 };
 
-MovieCardDescriptionNav.propTypes = {
+FilmInfoDescriptionNav.propTypes = {
   getActiveMenuFilmInfo: PropTypes.func.isRequired,
   activeMenuFilmInfo: PropTypes.string.isRequired,
-  activeFilm: PropTypes.array.isRequired,
+  activeFilm: PropTypes.object.isRequired,
   loadReviews: PropTypes.func.isRequired,
 };
 
-export {MovieCardDescriptionNav};
+export {FilmInfoDescriptionNav};
 
 const mapStateToDispatch = (dispatch) => ({
   getActiveMenuFilmInfo: (activeMenu) => {
@@ -55,4 +55,4 @@ const mapStateToProps = (state) => ({
   activeMenuFilmInfo: state.activeMenuFilmInfo,
   activeFilm: state.activeFilm,
 });
-export default connect(mapStateToProps, mapStateToDispatch)(MovieCardDescriptionNav);
+export default connect(mapStateToProps, mapStateToDispatch)(FilmInfoDescriptionNav);

@@ -2,15 +2,15 @@ import React from "react";
 import {connect} from "react-redux";
 import history from "../../history/history";
 import {FilmRoute} from "../utils/utils.js";
-import {ActionCreators} from "../../reducer/data/data";
+import {ActionCreators} from "../../reducer/data/data.js";
 import PropTypes from "prop-types";
-// import withVideoPlayer from "../hocs/with-video-player/with-video-player.js";
-// import MovieVideoPlayer from "../video-player/video-player.jsx";
+import withVideoPlayer from "../hocs/with-video-player/with-video-player.js";
+import MovieVideoPlayer from "../video-player/video-player.jsx";
+import {playerType} from "../const/const.js";
 
-// const VideoPlayer = withVideoPlayer(MovieVideoPlayer);
+const VideoPlayer = withVideoPlayer(MovieVideoPlayer);
 
 const FilmList = ({films, getActiveFilm}) => {
-  console.log(films);
   return (
     <div className="catalog__movies-list">
       {films.map((film, i)=>{
@@ -19,10 +19,13 @@ const FilmList = ({films, getActiveFilm}) => {
             getActiveFilm(film);
             history.push(FilmRoute.FILM_INFO);
           }} key={i} className="small-movie-card catalog__movies-card">
-            <div className="small-movie-card__image">
-              <img src={film.previewImage}
-                alt={film.name} width="280" height="175"/>
-            </div>
+            <VideoPlayer
+              srcPoster={film.previewImage}
+              srcVideo={film.previewVideoLink}
+              widthAtr={280}
+              heightAtr={175}
+              type={playerType.TRAILER}
+            />
             <h3 className="small-movie-card__title">
               <a className="small-movie-card__link" href="#!">{film.name}</a>
             </h3>
