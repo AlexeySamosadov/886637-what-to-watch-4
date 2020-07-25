@@ -1,44 +1,25 @@
 import React from "react";
 import {connect} from "react-redux";
 import {ActionCreators} from "../../reducer/data/data";
+import {genreType, changeFirstLetterUppercase} from "../utils/utils.js";
 
-const GenreList = ({films, filterType, getFilterType}) => {
-  console.log(`filterType`,filterType);
+const GenreList = ({films, genre, setGenre}) => {
+  console.log(`genre`, genre);
+  const setGenres = new Set();
+  setGenres.add(genreType.ALL);
+  films.forEach((it)=> setGenres.add(it.genre));
+  const genreList = Array.from(setGenres);
+
   return (
     <ul className="catalog__genres-list">
-
-      <li className="catalog__genres-item catalog__genres-item--active">
-        <a onClick={()=> getFilterType(`All genres`)} href="#" className="catalog__genres-link">All genres</a>
-      </li>
-
-      <li className="catalog__genres-item">
-        <a href="#" className="catalog__genres-link">Comedies</a>
-      </li>
-
-      <li className="catalog__genres-item">
-        <a href="#" className="catalog__genres-link">Crime</a>
-      </li>
-      <li className="catalog__genres-item">
-        <a href="#" className="catalog__genres-link">Documentary</a>
-      </li>
-      <li className="catalog__genres-item">
-        <a href="#" className="catalog__genres-link">Dramas</a>
-      </li>
-      <li className="catalog__genres-item">
-        <a href="#" className="catalog__genres-link">Horror</a>
-      </li>
-      <li className="catalog__genres-item">
-        <a href="#" className="catalog__genres-link">Kids & Family</a>
-      </li>
-      <li className="catalog__genres-item">
-        <a href="#" className="catalog__genres-link">Romance</a>
-      </li>
-      <li className="catalog__genres-item">
-        <a href="#" className="catalog__genres-link">Sci-Fi</a>
-      </li>
-      <li className="catalog__genres-item">
-        <a href="#" className="catalog__genres-link">Thrillers</a>
-      </li>
+      {genreList.map((it, i) => (
+        <li key={i} onClick={(evt)=>{
+          evt.preventDefault();
+          setGenre(it);
+        }} className={`catalog__genres-item ${genre === it && `catalog__genres-item--active`}`}>
+          <a href="#" className="catalog__genres-link">{changeFirstLetterUppercase(it)}</a>
+        </li>
+      ))}
     </ul>
   );
 };
@@ -47,12 +28,12 @@ export {GenreList};
 
 const mapStateToProps = (state) => ({
   films: state.films,
-  filterType: state.filterType,
+  genre: state.activeGenre,
 });
 
 const mapStateToDispatch = (dispatch) => ({
-  getFilterType: (filterType) => {
-    dispatch(ActionCreators.getFilterType(filterType));
+  setGenre: (filterType) => {
+    dispatch(ActionCreators.setActiveGenre(filterType));
   }
 });
 

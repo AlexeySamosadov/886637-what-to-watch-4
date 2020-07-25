@@ -21,6 +21,10 @@ export const RatingLevels = {
   BAD: `Bad`,
 };
 
+export const genreType = {
+  ALL: `All genres`,
+};
+
 export const changeFirstLetterUppercase = (word) => word[0].toUpperCase() + word.slice(1);
 
 export const formatMovieDuration = (movieDuration) => {

@@ -9,7 +9,7 @@ const initializeState = {
   favouriteFilmList: [],
   activeFilm: {},
   activeMenuFilmInfo: ActiveMenu.OVERVIEW,
-  filterType: ``,
+  activeGenre: ``,
 };
 
 const ActionTypes = {
@@ -19,7 +19,7 @@ const ActionTypes = {
   LOAD_FAVORITE_FILMS: `LOAD_FAVORITE_FILMS`,
   GET_ACTIVE_FILM: `GET_ACTIVE_FILM`,
   GET_ACTIVE_MENU_FILM_INFO: `ACTIVE_MENU_FILM_INFO`,
-  GET_FILTER_TYPE: `GET_FILTER_TYPE`,
+  SET_ACTIVE_GENRE: `SET_ACTIVE_GENRE`,
 };
 
 export const ActionCreators = {
@@ -59,9 +59,9 @@ export const ActionCreators = {
       payload: activeMenu,
     };
   },
-  getFilterType: (filterType) => {
+  setActiveGenre: (filterType) => {
     return {
-      type: ActionTypes.GET_FILTER_TYPE,
+      type: ActionTypes.SET_ACTIVE_GENRE,
       payload: filterType,
     };
   },
@@ -115,9 +115,9 @@ const reducer = (state = initializeState, action) => {
       return extend(state, {
         activeMenuFilmInfo: action.payload,
       });
-    case ActionTypes.GET_FILTER_TYPE:
+    case ActionTypes.SET_ACTIVE_GENRE:
       return extend(state, {
-        filterType: action.payload,
+        activeGenre: action.payload,
       });
   }
   return state;
