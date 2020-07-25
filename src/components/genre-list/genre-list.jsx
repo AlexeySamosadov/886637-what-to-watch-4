@@ -4,7 +4,6 @@ import {ActionCreators} from "../../reducer/data/data";
 import {genreType, changeFirstLetterUppercase} from "../utils/utils.js";
 
 const GenreList = ({films, activeGenre, setGenre}) => {
-  console.log(`genre`, genre);
   const setGenres = new Set();
   setGenres.add(genreType.ALL);
   films.forEach((it)=> setGenres.add(it.genre));
