@@ -7,7 +7,6 @@ import history from "../../history/history.js";
 import {FilmRoute} from "../const/const";
 import {getPromoFilm} from "../../reducer/data/selectors";
 
-// eslint-disable-next-line react/prop-types
 const Main = ({promoFilm, getActiveFilm}) => {
   const {name, genre, released, posterImage, backgroundImage} = promoFilm;
   return (
