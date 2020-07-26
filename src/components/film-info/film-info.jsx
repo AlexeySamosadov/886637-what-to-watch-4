@@ -59,7 +59,9 @@ const FilmInfo = ({activeFilm, films}) => {
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"/>
                   </svg>
-                  <span>Play</span>
+                  <span onClick={()=> {
+                    history.push(FilmRoute.PLAYER);
+                  }}>Play</span>
                 </button>
                 <button className="btn btn--list movie-card__button" type="button">
                   <svg viewBox="0 0 19 20" width="19" height="20">

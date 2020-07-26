@@ -1,6 +1,7 @@
 export const FilmRoute = {
   MAIN: `/`,
   FILM_INFO: `/film-info`,
+  PLAYER: `/player`,
 };
 
 export const ActiveMenu = {
