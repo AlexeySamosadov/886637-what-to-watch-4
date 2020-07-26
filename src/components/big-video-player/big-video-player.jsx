@@ -1,6 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
-import withVideoPlayer from "../hocs/with-video-player/with-video-player.js";
+import withVideoPlayer from "../../hocs/with-video-player/with-video-player.js";
 import {playerClass, playerType} from "../const/const.js";
 import PropTypes from "prop-types";
 import MovieVideoPlayer from "../video-player/video-player.jsx";

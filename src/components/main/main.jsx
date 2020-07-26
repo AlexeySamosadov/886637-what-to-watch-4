@@ -28,8 +28,8 @@ const Main = ({promoFilm, getActiveFilm}) => {
           </div>
 
           <div className="user-block">
-            <div onClick={(e)=> {
-              e.preventDefault();
+            <div onClick={()=> {
+              history.push(FilmRoute.MY_LIST);
             }} className="user-block__avatar">
               <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
             </div>

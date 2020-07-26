@@ -1,6 +1,6 @@
 import React, {createRef, PureComponent} from "react";
 import PropTypes from "prop-types";
-import {playerType} from "../../const/const.js";
+import {playerType} from "../../components/const/const.js";
 
 
 const roundVolume = (value) => {
@@ -131,6 +131,7 @@ const withVideoPlayer = (Component) => {
     }
 
     componentDidMount() {
+      console.log(`jnvjynbhjdfkcz`);
       const {srcVideo, isMuted = false, type} = this.props;
       const video = this.videoRef.current;
       video.src = srcVideo;
@@ -164,6 +165,7 @@ const withVideoPlayer = (Component) => {
     }
 
     componentDidUpdate() {
+
       const video = this.videoRef.current;
 
       video.muted = this.state.isSoundOff;

@@ -95,18 +95,6 @@ const reducer = (state = initializeState, action) => {
       return extend(state, {
         activeFilm: action.payload,
       });
-    case ActionTypes.GET_ACTIVE_MENU_FILM_INFO:
-      return extend(state, {
-        activeMenuFilmInfo: action.payload,
-      });
-    case ActionTypes.SET_ACTIVE_GENRE:
-      return extend(state, {
-        activeGenre: action.payload,
-      });
-    case ActionTypes.SHOW_MORE:
-      return extend(state, {
-        showingFilmsNumber: state.showingFilmsNumber + action.payload,
-      });
   }
   return state;
 };
