@@ -28,7 +28,9 @@ const Main = ({promoFilm, getActiveFilm}) => {
           </div>
 
           <div className="user-block">
-            <div className="user-block__avatar">
+            <div onClick={(e)=> {
+              e.preventDefault();
+            }} className="user-block__avatar">
               <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
             </div>
           </div>
@@ -64,7 +66,9 @@ const Main = ({promoFilm, getActiveFilm}) => {
                   </svg>
                   <span>Play</span>
                 </button>
-                <button className="btn btn--list movie-card__button" type="button">
+                <button onClick={(e)=> {
+                  e.preventDefault();
+                }} className="btn btn--list movie-card__button" type="button">
                   <svg viewBox="0 0 19 20" width="19" height="20">
                     <use href="#add"/>
                   </svg>

@@ -41,7 +41,9 @@ const FilmInfo = ({activeFilm, films}) => {
             </div>
 
             <div className="user-block">
-              <div className="user-block__avatar">
+              <div onClick={(e)=> {
+                e.preventDefault();
+              }} className="user-block__avatar">
                 <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
               </div>
             </div>
@@ -65,13 +67,17 @@ const FilmInfo = ({activeFilm, films}) => {
                   </svg>
                   <span>Play</span>
                 </button>
-                <button className="btn btn--list movie-card__button" type="button">
+                <button onClick={(e)=> {
+                  e.preventDefault();
+                }} className="btn btn--list movie-card__button" type="button">
                   <svg viewBox="0 0 19 20" width="19" height="20">
                     <use xlinkHref="#add"/>
                   </svg>
                   <span>My list</span>
                 </button>
-                <a href="#" className="btn movie-card__button">Add review</a>
+                <a onClick={(e)=> {
+                  e.preventDefault();
+                }} href="#" className="btn movie-card__button">Add review</a>
               </div>
             </div>
           </div>
