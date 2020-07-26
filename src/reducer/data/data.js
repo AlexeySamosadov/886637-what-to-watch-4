@@ -112,6 +112,7 @@ const reducer = (state = initializeState, action) => {
     case ActionTypes.LOAD_PROMO_FILM:
       return extend(state, {
         promoFilm: action.payload,
+        activeFilm: action.payload,
       });
     case ActionTypes.LOAD_REVIEWS:
       return extend(state, {
