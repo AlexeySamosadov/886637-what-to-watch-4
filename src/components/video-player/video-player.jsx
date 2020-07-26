@@ -4,6 +4,8 @@ import {playerType, keyCode, typeEvent, arrowTimingPercent} from "../const/const
 import {connect} from "react-redux";
 import "./video-player.css";
 import {ActionCreators} from "../../reducer/data/data";
+import history from "../../history/history.js";
+import {FilmRoute} from "../const/const";
 
 // <progress className="player__progress" value={`${progressInPercent}`} max="100"/>
 
@@ -61,11 +63,18 @@ class VideoPlayer extends PureComponent {
 
               onWheel={(evt)=>onWheel(evt)}
               onClick={onPlayButtonClick}
-              onDoubleClick={()=>onExitFilmButtonClick(null)}
+              onDoubleClick={()=>{
+                history.push(FilmRoute.FILM_INFO);
+
+                // onExitFilmButtonClick(null);
+              }}
             >
               {children}
             </span>
-            <button type="button" onClick={() => onExitFilmButtonClick(null)} className="player__exit">Exit</button>
+            <button type="button" onClick={() => {
+              history.push(FilmRoute.FILM_INFO);
+              // onExitFilmButtonClick(null);
+            }} className="player__exit">Exit</button>
             {isIndicatorShow && <span className="player-value-indicator">{valueInPercent}%</span>}
 
             <div className="player__controls">
@@ -136,7 +145,8 @@ class VideoPlayer extends PureComponent {
 
   _onPressButton(evt) {
     if (evt.code === keyCode.ESCAPE) {
-      this.onExitFilmButtonClick(null);
+      history.push(FilmRoute.FILM_INFO);
+      // this.onExitFilmButtonClick(null);
     }
     if (evt.code === keyCode.ARROW_RIGHT) {
       const percent = arrowTimingPercent.TEN;
