@@ -45,9 +45,7 @@ FilmInfoDescriptionDetails.propTypes = {
     starring: PropTypes.array.isRequired,
     director: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
-    date: PropTypes.number.isRequired,
     runTime: PropTypes.number.isRequired,
-    released: PropTypes.string.isRequired,
   }).isRequired,
 };
 
