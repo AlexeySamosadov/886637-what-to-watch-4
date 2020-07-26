@@ -4,17 +4,9 @@ import {Router, Switch, Route, Redirect} from "react-router-dom";
 import history from "../../history/history.js";
 import FilmInfo from "../film-info/film-info.jsx";
 import {FilmRoute} from "../const/const.js";
-import MovieVideoPlayer from "../video-player/video-player.jsx";
-import withVideoPlayer from "../hocs/with-video-player/with-video-player.js";
-import {playerClass, playerType} from "../const/const";
-import {connect} from "react-redux";
+import BigVideoPlayer from "../big-video-player/big-video-player.jsx";
 
-const VideoPlayer = withVideoPlayer(MovieVideoPlayer);
-
-
-// eslint-disable-next-line react/prop-types
-const App = ({activeFilm}) => {
-  console.log(`activeFilm`, activeFilm);
+const App = () => {
   return (
     <Router history={history}>
       <Switch>
@@ -23,13 +15,7 @@ const App = ({activeFilm}) => {
         />
         <Route exact path={FilmRoute.PLAYER}
           render={()=>
-            <VideoPlayer
-              type={playerType.MOVIE}
-              className={playerClass.PLAYER_VIDEO}
-              srcVideo={activeFilm.videoLink}
-              srcPoster={activeFilm.posterImage}
-              isMuted
-            />
+            <BigVideoPlayer/>
           }
         />
         <Route exact path={FilmRoute.FILM_INFO}
@@ -44,11 +30,4 @@ const App = ({activeFilm}) => {
   );
 };
 
-export {App};
-
-const mapStateToProps = (state) => ({
-  activeFilm: state.activeFilm,
-});
-
-export default connect(mapStateToProps, null)(App);
-
+export default App;

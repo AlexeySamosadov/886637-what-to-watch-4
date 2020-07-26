@@ -152,7 +152,7 @@ const withVideoPlayer = (Component) => {
         };
       }
       video.ontimeupdate = () => this.setState({
-        progressInSeconds: Math.floor(video.currentTime),
+        progressInSeconds: Math.floor(video.duration - video.currentTime),
         progressInPercent: video.duration ? Math.round(video.currentTime / video.duration * 100) : 0,
       });
 
@@ -248,3 +248,4 @@ const withVideoPlayer = (Component) => {
 };
 
 export default withVideoPlayer;
+
