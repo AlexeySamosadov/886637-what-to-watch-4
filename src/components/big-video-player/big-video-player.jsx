@@ -5,9 +5,14 @@ import {playerClass, playerType} from "../const/const.js";
 import PropTypes from "prop-types";
 import MovieVideoPlayer from "../video-player/video-player.jsx";
 import {getActiveFilm} from "../../reducer/data/selectors";
+import history from "../../history/history.js";
+import {FilmRoute} from "../const/const.js";
 const VideoPlayer = withVideoPlayer(MovieVideoPlayer);
 
 const BigVideoPlayer = ({activeFilm}) => {
+  if (JSON.stringify(activeFilm) === `{}`) {
+    history.push(FilmRoute.MAIN);
+  }
   return (
     <VideoPlayer
       type={playerType.MOVIE}
