@@ -1,16 +1,9 @@
 import React, {PureComponent, createRef, Fragment} from "react";
 import PropTypes from "prop-types";
 import {playerType, keyCode, typeEvent, arrowTimingPercent} from "../const/const.js";
-import {connect} from "react-redux";
 import "./video-player.css";
-import {ActionCreators} from "../../reducer/data/data";
 import history from "../../history/history.js";
 import {FilmRoute} from "../const/const";
-
-// <progress className="player__progress" value={`${progressInPercent}`} max="100"/>
-
-// {/*<input type="range" className="player__progress" min="0" max="100" step="1" value="10"/>*/}
-// {/*<div className="player__toggler" style={{left: `${progressInPercent}%`}}>Toggler</div>*/}
 
 const convertVideoTime = (time) => {
   let seconds;
@@ -49,7 +42,7 @@ class VideoPlayer extends PureComponent {
   }
 
   _renderPlayer() {
-    const {children, onExitFilmButtonClick, setPercentFilm, onWheel, valueInPercent, progressInPercent, progressInSeconds, onMouseEnter, onMouseLeave, onClick,
+    const {children, setPercentFilm, onWheel, valueInPercent, progressInPercent, progressInSeconds, onMouseEnter, onMouseLeave, onClick,
       onPlayButtonClick, isPlaying, isIndicatorShow, setValue, onSoundClick, isSoundOff, isFullScreen, type} = this.props;
     switch (type) {
       case playerType.TRAILER:
@@ -65,15 +58,12 @@ class VideoPlayer extends PureComponent {
               onClick={onPlayButtonClick}
               onDoubleClick={()=>{
                 history.push(FilmRoute.FILM_INFO);
-
-                // onExitFilmButtonClick(null);
               }}
             >
               {children}
             </span>
             <button type="button" onClick={() => {
               history.push(FilmRoute.FILM_INFO);
-              // onExitFilmButtonClick(null);
             }} className="player__exit">Exit</button>
             {isIndicatorShow && <span className="player-value-indicator">{valueInPercent}%</span>}
 
@@ -146,7 +136,6 @@ class VideoPlayer extends PureComponent {
   _onPressButton(evt) {
     if (evt.code === keyCode.ESCAPE) {
       history.push(FilmRoute.FILM_INFO);
-      // this.onExitFilmButtonClick(null);
     }
     if (evt.code === keyCode.ARROW_RIGHT) {
       const percent = arrowTimingPercent.TEN;
@@ -163,7 +152,6 @@ class VideoPlayer extends PureComponent {
 
 
   componentDidMount() {
-    this.onExitFilmButtonClick = this.props.onExitFilmButtonClick;
     this.onPlayButtonClick = this.props.onPlayButtonClick;
     this.handlerButtonArrow = this.props.handlerButtonArrow;
 
@@ -204,17 +192,8 @@ VideoPlayer.propTypes = {
   isPlaying: PropTypes.bool.isRequired,
   title: PropTypes.string,
   isFullScreen: PropTypes.bool.isRequired,
-  onExitFilmButtonClick: PropTypes.func,
   type: PropTypes.oneOf([playerType.TRAILER, playerType.MOVIE]),
 };
 
+export default VideoPlayer;
 
-const mapStateToDispatch = (dispatch) => ({
-  onExitFilmButtonClick(filmData) {
-    dispatch(ActionCreators.setFilmToWatch(filmData));
-  },
-});
-
-export {VideoPlayer};
-
-export default connect(null, mapStateToDispatch)(VideoPlayer);
