@@ -55,13 +55,14 @@ const Main = ({promoFilm, getActiveFilm}) => {
               </p>
 
               <div className="movie-card__buttons">
-                <button className="btn btn--play movie-card__button" type="button">
+                <button onClick={()=> {
+                  history.push(FilmRoute.PLAYER);
+                }}
+                className="btn btn--play movie-card__button" type="button">
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use href="#play-s"/>
                   </svg>
-                  <span onClick={()=> {
-                    history.push(FilmRoute.PLAYER);
-                  }}>Play</span>
+                  <span>Play</span>
                 </button>
                 <button className="btn btn--list movie-card__button" type="button">
                   <svg viewBox="0 0 19 20" width="19" height="20">
