@@ -22,13 +22,15 @@ const App = ({activeFilm}) => {
           render={()=><Main/>}
         />
         <Route exact path={FilmRoute.PLAYER}
-          render={()=><VideoPlayer
-            type={playerType.MOVIE}
-            className={playerClass.PLAYER_VIDEO}
-            srcVideo={activeFilm.videoLink}
-            srcPoster={activeFilm.posterImage}
-            isMuted
-          />}
+          render={()=>
+            <VideoPlayer
+              type={playerType.MOVIE}
+              className={playerClass.PLAYER_VIDEO}
+              srcVideo={activeFilm.videoLink}
+              srcPoster={activeFilm.posterImage}
+              isMuted
+            />
+          }
         />
         <Route exact path={FilmRoute.FILM_INFO}
           render={()=><FilmInfo/>}
