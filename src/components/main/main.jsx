@@ -86,7 +86,8 @@ Main.propTypes = {
     released: PropTypes.number,
     posterImage: PropTypes.string,
     backgroundImage: PropTypes.string,
-  })
+  }),
+  getActiveFilm: PropTypes.func.isRequired,
 };
 
 export {Main};
