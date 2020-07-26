@@ -3,7 +3,7 @@ import Main from "../main/main.jsx";
 import {Router, Switch, Route, Redirect} from "react-router-dom";
 import history from "../../history/history.js";
 import FilmInfo from "../film-info/film-info.jsx";
-import {FilmRoute} from "../utils/utils.js";
+import {FilmRoute} from "../const/const.js";
 
 
 // eslint-disable-next-line react/prop-types

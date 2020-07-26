@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import {ActionCreators, Operation} from "../../reducer/data/data.js";
-import {ActiveMenu} from "../utils/utils.js";
+import {ActiveMenu} from "../const/const.js";
 import PropTypes from "prop-types";
 
 

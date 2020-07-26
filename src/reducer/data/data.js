@@ -1,6 +1,6 @@
 import {extend} from "../../components/utils/utils.js";
 import {adaptFilmData, adaptFilmsData} from "./adapt-data";
-import {genreType, ActiveMenu} from "../../components/utils/utils.js";
+import {ActiveMenu, genreType} from "../../components/const/const.js";
 
 const initializeState = {
   films: [],

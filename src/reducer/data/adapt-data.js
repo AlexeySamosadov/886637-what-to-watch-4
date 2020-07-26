@@ -1,4 +1,4 @@
-import {extend} from "../../components/utils/utils";
+import {extend} from "../../components/utils/utils.js";
 
 // export const extend = (a, b) => {
 //   return Object.assign({}, a, b);

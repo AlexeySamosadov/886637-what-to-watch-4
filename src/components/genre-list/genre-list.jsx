@@ -2,7 +2,8 @@ import React from "react";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import {ActionCreators} from "../../reducer/data/data.js";
-import {genreType, changeFirstLetterUppercase} from "../utils/utils.js";
+import {changeFirstLetterUppercase} from "../utils/utils.js";
+import {genreType} from "../const/const.js";
 
 const GenreList = ({films, activeGenre, setGenre}) => {
   const setGenres = new Set();

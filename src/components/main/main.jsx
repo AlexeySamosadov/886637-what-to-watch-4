@@ -4,8 +4,7 @@ import PageContent from "../page-content/page-content.jsx";
 import PropTypes from "prop-types";
 import {ActionCreators} from "../../reducer/data/data";
 import history from "../../history/history.js";
-import {FilmRoute} from "../utils/utils.js";
-
+import {FilmRoute} from "../const/const";
 
 // eslint-disable-next-line react/prop-types
 const Main = ({promoFilm, getActiveFilm}) => {
