@@ -1,6 +1,5 @@
 import {extend} from "../../components/utils/utils.js";
 import {adaptFilmData, adaptFilmsData} from "./adapt-data";
-import {ActiveMenu, genreType} from "../../components/const/const.js";
 
 const initializeState = {
   films: [],
@@ -8,10 +7,6 @@ const initializeState = {
   reviews: [],
   favouriteFilmList: [],
   activeFilm: {},
-  activeMenuFilmInfo: ActiveMenu.OVERVIEW,
-  activeGenre: genreType.ALL,
-  showingFilmsNumber: 8,
-  isRenderButton: true,
 };
 
 const ActionTypes = {
@@ -20,9 +15,6 @@ const ActionTypes = {
   LOAD_REVIEWS: `LOAD_REVIEWS`,
   LOAD_FAVORITE_FILMS: `LOAD_FAVORITE_FILMS`,
   GET_ACTIVE_FILM: `GET_ACTIVE_FILM`,
-  GET_ACTIVE_MENU_FILM_INFO: `ACTIVE_MENU_FILM_INFO`,
-  SET_ACTIVE_GENRE: `SET_ACTIVE_GENRE`,
-  SHOW_MORE: `SHOW_MORE`,
 };
 
 export const ActionCreators = {
@@ -56,22 +48,6 @@ export const ActionCreators = {
       payload: film,
     };
   },
-  getActiveMenuFilmInfo: (activeMenu) => {
-    return {
-      type: ActionTypes.GET_ACTIVE_MENU_FILM_INFO,
-      payload: activeMenu,
-    };
-  },
-  setActiveGenre: (filterType) => {
-    return {
-      type: ActionTypes.SET_ACTIVE_GENRE,
-      payload: filterType,
-    };
-  },
-  showMore: () => ({
-    type: ActionTypes.SHOW_MORE,
-    payload: 8,
-  }),
 };
 
 const Operation = {

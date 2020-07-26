@@ -4,6 +4,7 @@ import withVideoPlayer from "../hocs/with-video-player/with-video-player.js";
 import {playerClass, playerType} from "../const/const.js";
 import PropTypes from "prop-types";
 import MovieVideoPlayer from "../video-player/video-player.jsx";
+import {getActiveFilm} from "../../reducer/data/selectors";
 const VideoPlayer = withVideoPlayer(MovieVideoPlayer);
 
 const BigVideoPlayer = ({activeFilm}) => {
@@ -28,7 +29,7 @@ BigVideoPlayer.propTypes = {
 export {BigVideoPlayer};
 
 const mapStateToProps = (state) => ({
-  activeFilm: state.activeFilm,
+  activeFilm: getActiveFilm(state),
 });
 
 export default connect(mapStateToProps, null)(BigVideoPlayer);

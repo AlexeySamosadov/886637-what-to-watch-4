@@ -6,6 +6,7 @@ import {filterFilms} from "../utils/utils.js";
 import FilmInfoDescription from "../film-info-description/film-info-description.jsx";
 import FilmList from "../film-list/film-list.jsx";
 import {FilmRoute} from "../const/const.js";
+import {getActiveFilm, getFilms} from "../../reducer/data/selectors";
 
 const FilmInfo = ({activeFilm, films}) => {
   if (JSON.stringify(activeFilm) === `{}`) {
@@ -118,8 +119,8 @@ FilmInfo.propTypes = {
 export {FilmInfo};
 
 const mapStateToProps = (state) => ({
-  activeFilm: state.activeFilm,
-  films: state.films,
+  activeFilm: getActiveFilm(state),
+  films: getFilms(state),
 });
 
 export default connect(mapStateToProps, null)(FilmInfo);

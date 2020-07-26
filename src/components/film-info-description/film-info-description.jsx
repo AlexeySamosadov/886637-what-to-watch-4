@@ -6,6 +6,8 @@ import {ActiveMenu} from "../const/const.js";
 import FilmInfoDescriptionReviews from "../film-info-description-reviews/film-info-description-reviews.jsx";
 import FilmInfoDescriptionDetails from "../film-info-description-details/film-info-description-details.jsx";
 import PropTypes from "prop-types";
+import {getActiveMenuFilmInfo} from "../../reducer/app-status/selectors";
+import {getActiveFilm} from "../../reducer/data/selectors";
 
 const renderAdditionalInfo = (activeFilm, activeMenu) => {
   switch (activeMenu) {
@@ -42,8 +44,8 @@ FilmInfoDescription.propTypes = {
 export {FilmInfoDescription};
 
 const mapStateToProps = (state) => ({
-  activeMenuFilmInfo: state.activeMenuFilmInfo,
-  activeFilm: state.activeFilm,
+  activeMenuFilmInfo: getActiveMenuFilmInfo(state),
+  activeFilm: getActiveFilm(state),
 });
 
 export default connect(mapStateToProps, null)(FilmInfoDescription);

@@ -2,6 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import {formatDateForReview} from "../utils/utils.js";
+import {getReviews} from "../../reducer/data/selectors";
 
 const renderComment = (review) => {
   const {id, comment, user, rating, date} = review;
@@ -46,7 +47,7 @@ FilmInfoDescriptionReviews.propTypes = {
 export {FilmInfoDescriptionReviews};
 
 const mapStateToProps = (state) => ({
-  reviews: state.reviews,
+  reviews: getReviews(state),
 });
 
 export default connect(mapStateToProps, null)(FilmInfoDescriptionReviews);

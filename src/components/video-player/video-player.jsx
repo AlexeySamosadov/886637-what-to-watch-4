@@ -189,6 +189,8 @@ VideoPlayer.propTypes = {
   progressInSeconds: PropTypes.number.isRequired,
   onPlayButtonClick: PropTypes.func.isRequired,
   handlerButtonArrow: PropTypes.func.isRequired,
+  setPercentFilm: PropTypes.func.isRequired,
+  onWheel: PropTypes.func.isRequired,
   isPlaying: PropTypes.bool.isRequired,
   title: PropTypes.string,
   isFullScreen: PropTypes.bool.isRequired,

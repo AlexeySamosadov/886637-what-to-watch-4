@@ -1,9 +1,11 @@
 import React from "react";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
-import {ActionCreators} from "../../reducer/data/data.js";
+import {ActionCreators} from "../../reducer/app-status/app-status.js";
 import {changeFirstLetterUppercase} from "../utils/utils.js";
 import {genreType} from "../const/const.js";
+import {getFilms} from "../../reducer/data/selectors";
+import {getActiveGenre} from "../../reducer/app-status/selectors";
 
 const GenreList = ({films, activeGenre, setGenre}) => {
   const setGenres = new Set();
@@ -36,8 +38,8 @@ GenreList.propTypes = {
 export {GenreList};
 
 const mapStateToProps = (state) => ({
-  films: state.films,
-  activeGenre: state.activeGenre,
+  films: getFilms(state),
+  activeGenre: getActiveGenre(state),
 });
 
 const mapStateToDispatch = (dispatch) => ({

@@ -1,31 +1,34 @@
 import React from "react";
 import {connect} from "react-redux";
-import {ActionCreators, Operation} from "../../reducer/data/data.js";
+import {Operation} from "../../reducer/data/data.js";
+import {ActionCreators} from "../../reducer/app-status/app-status";
 import {ActiveMenu} from "../const/const.js";
 import PropTypes from "prop-types";
+import {getActiveMenuFilmInfo} from "../../reducer/app-status/selectors";
+import {getActiveFilm} from "../../reducer/data/selectors";
 
 
-const FilmInfoDescriptionNav = ({getActiveMenuFilmInfo, activeMenuFilmInfo, activeFilm, loadReviews}) => {
+const FilmInfoDescriptionNav = ({setActiveMenuFilmInfo, activeMenuFilmInfo, activeFilm, loadReviews}) => {
   return (
     <nav className="movie-nav movie-card__nav">
       <ul className="movie-nav__list">
         <li className={`movie-nav__item ${activeMenuFilmInfo === ActiveMenu.OVERVIEW && `movie-nav__item--active`}`} >
           <a onClick={(evt)=>{
             evt.preventDefault();
-            getActiveMenuFilmInfo(ActiveMenu.OVERVIEW);
+            setActiveMenuFilmInfo(ActiveMenu.OVERVIEW);
           }} href="#" className="movie-nav__link">Overview</a>
         </li>
         <li className={`movie-nav__item ${activeMenuFilmInfo === ActiveMenu.DETAILS && `movie-nav__item--active`}`}>
           <a onClick={(evt)=>{
             evt.preventDefault();
-            getActiveMenuFilmInfo(ActiveMenu.DETAILS);
+            setActiveMenuFilmInfo(ActiveMenu.DETAILS);
           }} href="#" className="movie-nav__link">Details</a>
         </li>
         <li className={`movie-nav__item ${activeMenuFilmInfo === ActiveMenu.REVIEWS && `movie-nav__item--active`}`}>
           <a onClick={(evt)=>{
             evt.preventDefault();
             loadReviews(activeFilm.id);
-            getActiveMenuFilmInfo(ActiveMenu.REVIEWS);
+            setActiveMenuFilmInfo(ActiveMenu.REVIEWS);
           }} href="#" className="movie-nav__link">Reviews</a>
         </li>
       </ul>
@@ -34,7 +37,7 @@ const FilmInfoDescriptionNav = ({getActiveMenuFilmInfo, activeMenuFilmInfo, acti
 };
 
 FilmInfoDescriptionNav.propTypes = {
-  getActiveMenuFilmInfo: PropTypes.func.isRequired,
+  setActiveMenuFilmInfo: PropTypes.func.isRequired,
   activeMenuFilmInfo: PropTypes.string.isRequired,
   activeFilm: PropTypes.object.isRequired,
   loadReviews: PropTypes.func.isRequired,
@@ -43,7 +46,7 @@ FilmInfoDescriptionNav.propTypes = {
 export {FilmInfoDescriptionNav};
 
 const mapStateToDispatch = (dispatch) => ({
-  getActiveMenuFilmInfo: (activeMenu) => {
+  setActiveMenuFilmInfo: (activeMenu) => {
     dispatch(ActionCreators.getActiveMenuFilmInfo(activeMenu));
   },
   loadReviews: (id) => {
@@ -52,7 +55,7 @@ const mapStateToDispatch = (dispatch) => ({
 });
 
 const mapStateToProps = (state) => ({
-  activeMenuFilmInfo: state.activeMenuFilmInfo,
-  activeFilm: state.activeFilm,
+  activeMenuFilmInfo: getActiveMenuFilmInfo(state),
+  activeFilm: getActiveFilm(state),
 });
 export default connect(mapStateToProps, mapStateToDispatch)(FilmInfoDescriptionNav);

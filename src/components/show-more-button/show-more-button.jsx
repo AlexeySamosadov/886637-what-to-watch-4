@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {ActionCreators} from "../../reducer/data/data";
+import {ActionCreators} from "../../reducer/app-status/app-status";
 
 
 const ShowMoreButton = ({onShowMore}) =>(

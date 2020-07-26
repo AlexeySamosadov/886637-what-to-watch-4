@@ -7,6 +7,8 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {ActionCreators} from "../../reducer/data/data";
 import {filterFilms} from "../utils/utils";
+import {getFilms} from "../../reducer/data/selectors";
+import {getActiveGenre, getShowingFilmsNumber} from "../../reducer/app-status/selectors";
 
 const PageContent = ({films, activeGenre, showingFilmsNumber}) => {
   const filteredFilms = filterFilms(films, activeGenre);
@@ -41,9 +43,9 @@ PageContent.propTypes = {
 export {PageContent};
 
 const mapStateToProps = (state) => ({
-  films: state.films,
-  activeGenre: state.activeGenre,
-  showingFilmsNumber: state.showingFilmsNumber,
+  films: getFilms(state),
+  activeGenre: getActiveGenre(state),
+  showingFilmsNumber: getShowingFilmsNumber(state),
 });
 
 const mapStateToDispatch = (dispatch) => ({

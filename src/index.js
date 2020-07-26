@@ -4,9 +4,10 @@ import App from "./components/app/app.jsx";
 import {applyMiddleware, createStore} from "redux";
 import {Provider} from "react-redux";
 import {createAPI} from "./api/api.js";
-import {reducer, Operation} from "./reducer/data/data.js";
+import {Operation} from "./reducer/data/data.js";
 import {composeWithDevTools} from "redux-devtools-extension";
 import thunk from "redux-thunk";
+import reducer from "./reducer/reducer.js";
 
 const unUnAuthorized = () => {
   // Здесь будет авторизация

@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import {ActionCreators} from "../../reducer/data/data";
 import history from "../../history/history.js";
 import {FilmRoute} from "../const/const";
+import {getPromoFilm} from "../../reducer/data/selectors";
 
 // eslint-disable-next-line react/prop-types
 const Main = ({promoFilm, getActiveFilm}) => {
@@ -92,7 +93,7 @@ Main.propTypes = {
 export {Main};
 
 const mapStateToProps = (state) => ({
-  promoFilm: state.promoFilm,
+  promoFilm: getPromoFilm(state),
 });
 
 const mapStateToDispatch = (dispatch) => ({

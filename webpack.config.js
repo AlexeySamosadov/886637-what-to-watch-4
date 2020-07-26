@@ -7,6 +7,9 @@ module.exports = {
     filename: `bundle.js`,
     path: projectLink,
   },
+  resolve: {
+    extensions: [`.js`, `.jsx`, `.less`, `.css`, `tpx`],
+  },
   devServer: {
     contentBase: projectLink,
     open: true,
