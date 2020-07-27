@@ -6,16 +6,12 @@ import ShowMoreButton from "../show-more-button/show-more-button.jsx";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {ActionCreators} from "../../reducer/data/data";
-import {filterFilms} from "../utils/utils";
-import {getFilms} from "../../reducer/data/selectors";
-import {getActiveGenre, getShowingFilmsNumber} from "../../reducer/app-status/selectors";
+import {getFilmsToRender} from "../../reducer/data/selectors.js";
+import {getShowingFilmsNumber} from "../../reducer/app-status/selectors.js";
 
-const PageContent = ({films, activeGenre, showingFilmsNumber}) => {
-  const filteredFilms = filterFilms(films, activeGenre);
-  const cuttedFilmsData = filteredFilms.slice(0, showingFilmsNumber);
-
+const PageContent = ({filmsToRender, showingFilmsNumber}) => {
   let isRenderButton = true;
-  if (filteredFilms.length < showingFilmsNumber) {
+  if (filmsToRender.length < showingFilmsNumber) {
     isRenderButton = false;
   }
 
@@ -25,7 +21,7 @@ const PageContent = ({films, activeGenre, showingFilmsNumber}) => {
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
         <GenreList/>
-        <FilmList films={cuttedFilmsData}/>
+        <FilmList films={filmsToRender}/>
         {isRenderButton && <ShowMoreButton/>}
       </section>
       <Footer/>
@@ -34,18 +30,17 @@ const PageContent = ({films, activeGenre, showingFilmsNumber}) => {
 };
 
 PageContent.propTypes = {
-  films: PropTypes.array.isRequired,
+  filmsToRender: PropTypes.array.isRequired,
   getActiveFilm: PropTypes.func.isRequired,
-  activeGenre: PropTypes.string.isRequired,
+
   showingFilmsNumber: PropTypes.number.isRequired,
 };
 
 export {PageContent};
 
 const mapStateToProps = (state) => ({
-  films: getFilms(state),
-  activeGenre: getActiveGenre(state),
   showingFilmsNumber: getShowingFilmsNumber(state),
+  filmsToRender: getFilmsToRender(state),
 });
 
 const mapStateToDispatch = (dispatch) => ({
