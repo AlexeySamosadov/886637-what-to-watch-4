@@ -18,8 +18,7 @@ const FilmInfo = ({activeFilm, films, updateFavouriteFilms}) => {
   const styleCard = {
     backgroundColor,
   };
-  console.log(`activeFilm`, activeFilm);
-  console.log(`isFavorite`, isFavorite);
+
   const filteredFilms = filterFilms(films, genre);
   const changeFavorite = () => {
     if (isFavorite) {

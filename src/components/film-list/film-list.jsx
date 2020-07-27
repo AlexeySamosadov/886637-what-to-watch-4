@@ -10,7 +10,6 @@ import MovieVideoPlayer from "../video-player/video-player.jsx";
 const VideoPlayer = withVideoPlayer(MovieVideoPlayer);
 
 const FilmList = ({films, getActiveFilm}) => {
-  console.log(`films`, films);
   return (
     <div className="catalog__movies-list">
       {films.map((film, i)=>{
