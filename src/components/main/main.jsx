@@ -2,13 +2,15 @@ import React from "react";
 import {connect} from "react-redux";
 import PageContent from "../page-content/page-content.jsx";
 import PropTypes from "prop-types";
-import {ActionCreators} from "../../reducer/data/data";
+import {ActionCreators, Operation as DataOperation} from "../../reducer/data/data";
 import history from "../../history/history.js";
 import {FilmRoute} from "../const/const";
 import {getPromoFilm} from "../../reducer/data/selectors";
 
-const Main = ({promoFilm, getActiveFilm}) => {
-  const {name, genre, released, posterImage, backgroundImage} = promoFilm;
+const Main = ({promoFilm, getActiveFilm, postFavoriteFilms}) => {
+  const {name, genre, released, posterImage, backgroundImage, isFavorite, id} = promoFilm;
+  console.log(`isFavorite`, isFavorite);
+
   return (
     <React.Fragment>
       <section className="movie-card">
@@ -72,7 +74,7 @@ const Main = ({promoFilm, getActiveFilm}) => {
                   <svg viewBox="0 0 19 20" width="19" height="20">
                     <use href="#add"/>
                   </svg>
-                  <span>My list</span>
+                  <span onClick={() => postFavoriteFilms(id, 1)}>My list</span>
                 </button>
               </div>
             </div>
@@ -104,6 +106,9 @@ const mapStateToProps = (state) => ({
 const mapStateToDispatch = (dispatch) => ({
   getActiveFilm: (film) => {
     dispatch(ActionCreators.getActiveFilm(film));
-  }
+  },
+  postFavoriteFilms: (id, status) => {
+    dispatch(DataOperation.postFavoriteFilm(id, status));
+  },
 });
 export default connect(mapStateToProps, mapStateToDispatch)(Main);

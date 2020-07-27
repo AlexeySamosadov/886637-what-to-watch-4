@@ -7,16 +7,28 @@ import FilmInfoDescription from "../film-info-description/film-info-description.
 import FilmList from "../film-list/film-list.jsx";
 import {FilmRoute} from "../const/const.js";
 import {getActiveFilm, getFilms} from "../../reducer/data/selectors";
+import {Operation as DataOperation} from "../../reducer/data/data.js";
 
-const FilmInfo = ({activeFilm, films}) => {
+const FilmInfo = ({activeFilm, films, updateFavouriteFilms, loadFilms, loadPromoFilm}) => {
   if (JSON.stringify(activeFilm) === `{}`) {
     history.push(FilmRoute.MAIN);
   }
-  const {name, backgroundImage, genre, released, posterImage, backgroundColor} = activeFilm;
+  const {name, backgroundImage, genre, released, posterImage, backgroundColor, id, isFavorite} = activeFilm;
   const styleCard = {
     backgroundColor,
   };
+  console.log(`isFavorite`, isFavorite);
   const filteredFilms = filterFilms(films, genre);
+  const changeFavorite = () => {
+    if (isFavorite) {
+      updateFavouriteFilms(id, 0);
+    } else {
+      updateFavouriteFilms(id, 1);
+    }
+    // loadFilms();
+    // loadPromoFilm();
+  };
+
 
   return (
     <React.Fragment>
@@ -73,7 +85,7 @@ const FilmInfo = ({activeFilm, films}) => {
                   <svg viewBox="0 0 19 20" width="19" height="20">
                     <use xlinkHref="#add"/>
                   </svg>
-                  <span>My list</span>
+                  <span onClick={()=> changeFavorite()}>My list</span>
                 </button>
                 <a onClick={(e)=> {
                   e.preventDefault();
@@ -121,6 +133,7 @@ const FilmInfo = ({activeFilm, films}) => {
 FilmInfo.propTypes = {
   activeFilm: PropTypes.object.isRequired,
   films: PropTypes.array.isRequired,
+  updateFavouriteFilms: PropTypes.func.isRequired,
 };
 
 export {FilmInfo};
@@ -130,4 +143,16 @@ const mapStateToProps = (state) => ({
   films: getFilms(state),
 });
 
-export default connect(mapStateToProps, null)(FilmInfo);
+const mapStateToDispatch = (dispatch) => ({
+  updateFavouriteFilms: (id, status) => {
+    dispatch(DataOperation.postFavoriteFilm(id, status));
+  },
+  loadFilms: () => {
+    dispatch(DataOperation.loadFilms());
+  },
+  loadPromoFilm: () => {
+    dispatch(DataOperation.loadPromoFilms());
+  }
+});
+
+export default connect(mapStateToProps, mapStateToDispatch)(FilmInfo);

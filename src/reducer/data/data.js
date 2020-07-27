@@ -68,7 +68,28 @@ const Operation = {
       .then((response) => {
         dispatch(ActionCreators.loadReviews(response.data));
       });
-  }
+  },
+  postReview: (id, review) => (dispatch, getState, api) => {
+    return api.post(`/comments/${id}`, {
+      rating: review.rating,
+      comment: review.comment
+    })
+      .catch((err) => {
+        throw err;
+      });
+  },
+  loadFavoriteFilms: () => (dispatch, getState, api) => {
+    return api.get(`/favorite`)
+      .then((response)=>{
+        dispatch(ActionCreators.loadFavouriteFilms(response.data));
+      });
+  },
+  postFavoriteFilm: (id, status) => (dispatch, getState, api) => {
+    return api.post(`/favorite/${id}/${status}`)
+      .then((response)=>{
+        console.log(`response`, response);
+      });
+  },
 };
 
 
