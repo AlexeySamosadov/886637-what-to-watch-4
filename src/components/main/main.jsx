@@ -6,9 +6,8 @@ import {ActionCreators, Operation as DataOperation} from "../../reducer/data/dat
 import history from "../../history/history.js";
 import {AppRoute, AuthorizationStatus} from "../const/const";
 import {getPromoFilm} from "../../reducer/data/selectors";
-import {getAuthorizationStatus} from "../../reducer/user/selectors";
 
-const Main = ({promoFilm, getActiveFilm, updateFavouriteFilms, authorizationStatus}) => {
+const Main = ({promoFilm, getActiveFilm, updateFavouriteFilms}) => {
   const {name, genre, released, posterImage, backgroundImage, id, isFavorite} = promoFilm;
   getActiveFilm(promoFilm);
 
@@ -40,11 +39,7 @@ const Main = ({promoFilm, getActiveFilm, updateFavouriteFilms, authorizationStat
 
           <a href="#" onClick={(e)=> {
             e.preventDefault();
-            if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
-              history.push(AppRoute.SIGN_IN);
-            } else {
-              history.push(AppRoute.MY_LIST);
-            }
+            history.push(AppRoute.MY_LIST);
           }} className="user-block">
             <div className="user-block__avatar">
               <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
@@ -74,11 +69,7 @@ const Main = ({promoFilm, getActiveFilm, updateFavouriteFilms, authorizationStat
 
               <div className="movie-card__buttons">
                 <button onClick={()=> {
-                  if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
-                    history.push(AppRoute.SIGN_IN);
-                  } else {
-                    history.push(AppRoute.PLAYER);
-                  }
+                  history.push(AppRoute.PLAYER);
                 }}
                 className="btn btn--play movie-card__button" type="button">
                   <svg viewBox="0 0 19 19" width="19" height="19">
@@ -128,7 +119,6 @@ Main.propTypes = {
     backgroundImage: PropTypes.string,
   }),
   getActiveFilm: PropTypes.func.isRequired,
-  authorizationStatus: PropTypes.string.isRequired,
   updateFavouriteFilms: PropTypes.func.isRequired,
 };
 
@@ -136,7 +126,6 @@ export {Main};
 
 const mapStateToProps = (state) => ({
   promoFilm: getPromoFilm(state),
-  authorizationStatus: getAuthorizationStatus(state),
 });
 
 const mapStateToDispatch = (dispatch) => ({
