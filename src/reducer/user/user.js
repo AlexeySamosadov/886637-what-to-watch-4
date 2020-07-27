@@ -1,53 +1,64 @@
 import {extend} from "../../components/utils/utils.js";
-import {ActiveMenu, genreType} from "../../components/const/const.js";
+import {AuthorizationStatus} from "../../components/const/const.js";
+import StoreLocal from "../../components/localStorage/localStorage";
 
-const initializeState = {
-  activeMenuFilmInfo: ActiveMenu.OVERVIEW,
-  activeGenre: genreType.ALL,
-  showingFilmsNumber: 8,
+export const authorizationLocalStorage = new StoreLocal(`AuthorizationStatus`);
+
+const initialState = {
+  authorizationStatus: authorizationLocalStorage.getAll() || AuthorizationStatus.NO_AUTH,
 };
 
 const ActionTypes = {
-  GET_ACTIVE_MENU_FILM_INFO: `ACTIVE_MENU_FILM_INFO`,
-  SET_ACTIVE_GENRE: `SET_ACTIVE_GENRE`,
-  SHOW_MORE: `SHOW_MORE`,
+  REQUIRE_AUTHORIZATION: `REQUIRE_AUTHORIZATION`,
 };
 
-export const ActionCreators = {
-  getActiveMenuFilmInfo: (activeMenu) => {
-    return {
-      type: ActionTypes.GET_ACTIVE_MENU_FILM_INFO,
-      payload: activeMenu,
-    };
-  },
-  setActiveGenre: (filterType) => {
-    return {
-      type: ActionTypes.SET_ACTIVE_GENRE,
-      payload: filterType,
-    };
-  },
-  showMore: () => ({
-    type: ActionTypes.SHOW_MORE,
-    payload: 8,
-  }),
+const ActionCreators = {
+  requireAuthorization: (status) => ({
+    type: ActionTypes.REQUIRE_AUTHORIZATION,
+    payload: status,
+  })
 };
 
-const reducer = (state = initializeState, action) => {
+const Operation = {
+  checkAuth: () => (dispatch, getState, api) => {
+    return api.get(`/login`)
+      .then((res) => {
+        if (res.status === 200) {
+          authorizationLocalStorage.clear();
+          authorizationLocalStorage.setItem(`AUTH`);
+          dispatch(ActionCreators.requireAuthorization(authorizationLocalStorage.getAll()));
+        } else {
+          authorizationLocalStorage.clear();
+          authorizationLocalStorage.setItem(`NO_AUTH`);
+          dispatch(ActionCreators.requireAuthorization(authorizationLocalStorage.getAll()));
+        }
+      })
+      .catch((err) => {
+        throw err;
+      });
+  },
+  login: (authData) => (dispatch, getState, api) => {
+    return api.post(`/login`, {
+      email: authData.login,
+      password: authData.password,
+    })
+      .then(() => {
+        authorizationLocalStorage.clear();
+        authorizationLocalStorage.setItem(`AUTH`);
+        dispatch(ActionCreators.requireAuthorization(authorizationLocalStorage.getAll()));
+      });
+  },
+};
+
+
+const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case ActionTypes.GET_ACTIVE_MENU_FILM_INFO:
+    case ActionTypes.REQUIRE_AUTHORIZATION:
       return extend(state, {
-        activeMenuFilmInfo: action.payload,
-      });
-    case ActionTypes.SET_ACTIVE_GENRE:
-      return extend(state, {
-        activeGenre: action.payload,
-      });
-    case ActionTypes.SHOW_MORE:
-      return extend(state, {
-        showingFilmsNumber: state.showingFilmsNumber + action.payload,
+        authorizationStatus: action.payload,
       });
   }
   return state;
 };
 
-export {reducer};
+export {reducer, ActionCreators, ActionTypes, Operation};

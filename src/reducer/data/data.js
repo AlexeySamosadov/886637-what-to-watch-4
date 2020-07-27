@@ -17,7 +17,7 @@ const ActionTypes = {
   GET_ACTIVE_FILM: `GET_ACTIVE_FILM`,
 };
 
-export const ActionCreators = {
+const ActionCreators = {
   loadFilms: (films) => {
     return {
       type: ActionTypes.LOAD_FILMS,
@@ -119,4 +119,4 @@ const reducer = (state = initializeState, action) => {
   return state;
 };
 
-export {reducer, Operation};
+export {reducer, Operation, ActionCreators};

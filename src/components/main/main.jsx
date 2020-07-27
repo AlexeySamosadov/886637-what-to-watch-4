@@ -4,7 +4,7 @@ import PageContent from "../page-content/page-content.jsx";
 import PropTypes from "prop-types";
 import {ActionCreators, Operation as DataOperation} from "../../reducer/data/data";
 import history from "../../history/history.js";
-import {FilmRoute} from "../const/const";
+import {AppRoute} from "../const/const";
 import {getPromoFilm} from "../../reducer/data/selectors";
 
 const Main = ({promoFilm, getActiveFilm, postFavoriteFilms}) => {
@@ -29,7 +29,7 @@ const Main = ({promoFilm, getActiveFilm, postFavoriteFilms}) => {
 
           <div className="user-block">
             <div onClick={()=> {
-              history.push(FilmRoute.MY_LIST);
+              history.push(AppRoute.MY_LIST);
             }} className="user-block__avatar">
               <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
             </div>
@@ -41,7 +41,7 @@ const Main = ({promoFilm, getActiveFilm, postFavoriteFilms}) => {
             <div className="movie-card__poster">
               <img onClick={()=> {
                 getActiveFilm(promoFilm);
-                history.push(FilmRoute.FILM_INFO);
+                history.push(AppRoute.FILM_INFO);
               }} src={posterImage} alt={`${name} poster`} width="218"
               height="327"/>
             </div>
@@ -49,7 +49,7 @@ const Main = ({promoFilm, getActiveFilm, postFavoriteFilms}) => {
             <div className="movie-card__desc">
               <h2 onClick={()=> {
                 getActiveFilm(promoFilm);
-                history.push(FilmRoute.FILM_INFO);
+                history.push(AppRoute.FILM_INFO);
               }} className="movie-card__title">{name}</h2>
               <p className="movie-card__meta">
                 <span className="movie-card__genre">{genre}</span>
@@ -58,7 +58,7 @@ const Main = ({promoFilm, getActiveFilm, postFavoriteFilms}) => {
 
               <div className="movie-card__buttons">
                 <button onClick={()=> {
-                  history.push(FilmRoute.PLAYER);
+                  history.push(AppRoute.PLAYER);
                 }}
                 className="btn btn--play movie-card__button" type="button">
                   <svg viewBox="0 0 19 19" width="19" height="19">

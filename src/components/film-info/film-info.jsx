@@ -5,13 +5,13 @@ import history from "../../history/history.js";
 import {filterFilms} from "../utils/utils.js";
 import FilmInfoDescription from "../film-info-description/film-info-description.jsx";
 import FilmList from "../film-list/film-list.jsx";
-import {FilmRoute} from "../const/const.js";
+import {AppRoute} from "../const/const.js";
 import {getActiveFilm, getFilms} from "../../reducer/data/selectors";
 import {Operation as DataOperation} from "../../reducer/data/data.js";
 
 const FilmInfo = ({activeFilm, films, updateFavouriteFilms, loadFilms, loadPromoFilm}) => {
   if (JSON.stringify(activeFilm) === `{}`) {
-    history.push(FilmRoute.MAIN);
+    history.push(AppRoute.MAIN);
   }
   const {name, backgroundImage, genre, released, posterImage, backgroundColor, id, isFavorite} = activeFilm;
   const styleCard = {
@@ -43,7 +43,7 @@ const FilmInfo = ({activeFilm, films, updateFavouriteFilms, loadFilms, loadPromo
             <div className="logo">
               <a href="#" onClick={(e)=>{
                 e.preventDefault();
-                history.push(FilmRoute.MAIN);
+                history.push(AppRoute.MAIN);
               }} className="logo__link">
                 <span className="logo__letter logo__letter--1">W</span>
                 <span className="logo__letter logo__letter--2">T</span>
@@ -53,7 +53,7 @@ const FilmInfo = ({activeFilm, films, updateFavouriteFilms, loadFilms, loadPromo
 
             <div className="user-block">
               <div onClick={()=> {
-                history.push(FilmRoute.MY_LIST);
+                history.push(AppRoute.MY_LIST);
               }} className="user-block__avatar">
                 <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
               </div>
@@ -70,7 +70,7 @@ const FilmInfo = ({activeFilm, films, updateFavouriteFilms, loadFilms, loadPromo
 
               <div className="movie-card__buttons">
                 <button onClick={()=> {
-                  history.push(FilmRoute.PLAYER);
+                  history.push(AppRoute.PLAYER);
                 }}
                 className="btn btn--play movie-card__button" type="button">
                   <svg viewBox="0 0 19 19" width="19" height="19">

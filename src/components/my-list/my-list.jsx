@@ -1,6 +1,6 @@
 import React from "react";
 import history from "../../history/history.js";
-import {FilmRoute} from "../const/const.js";
+import {AppRoute} from "../const/const.js";
 
 const MyList = () => {
   return (
@@ -9,7 +9,7 @@ const MyList = () => {
         <div className="logo">
           <a onClick={(e)=>{
             e.preventDefault();
-            history.push(FilmRoute.MAIN);
+            history.push(AppRoute.MAIN);
           }} href="main.html" className="logo__link">
             <span className="logo__letter logo__letter--1">W</span>
             <span className="logo__letter logo__letter--2">T</span>

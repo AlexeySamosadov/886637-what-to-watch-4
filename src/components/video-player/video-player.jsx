@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import {playerType, keyCode, typeEvent, arrowTimingPercent} from "../const/const.js";
 import "./video-player.css";
 import history from "../../history/history.js";
-import {FilmRoute} from "../const/const";
+import {AppRoute} from "../const/const";
 
 const convertVideoTime = (time) => {
   let seconds;
@@ -57,13 +57,13 @@ class VideoPlayer extends PureComponent {
               onWheel={(evt)=>onWheel(evt)}
               onClick={onPlayButtonClick}
               onDoubleClick={()=>{
-                history.push(FilmRoute.FILM_INFO);
+                history.push(AppRoute.FILM_INFO);
               }}
             >
               {children}
             </span>
             <button type="button" onClick={() => {
-              history.push(FilmRoute.FILM_INFO);
+              history.push(AppRoute.FILM_INFO);
             }} className="player__exit">Exit</button>
             {isIndicatorShow && <span className="player-value-indicator">{valueInPercent}%</span>}
 
@@ -135,7 +135,7 @@ class VideoPlayer extends PureComponent {
 
   _onPressButton(evt) {
     if (evt.code === keyCode.ESCAPE) {
-      history.push(FilmRoute.FILM_INFO);
+      history.push(AppRoute.FILM_INFO);
     }
     if (evt.code === keyCode.ARROW_RIGHT) {
       const percent = arrowTimingPercent.TEN;

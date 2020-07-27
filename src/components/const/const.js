@@ -1,8 +1,14 @@
-export const FilmRoute = {
+export const AppRoute = {
   MAIN: `/`,
   FILM_INFO: `/film-info`,
   PLAYER: `/player`,
   MY_LIST: `/my-list`,
+  SIGN_IN: `/sign-in`,
+};
+
+export const AuthorizationStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`,
 };
 
 export const ActiveMenu = {

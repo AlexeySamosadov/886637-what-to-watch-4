@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import history from "../../history/history";
-import {FilmRoute, playerType} from "../const/const.js";
+import {AppRoute, playerType} from "../const/const.js";
 import {ActionCreators} from "../../reducer/data/data.js";
 import PropTypes from "prop-types";
 import withVideoPlayer from "../../hocs/with-video-player/with-video-player.js";
@@ -16,7 +16,7 @@ const FilmList = ({films, getActiveFilm}) => {
         return (
           <article onClick={()=> {
             getActiveFilm(film);
-            history.push(FilmRoute.FILM_INFO);
+            history.push(AppRoute.FILM_INFO);
           }} key={i} className="small-movie-card catalog__movies-card">
             <VideoPlayer
               srcPoster={film.previewImage}
