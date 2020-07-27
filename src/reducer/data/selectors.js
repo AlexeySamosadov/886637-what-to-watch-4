@@ -1,6 +1,5 @@
 import NameSpace from "../name-space.js";
 import {createSelector} from "reselect";
-import {genreType} from "../../components/const/const";
 import {getActiveGenre, getShowingFilmsNumber} from "../app-status/selectors.js";
 import {filterFilms} from "../../components/utils/utils";
 
