@@ -7,6 +7,7 @@ import {AppRoute} from "../const/const.js";
 import BigVideoPlayer from "../big-video-player/big-video-player.jsx";
 import MyList from "../my-list/my-list.jsx";
 import SignIn from "../sign-in/sign-in";
+import AddComment from "../add-comment/add-comment";
 
 const App = () => {
   return (
@@ -25,6 +26,9 @@ const App = () => {
         />
         <Route exact path={AppRoute.MY_LIST}
           render={()=><MyList/>}
+        />
+        <Route exact p={AppRoute.ADD_COMMENT}
+          render={()=><AddComment/>}
         />
         <Route exact p={AppRoute.SIGN_IN}
           render={()=><SignIn/>}

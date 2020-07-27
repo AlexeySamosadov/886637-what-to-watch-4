@@ -4,6 +4,7 @@ export const AppRoute = {
   PLAYER: `/player`,
   MY_LIST: `/my-list`,
   SIGN_IN: `/sign-in`,
+  ADD_COMMENT: `/add-comment`,
 };
 
 export const AuthorizationStatus = {

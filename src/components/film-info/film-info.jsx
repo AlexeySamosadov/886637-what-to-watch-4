@@ -100,6 +100,7 @@ const FilmInfo = ({activeFilm, films, updateFavouriteFilms}) => {
                   }
                 </button>
                 <a onClick={(e)=> {
+                  history.push(AppRoute.ADD_COMMENT);
                   e.preventDefault();
                 }} href="#" className="btn movie-card__button">Add review</a>
               </div>
