@@ -131,7 +131,6 @@ const withVideoPlayer = (Component) => {
     }
 
     componentDidMount() {
-      console.log(`jnvjynbhjdfkcz`);
       const {srcVideo, isMuted = false, type} = this.props;
       const video = this.videoRef.current;
       video.src = srcVideo;

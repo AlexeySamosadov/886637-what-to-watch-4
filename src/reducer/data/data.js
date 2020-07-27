@@ -86,8 +86,7 @@ const Operation = {
   },
   postFavoriteFilm: (id, status) => (dispatch, getState, api) => {
     return api.post(`/favorite/${id}/${status}`)
-      .then((response)=>{
-        console.log(`response`, response);
+      .then(()=>{
       });
   },
 };

@@ -8,9 +8,7 @@ import {FilmRoute} from "../const/const";
 import {getPromoFilm} from "../../reducer/data/selectors";
 
 const Main = ({promoFilm, getActiveFilm, postFavoriteFilms}) => {
-  const {name, genre, released, posterImage, backgroundImage, isFavorite, id} = promoFilm;
-  console.log(`isFavorite`, isFavorite);
-
+  const {name, genre, released, posterImage, backgroundImage, id} = promoFilm;
   return (
     <React.Fragment>
       <section className="movie-card">
@@ -93,8 +91,10 @@ Main.propTypes = {
     released: PropTypes.number,
     posterImage: PropTypes.string,
     backgroundImage: PropTypes.string,
+    id: PropTypes.number,
   }),
   getActiveFilm: PropTypes.func.isRequired,
+  postFavoriteFilms: PropTypes.func.isRequired,
 };
 
 export {Main};

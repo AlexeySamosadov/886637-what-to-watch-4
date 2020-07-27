@@ -17,7 +17,7 @@ const FilmInfo = ({activeFilm, films, updateFavouriteFilms, loadFilms, loadPromo
   const styleCard = {
     backgroundColor,
   };
-  console.log(`isFavorite`, isFavorite);
+  // console.log(`isFavorite`, isFavorite);
   const filteredFilms = filterFilms(films, genre);
   const changeFavorite = () => {
     if (isFavorite) {
@@ -25,8 +25,8 @@ const FilmInfo = ({activeFilm, films, updateFavouriteFilms, loadFilms, loadPromo
     } else {
       updateFavouriteFilms(id, 1);
     }
-    // loadFilms();
-    // loadPromoFilm();
+    loadFilms();
+    loadPromoFilm();
   };
 
 
@@ -134,6 +134,8 @@ FilmInfo.propTypes = {
   activeFilm: PropTypes.object.isRequired,
   films: PropTypes.array.isRequired,
   updateFavouriteFilms: PropTypes.func.isRequired,
+  loadFilms: PropTypes.func.isRequired,
+  loadPromoFilm: PropTypes.func.isRequired,
 };
 
 export {FilmInfo};
