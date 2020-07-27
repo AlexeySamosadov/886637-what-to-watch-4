@@ -9,14 +9,17 @@ import {AppRoute} from "../const/const.js";
 import {getActiveFilm, getFilms} from "../../reducer/data/selectors";
 import {Operation as DataOperation} from "../../reducer/data/data.js";
 
-const FilmInfo = ({activeFilm, films, updateFavouriteFilms, loadFilms, loadPromoFilm}) => {
+const FilmInfo = ({activeFilm, films, updateFavouriteFilms}) => {
   if (JSON.stringify(activeFilm) === `{}`) {
     history.push(AppRoute.MAIN);
   }
+
   const {name, backgroundImage, genre, released, posterImage, backgroundColor, id, isFavorite} = activeFilm;
   const styleCard = {
     backgroundColor,
   };
+  console.log(`activeFilm`, activeFilm);
+  console.log(`isFavorite`, isFavorite);
   const filteredFilms = filterFilms(films, genre);
   const changeFavorite = () => {
     if (isFavorite) {
@@ -24,8 +27,6 @@ const FilmInfo = ({activeFilm, films, updateFavouriteFilms, loadFilms, loadPromo
     } else {
       updateFavouriteFilms(id, 1);
     }
-    loadFilms();
-    loadPromoFilm();
   };
 
 
@@ -78,13 +79,26 @@ const FilmInfo = ({activeFilm, films, updateFavouriteFilms, loadFilms, loadPromo
                   </svg>
                   <span>Play</span>
                 </button>
-                <button onClick={(e)=> {
-                  e.preventDefault();
-                }} className="btn btn--list movie-card__button" type="button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"/>
-                  </svg>
-                  <span onClick={()=> changeFavorite()}>My list</span>
+                <button
+                  onClick={changeFavorite}
+                  className="btn btn--list movie-card__button" type="button">
+                  {isFavorite ?
+
+                    <>
+                      <svg viewBox="0 0 19 20" width="19" height="20">
+                        <use xlinkHref="#remove"/>
+                      </svg>
+                      <span>Remove from list</span>
+                    </>
+                    :
+                    <>
+                      <svg viewBox="0 0 19 20" width="19" height="20">
+                        <use xlinkHref="#add"/>
+                      </svg>
+                      <span>My list</span>
+                    </>
+
+                  }
                 </button>
                 <a onClick={(e)=> {
                   e.preventDefault();
@@ -132,8 +146,6 @@ const FilmInfo = ({activeFilm, films, updateFavouriteFilms, loadFilms, loadPromo
 FilmInfo.propTypes = {
   activeFilm: PropTypes.object.isRequired,
   films: PropTypes.array.isRequired,
-  loadFilms: PropTypes.func.isRequired,
-  loadPromoFilm: PropTypes.func.isRequired,
   updateFavouriteFilms: PropTypes.func.isRequired,
 };
 
@@ -148,12 +160,6 @@ const mapStateToDispatch = (dispatch) => ({
   updateFavouriteFilms: (id, status) => {
     dispatch(DataOperation.postFavoriteFilm(id, status));
   },
-  loadFilms: () => {
-    dispatch(DataOperation.loadFilms());
-  },
-  loadPromoFilm: () => {
-    dispatch(DataOperation.loadPromoFilms());
-  }
 });
 
 export default connect(mapStateToProps, mapStateToDispatch)(FilmInfo);

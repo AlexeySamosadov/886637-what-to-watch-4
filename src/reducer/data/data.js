@@ -86,7 +86,11 @@ const Operation = {
   },
   postFavoriteFilm: (id, status) => (dispatch, getState, api) => {
     return api.post(`/favorite/${id}/${status}`)
-      .then(()=>{
+      .then((response)=>{
+        dispatch(ActionCreators.getActiveFilm(adaptFilmData(response.data)));
+        dispatch(Operation.loadFilms());
+        dispatch(Operation.loadPromoFilms());
+        dispatch(Operation.loadFavoriteFilms());
       });
   },
 };
@@ -101,7 +105,6 @@ const reducer = (state = initializeState, action) => {
     case ActionTypes.LOAD_PROMO_FILM:
       return extend(state, {
         promoFilm: action.payload,
-        activeFilm: action.payload,
       });
     case ActionTypes.LOAD_REVIEWS:
       return extend(state, {
