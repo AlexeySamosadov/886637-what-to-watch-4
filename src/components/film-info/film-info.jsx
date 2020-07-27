@@ -51,13 +51,14 @@ const FilmInfo = ({activeFilm, films, updateFavouriteFilms}) => {
               </a>
             </div>
 
-            <div className="user-block">
-              <div onClick={()=> {
-                history.push(AppRoute.MY_LIST);
-              }} className="user-block__avatar">
+            <a href="#" onClick={(e)=> {
+              e.preventDefault();
+              history.push(AppRoute.MY_LIST);
+            }} className="user-block">
+              <div className="user-block__avatar">
                 <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
               </div>
-            </div>
+            </a>
           </header>
 
           <div className="movie-card__wrap">

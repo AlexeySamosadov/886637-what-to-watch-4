@@ -10,6 +10,7 @@ import {getAuthorizationStatus} from "../../reducer/user/selectors";
 
 const Main = ({promoFilm, getActiveFilm, updateFavouriteFilms, authorizationStatus}) => {
   const {name, genre, released, posterImage, backgroundImage, id, isFavorite} = promoFilm;
+  getActiveFilm(promoFilm);
 
   const changeFavorite = () => {
     if (isFavorite) {
@@ -37,17 +38,18 @@ const Main = ({promoFilm, getActiveFilm, updateFavouriteFilms, authorizationStat
             </a>
           </div>
 
-          <div className="user-block">
-            <div onClick={()=> {
-              if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
-                history.push(AppRoute.SIGN_IN);
-              } else {
-                history.push(AppRoute.MY_LIST);
-              }
-            }} className="user-block__avatar">
+          <a href="#" onClick={(e)=> {
+            e.preventDefault();
+            if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
+              history.push(AppRoute.SIGN_IN);
+            } else {
+              history.push(AppRoute.MY_LIST);
+            }
+          }} className="user-block">
+            <div className="user-block__avatar">
               <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
             </div>
-          </div>
+          </a>
         </header>
 
         <div className="movie-card__wrap">
