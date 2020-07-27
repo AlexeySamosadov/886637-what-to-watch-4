@@ -8,8 +8,10 @@ import FilmList from "../film-list/film-list.jsx";
 import {AppRoute} from "../const/const.js";
 import {getActiveFilm, getFilms} from "../../reducer/data/selectors";
 import {Operation as DataOperation} from "../../reducer/data/data.js";
+import {AuthorizationStatus} from "../const/const";
+import {getAuthorizationStatus} from "../../reducer/user/selectors";
 
-const FilmInfo = ({activeFilm, films, updateFavouriteFilms}) => {
+const FilmInfo = ({activeFilm, films, updateFavouriteFilms, authorizationStatus}) => {
   if (JSON.stringify(activeFilm) === `{}`) {
     history.push(AppRoute.MAIN);
   }
@@ -21,10 +23,14 @@ const FilmInfo = ({activeFilm, films, updateFavouriteFilms}) => {
 
   const filteredFilms = filterFilms(films, genre);
   const changeFavorite = () => {
-    if (isFavorite) {
-      updateFavouriteFilms(id, 0);
+    if (authorizationStatus === AuthorizationStatus.AUTH) {
+      if (isFavorite) {
+        updateFavouriteFilms(id, 0);
+      } else {
+        updateFavouriteFilms(id, 1);
+      }
     } else {
-      updateFavouriteFilms(id, 1);
+      history.push(AppRoute.SIGN_IN);
     }
   };
 
@@ -151,6 +157,7 @@ FilmInfo.propTypes = {
   activeFilm: PropTypes.object.isRequired,
   films: PropTypes.array.isRequired,
   updateFavouriteFilms: PropTypes.func.isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
 };
 
 export {FilmInfo};
@@ -158,6 +165,7 @@ export {FilmInfo};
 const mapStateToProps = (state) => ({
   activeFilm: getActiveFilm(state),
   films: getFilms(state),
+  authorizationStatus: getAuthorizationStatus(state),
 });
 
 const mapStateToDispatch = (dispatch) => ({

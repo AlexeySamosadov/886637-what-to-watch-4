@@ -4,18 +4,23 @@ import PageContent from "../page-content/page-content.jsx";
 import PropTypes from "prop-types";
 import {ActionCreators, Operation as DataOperation} from "../../reducer/data/data";
 import history from "../../history/history.js";
-import {AppRoute} from "../const/const";
+import {AppRoute, AuthorizationStatus} from "../const/const";
 import {getPromoFilm} from "../../reducer/data/selectors";
+import {getAuthorizationStatus} from "../../reducer/user/selectors";
 
-const Main = ({promoFilm, getActiveFilm, updateFavouriteFilms}) => {
+const Main = ({promoFilm, getActiveFilm, authorizationStatus, updateFavouriteFilms}) => {
   const {name, genre, released, posterImage, backgroundImage, id, isFavorite} = promoFilm;
   getActiveFilm(promoFilm);
 
   const changeFavorite = () => {
-    if (isFavorite) {
-      updateFavouriteFilms(id, 0);
+    if (authorizationStatus === AuthorizationStatus.AUTH) {
+      if (isFavorite) {
+        updateFavouriteFilms(id, 0);
+      } else {
+        updateFavouriteFilms(id, 1);
+      }
     } else {
-      updateFavouriteFilms(id, 1);
+      history.push(AppRoute.SIGN_IN);
     }
   };
 
@@ -40,7 +45,6 @@ const Main = ({promoFilm, getActiveFilm, updateFavouriteFilms}) => {
           <a href="#" onClick={(e)=> {
             e.preventDefault();
             history.push(AppRoute.MY_LIST);
-            console.log(`my lists`)
           }} className="user-block">
             <div className="user-block__avatar">
               <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
@@ -121,12 +125,14 @@ Main.propTypes = {
   }),
   getActiveFilm: PropTypes.func.isRequired,
   updateFavouriteFilms: PropTypes.func.isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
 };
 
 export {Main};
 
 const mapStateToProps = (state) => ({
   promoFilm: getPromoFilm(state),
+  authorizationStatus: getAuthorizationStatus(state),
 });
 
 const mapStateToDispatch = (dispatch) => ({
