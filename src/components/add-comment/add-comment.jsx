@@ -6,9 +6,13 @@ import history from "../../history/history";
 import {AppRoute} from "../const/const";
 
 const AddComment = ({activeFilm}) => {
-  const {name, backgroundImage, genre, released, posterImage, backgroundColor, id, isFavorite} = activeFilm;
+  const {name, backgroundImage, posterImage, backgroundColor} = activeFilm;
+
+  const styleCard = {
+    backgroundColor,
+  };
   return (
-    <section className="movie-card movie-card--full">
+    <section className="movie-card movie-card--full" style={styleCard}>
       <div className="movie-card__header">
         <div className="movie-card__bg">
           <img src={backgroundImage} alt={name}/>
@@ -31,7 +35,10 @@ const AddComment = ({activeFilm}) => {
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
               <li className="breadcrumbs__item">
-                <a href="movie-page.html" className="breadcrumbs__link">{name}</a>
+                <a href="#" onClick={(e)=> {
+                  e.preventDefault();
+                  history.goBack();
+                }} className="breadcrumbs__link">{name}</a>
               </li>
               <li className="breadcrumbs__item">
                 <a className="breadcrumbs__link">Add review</a>
@@ -50,8 +57,7 @@ const AddComment = ({activeFilm}) => {
         </header>
 
         <div className="movie-card__poster movie-card__poster--small">
-          <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218"
-            height="327"/>
+          <img src={posterImage} alt="The Grand Budapest Hotel poster" width="218" height="327"/>
         </div>
       </div>
 
@@ -78,7 +84,7 @@ const AddComment = ({activeFilm}) => {
 
           <div className="add-review__text">
             <textarea className="add-review__textarea" name="review-text" id="review-text"
-                      placeholder="Review text"></textarea>
+              placeholder="Review text"></textarea>
             <div className="add-review__submit">
               <button className="add-review__btn" type="submit">Post</button>
             </div>
