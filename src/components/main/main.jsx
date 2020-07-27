@@ -86,12 +86,12 @@ const Main = ({promoFilm, getActiveFilm, postFavoriteFilms}) => {
 
 Main.propTypes = {
   promoFilm: PropTypes.shape({
+    id: PropTypes.number,
     name: PropTypes.string,
     genre: PropTypes.string,
     released: PropTypes.number,
     posterImage: PropTypes.string,
     backgroundImage: PropTypes.string,
-    id: PropTypes.number,
   }),
   getActiveFilm: PropTypes.func.isRequired,
   postFavoriteFilms: PropTypes.func.isRequired,
