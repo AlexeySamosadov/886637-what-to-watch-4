@@ -4,7 +4,7 @@ import PageContent from "../page-content/page-content.jsx";
 import PropTypes from "prop-types";
 import {ActionCreators, Operation as DataOperation} from "../../reducer/data/data";
 import history from "../../history/history.js";
-import {AppRoute, AuthorizationStatus} from "../const/const";
+import {AppRoute} from "../const/const";
 import {getPromoFilm} from "../../reducer/data/selectors";
 
 const Main = ({promoFilm, getActiveFilm, updateFavouriteFilms}) => {
@@ -40,6 +40,7 @@ const Main = ({promoFilm, getActiveFilm, updateFavouriteFilms}) => {
           <a href="#" onClick={(e)=> {
             e.preventDefault();
             history.push(AppRoute.MY_LIST);
+            console.log(`my lists`)
           }} className="user-block">
             <div className="user-block__avatar">
               <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>

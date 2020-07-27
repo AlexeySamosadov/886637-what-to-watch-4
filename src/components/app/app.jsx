@@ -23,20 +23,20 @@ const App = ({authorizationStatus}) => {
         <Route exact path={AppRoute.FILM_INFO}
           render={()=><FilmInfo/>}
         />
-        <Route exact p={AppRoute.SIGN_IN}
-          render={()=><SignIn/>}
+        <PrivateRoute exact path={AppRoute.MY_LIST}
+          auth={authorizationStatus}
+          render={()=><MyList/>}
         />
         <PrivateRoute exact path={AppRoute.PLAYER}
           auth={authorizationStatus}
           render={()=><BigVideoPlayer/>}
         />
-        <PrivateRoute exact path={AppRoute.MY_LIST}
-          auth={authorizationStatus}
-          render={()=><MyList/>}
-        />
         <PrivateRoute exact path={AppRoute.ADD_COMMENT}
           auth={authorizationStatus}
           render={()=><AddComment/>}
+        />
+        <Route exact p={AppRoute.SIGN_IN}
+          render={()=><SignIn/>}
         />
         <Redirect to={AppRoute.MAIN}/>
       </Switch>
