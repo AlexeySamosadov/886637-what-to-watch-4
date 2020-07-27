@@ -39,7 +39,7 @@ const ActionCreators = {
   loadFavouriteFilms: (films) => {
     return {
       type: ActionTypes.LOAD_FAVORITE_FILMS,
-      payload: films,
+      payload: adaptFilmsData(films),
     };
   },
   getActiveFilm: (film) => {
