@@ -30,11 +30,9 @@ class AddComment extends PureComponent {
 
   render() {
     const {name, backgroundImage, posterImage, backgroundColor} = this.props.activeFilm;
-
     const styleCard = {
       backgroundColor,
     };
-
     return (
       <section className="movie-card movie-card--full" style={styleCard}>
         <div className="movie-card__header">
