@@ -73,6 +73,8 @@ const Operation = {
     return api.post(`/comments/${id}`, {
       rating: review.rating,
       comment: review.comment
+    }).then(() => {
+      dispatch(Operation.loadReviews(id));
     })
       .catch((err) => {
         throw err;

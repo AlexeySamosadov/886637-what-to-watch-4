@@ -58,4 +58,9 @@ export const arrowTimingPercent = {
   MINUS_TEN: -3,
 };
 
+export const LENGTH = {
+  MIN: 50,
+  MAX: 400
+};
+
 
