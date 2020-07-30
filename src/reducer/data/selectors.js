@@ -19,10 +19,6 @@ export const getFavouriteFilmList = (state)=> {
   return state[NameSpace.DATA].favouriteFilmList;
 };
 
-export const getActiveFilm = (state)=> {
-  return state[NameSpace.DATA].activeFilm;
-};
-
 export const getFilmsToRender = createSelector(
     getFilms,
     getActiveGenre,

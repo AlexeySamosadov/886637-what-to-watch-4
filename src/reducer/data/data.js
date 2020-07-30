@@ -9,7 +9,6 @@ const initializeState = {
   promoFilm: {},
   reviews: [],
   favouriteFilmList: [],
-  activeFilm: {},
 };
 
 const ActionTypes = {
@@ -17,7 +16,6 @@ const ActionTypes = {
   LOAD_PROMO_FILM: `LOAD_PROMO_FILM`,
   LOAD_REVIEWS: `LOAD_REVIEWS`,
   LOAD_FAVORITE_FILMS: `LOAD_FAVORITE_FILMS`,
-  GET_ACTIVE_FILM: `GET_ACTIVE_FILM`,
 };
 
 const ActionCreators = {
@@ -43,12 +41,6 @@ const ActionCreators = {
     return {
       type: ActionTypes.LOAD_FAVORITE_FILMS,
       payload: adaptFilmsData(films),
-    };
-  },
-  getActiveFilm: (film) => {
-    return {
-      type: ActionTypes.GET_ACTIVE_FILM,
-      payload: film,
     };
   },
 };
@@ -92,15 +84,13 @@ const Operation = {
   },
   postFavoriteFilm: (id, status) => (dispatch, getState, api) => {
     return api.post(`/favorite/${id}/${status}`)
-      .then((response)=>{
-        dispatch(ActionCreators.getActiveFilm(adaptFilmData(response.data)));
+      .then(()=>{
         dispatch(Operation.loadFilms());
         dispatch(Operation.loadPromoFilms());
         dispatch(Operation.loadFavoriteFilms());
       });
   },
 };
-
 
 const reducer = (state = initializeState, action) => {
   switch (action.type) {
@@ -119,10 +109,6 @@ const reducer = (state = initializeState, action) => {
     case ActionTypes.LOAD_FAVORITE_FILMS:
       return extend(state, {
         favouriteFilmList: action.payload,
-      });
-    case ActionTypes.GET_ACTIVE_FILM:
-      return extend(state, {
-        activeFilm: action.payload,
       });
   }
   return state;

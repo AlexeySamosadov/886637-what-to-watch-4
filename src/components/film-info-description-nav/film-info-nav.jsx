@@ -6,7 +6,6 @@ import {ActiveMenu} from "../const/const.js";
 import PropTypes from "prop-types";
 import {getActiveMenuFilmInfo} from "../../reducer/app-status/selectors";
 
-
 const FilmInfoDescriptionNav = ({setActiveMenuFilmInfo, activeMenuFilmInfo, activeFilm, loadReviews}) => {
   return (
     <nav className="movie-nav movie-card__nav">
