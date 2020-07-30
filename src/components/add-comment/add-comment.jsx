@@ -100,7 +100,7 @@ class AddComment extends PureComponent {
                 <input className="rating__input" id="star-4" type="radio" name="rating" defaultValue={4}/>
                 <label className="rating__label" htmlFor="star-4">Rating 4</label>
 
-                <input className="rating__input" id="star-5" type="radio" name="rating" defaultChecked={5}/>
+                <input className="rating__input" id="star-5" type="radio" name="rating" defaultValue={5}/>
                 <label className="rating__label" htmlFor="star-5">Rating 5</label>
               </div>
             </div>
