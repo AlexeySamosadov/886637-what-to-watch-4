@@ -5,13 +5,12 @@ import history from "../../history/history.js";
 import FilmInfoDescription from "../film-info-description/film-info-description.jsx";
 import FilmList from "../film-list/film-list.jsx";
 import {AppRoute} from "../const/const.js";
-import {getActiveFilm, getFilmsToRender} from "../../reducer/data/selectors";
+import {getFilmsToRender} from "../../reducer/data/selectors";
 import {Operation as DataOperation} from "../../reducer/data/data.js";
 import {AuthorizationStatus} from "../const/const";
 import {getAuthorizationStatus} from "../../reducer/user/selectors";
 
 const FilmInfo = ({activeFilm, filteredFilms, updateFavouriteFilms, authorizationStatus}) => {
-  console.log(`activeFilm`, activeFilm);
   if (JSON.stringify(activeFilm) === `{}`) {
     history.push(AppRoute.MAIN);
   }
