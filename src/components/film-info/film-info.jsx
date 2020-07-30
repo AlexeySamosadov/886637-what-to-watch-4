@@ -75,7 +75,7 @@ const FilmInfo = ({activeFilm, filteredFilms, updateFavouriteFilms, authorizatio
 
               <div className="movie-card__buttons">
                 <button onClick={()=> {
-                  history.push(`${AppRoute.PLAYER}/${id}`);
+                  history.push(`${AppRoute.FILM_INFO}/${id}/${AppRoute.PLAYER}`);
                 }}
                 className="btn btn--play movie-card__button" type="button">
                   <svg viewBox="0 0 19 19" width="19" height="19">
@@ -106,7 +106,7 @@ const FilmInfo = ({activeFilm, filteredFilms, updateFavouriteFilms, authorizatio
                 </button>
                 <a onClick={(e)=> {
                   e.preventDefault();
-                  history.push(`${AppRoute.ADD_COMMENT}/${id}`);
+                  history.push(`${AppRoute.FILM_INFO}/${id}/${AppRoute.ADD_COMMENT}`);
                 }} href="#" className="btn movie-card__button">Add review</a>
               </div>
             </div>

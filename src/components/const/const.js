@@ -1,10 +1,10 @@
 export const AppRoute = {
   MAIN: `/`,
-  FILM_INFO: `/film-info`,
-  PLAYER: `/player`,
+  FILM_INFO: `/films`,
+  PLAYER: `player`,
   MY_LIST: `/my-list`,
   SIGN_IN: `/sign-in`,
-  ADD_COMMENT: `/add-comment`,
+  ADD_COMMENT: `review`,
 };
 
 export const AuthorizationStatus = {

@@ -23,7 +23,7 @@ const App = ({authorizationStatus, films}) => {
         <Route exact path={AppRoute.MAIN}
           render={()=><Main/>}
         />
-        <Route exact path={`${AppRoute.FILM_INFO}/:id?`}
+        <Route exact path={`${AppRoute.FILM_INFO}/:id`}
           render={(routeProps)=>{
             const activeFilm = getRouteActiveFilm(routeProps, films);
             return (<FilmInfo
@@ -35,7 +35,7 @@ const App = ({authorizationStatus, films}) => {
           auth={authorizationStatus}
           render={()=><MyList/>}
         />
-        <PrivateRoute exact path={`${AppRoute.PLAYER}/:id?`}
+        <PrivateRoute exact path={`${AppRoute.FILM_INFO}/:id/${AppRoute.PLAYER}`}
           auth={authorizationStatus}
           render={(routeProps)=>{
             const activeFilm = getRouteActiveFilm(routeProps, films);
@@ -46,7 +46,7 @@ const App = ({authorizationStatus, films}) => {
             );
           }}
         />
-        <PrivateRoute exact path={`${AppRoute.ADD_COMMENT}/:id?`}
+        <PrivateRoute exact path={`${AppRoute.FILM_INFO}/:id/${AppRoute.ADD_COMMENT}`}
           auth={authorizationStatus}
           render={(routeProps)=>{
             const activeFilm = getRouteActiveFilm(routeProps, films);
