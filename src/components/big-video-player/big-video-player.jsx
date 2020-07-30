@@ -17,6 +17,7 @@ const BigVideoPlayer = ({activeFilm}) => {
       className={playerClass.PLAYER_VIDEO}
       srcVideo={activeFilm.videoLink}
       srcPoster={activeFilm.posterImage}
+      id={activeFilm.id}
       isMuted
     />
   );
@@ -26,6 +27,7 @@ BigVideoPlayer.propTypes = {
   activeFilm: PropTypes.shape({
     videoLink: PropTypes.string.isRequired,
     posterImage: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
   }),
 };
 

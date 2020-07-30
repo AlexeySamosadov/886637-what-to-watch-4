@@ -204,10 +204,11 @@ const withVideoPlayer = (Component) => {
     }
 
     render() {
-      const {srcPoster, srcVideo, widthAtr = null, heightAtr = null, className = ``} = this.props;
+      const {srcPoster, srcVideo, id, widthAtr = null, heightAtr = null, className = ``} = this.props;
       const {isPlaying, isFullScreen, progressInSeconds, progressInPercent, valueInPercent, isSoundOff, isIndicatorShow} = this.state;
       return <Component
         {...this.props}
+        id={id}
         onFullScreenButtonClick={this._handlerFullScreenButtonClick}
         onPlayButtonClick={this._handlerPlayButtonClick}
         onMouseEnter={this._handlerMouseEnter}
@@ -234,6 +235,7 @@ const withVideoPlayer = (Component) => {
   WithVideo.propTypes = {
     srcVideo: PropTypes.string.isRequired,
     srcPoster: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     isMuted: PropTypes.bool,
     heightAtr: PropTypes.number,
     widthAtr: PropTypes.number,

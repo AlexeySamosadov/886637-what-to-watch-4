@@ -152,7 +152,16 @@ const FilmInfo = ({activeFilm, filteredFilms, updateFavouriteFilms, authorizatio
 };
 
 FilmInfo.propTypes = {
-  activeFilm: PropTypes.object.isRequired,
+  activeFilm: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    backgroundImage: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    released: PropTypes.number.isRequired,
+    posterImage: PropTypes.string.isRequired,
+    backgroundColor: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    isFavorite: PropTypes.bool.isRequired,
+  }).isRequired,
   filteredFilms: PropTypes.array.isRequired,
   updateFavouriteFilms: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,

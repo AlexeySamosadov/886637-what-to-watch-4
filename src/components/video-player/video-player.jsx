@@ -42,7 +42,7 @@ class VideoPlayer extends PureComponent {
   }
 
   _renderPlayer() {
-    const {children, setPercentFilm, onWheel, valueInPercent, progressInPercent, progressInSeconds, onMouseEnter, onMouseLeave, onClick,
+    const {children, setPercentFilm, onWheel, id, valueInPercent, progressInPercent, progressInSeconds, onMouseEnter, onMouseLeave, onClick,
       onPlayButtonClick, isPlaying, isIndicatorShow, setValue, onSoundClick, isSoundOff, isFullScreen, type} = this.props;
     switch (type) {
       case playerType.TRAILER:
@@ -57,13 +57,13 @@ class VideoPlayer extends PureComponent {
               onWheel={(evt)=>onWheel(evt)}
               onClick={onPlayButtonClick}
               onDoubleClick={()=>{
-                history.push(AppRoute.FILM_INFO);
+                history.push(`${AppRoute.FILM_INFO}/${id}`);
               }}
             >
               {children}
             </span>
             <button type="button" onClick={() => {
-              history.push(AppRoute.FILM_INFO);
+              history.push(`${AppRoute.FILM_INFO}/${id}`);
             }} className="player__exit">Exit</button>
             {isIndicatorShow && <span className="player-value-indicator">{valueInPercent}%</span>}
 
@@ -135,7 +135,7 @@ class VideoPlayer extends PureComponent {
 
   _onPressButton(evt) {
     if (evt.code === keyCode.ESCAPE) {
-      history.push(AppRoute.FILM_INFO);
+      history.push(`${AppRoute.FILM_INFO}/${this.props.id}`);
     }
     if (evt.code === keyCode.ARROW_RIGHT) {
       const percent = arrowTimingPercent.TEN;
@@ -179,6 +179,7 @@ class VideoPlayer extends PureComponent {
 VideoPlayer.propTypes = {
   onMouseEnter: PropTypes.func.isRequired,
   onClick: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired,
   onMouseLeave: PropTypes.func.isRequired,
   onFullScreenButtonClick: PropTypes.func.isRequired,
   children: PropTypes.oneOfType([
