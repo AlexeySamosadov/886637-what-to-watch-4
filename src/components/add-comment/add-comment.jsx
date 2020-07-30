@@ -23,7 +23,6 @@ class AddComment extends PureComponent {
       rating: this.ratingRef.current.elements.rating.value,
       comment: this.commentRef.current.value
     });
-    // history.goBack();
     history.push(`${AppRoute.FILM_INFO}/${id}`);
   }
 
@@ -78,7 +77,7 @@ class AddComment extends PureComponent {
           </header>
 
           <div className="movie-card__poster movie-card__poster--small">
-            <img src={posterImage} alt="The Grand Budapest Hotel poster" width="218" height="327"/>
+            <img src={posterImage} alt={name} width="218" height="327"/>
           </div>
         </div>
 
@@ -89,19 +88,19 @@ class AddComment extends PureComponent {
           }}>
             <div className="rating">
               <div className="rating__stars">
-                <input className="rating__input" id="star-1" type="radio" name="rating" value="1"/>
+                <input className="rating__input" id="star-1" type="radio" name="rating" defaultValue={1}/>
                 <label className="rating__label" htmlFor="star-1">Rating 1</label>
 
-                <input className="rating__input" id="star-2" type="radio" name="rating" value="2"/>
+                <input className="rating__input" id="star-2" type="radio" name="rating" defaultValue={2}/>
                 <label className="rating__label" htmlFor="star-2">Rating 2</label>
 
-                <input className="rating__input" id="star-3" type="radio" name="rating" value="3" checked/>
+                <input className="rating__input" id="star-3" type="radio" name="rating" defaultValue={3} defaultChecked={true}/>
                 <label className="rating__label" htmlFor="star-3">Rating 3</label>
 
-                <input className="rating__input" id="star-4" type="radio" name="rating" value="4"/>
+                <input className="rating__input" id="star-4" type="radio" name="rating" defaultValue={4}/>
                 <label className="rating__label" htmlFor="star-4">Rating 4</label>
 
-                <input className="rating__input" id="star-5" type="radio" name="rating" value="5"/>
+                <input className="rating__input" id="star-5" type="radio" name="rating" defaultChecked={5}/>
                 <label className="rating__label" htmlFor="star-5">Rating 5</label>
               </div>
             </div>
