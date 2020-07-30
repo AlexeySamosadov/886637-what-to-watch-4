@@ -1,8 +1,11 @@
 import {extend} from "../../components/utils/utils.js";
 import {adaptFilmData, adaptFilmsData} from "./adapt-data";
+import StoreLocal from "../../components/localStorage/localStorage";
+
+const localStorage = new StoreLocal(`films`);
 
 const initializeState = {
-  films: [],
+  films: localStorage.getAll() || [],
   promoFilm: {},
   reviews: [],
   favouriteFilmList: [],
@@ -21,7 +24,7 @@ const ActionCreators = {
   loadFilms: (films) => {
     return {
       type: ActionTypes.LOAD_FILMS,
-      payload: adaptFilmsData(films),
+      payload: films,
     };
   },
   loadPromoFilm: (film) => {
@@ -54,7 +57,8 @@ const Operation = {
   loadFilms: () => (dispatch, getState, api) => {
     return api.get(`/films`)
       .then((response) => {
-        dispatch(ActionCreators.loadFilms(response.data));
+        localStorage.setItem(adaptFilmsData(response.data));
+        dispatch(ActionCreators.loadFilms(localStorage.getAll()));
       });
   },
   loadPromoFilms: () => (dispatch, getState, api) => {
