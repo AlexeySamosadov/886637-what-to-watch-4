@@ -152,28 +152,25 @@ class VideoPlayer extends PureComponent {
 
 
   componentDidMount() {
-    this.onPlayButtonClick = this.props.onPlayButtonClick;
-    this.handlerButtonArrow = this.props.handlerButtonArrow;
+    if (this.props.type === playerType.MOVIE) {
+      this.onPlayButtonClick = this.props.onPlayButtonClick;
+      this.handlerButtonArrow = this.props.handlerButtonArrow;
 
-    // const indicator = document.querySelector(`.player-value-indicator`);
-    // const removeIndicator = () => {
-    //   indicator.remove();
-    // };
-    // setTimeout(removeIndicator, 5000);
-
-    document.addEventListener(typeEvent.FULL_SCREEN_CHANGE, this._handlerFullScreenChange);
-    document.addEventListener(typeEvent.KEYDOWN, this._onPressButton);
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener(typeEvent.FULL_SCREEN_CHANGE, this._handlerFullScreenChange);
-    document.removeEventListener(typeEvent.KEYDOWN, this._onPressButton);
+      document.addEventListener(typeEvent.FULL_SCREEN_CHANGE, this._handlerFullScreenChange);
+      document.addEventListener(typeEvent.KEYDOWN, this._onPressButton);
+    }
   }
 
   render() {
     return this._renderPlayer();
   }
 
+  componentWillUnmount() {
+    if (this.props.type === playerType.MOVIE) {
+      document.removeEventListener(typeEvent.FULL_SCREEN_CHANGE, this._handlerFullScreenChange);
+      document.removeEventListener(typeEvent.KEYDOWN, this._onPressButton);
+    }
+  }
 }
 
 VideoPlayer.propTypes = {
