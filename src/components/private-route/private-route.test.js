@@ -22,7 +22,7 @@ describe(`<PrivateRoute/>`, () => {
     const ComponentToRender = wrapper.prop(`render`);
     const redirectWrapper = shallow(<ComponentToRender/>);
     expect(redirectWrapper.find(Redirect).props()).toEqual({
-      to: `/login`,
+      to: `/sign-in`,
     });
   });
 
