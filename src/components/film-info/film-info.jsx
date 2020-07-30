@@ -75,7 +75,7 @@ const FilmInfo = ({activeFilm, filteredFilms, updateFavouriteFilms, authorizatio
 
               <div className="movie-card__buttons">
                 <button onClick={()=> {
-                  history.push(AppRoute.PLAYER);
+                  history.push(`${AppRoute.PLAYER}/${id}`);
                 }}
                 className="btn btn--play movie-card__button" type="button">
                   <svg viewBox="0 0 19 19" width="19" height="19">
@@ -105,8 +105,8 @@ const FilmInfo = ({activeFilm, filteredFilms, updateFavouriteFilms, authorizatio
                   }
                 </button>
                 <a onClick={(e)=> {
-                  history.push(AppRoute.ADD_COMMENT);
                   e.preventDefault();
+                  history.push(`${AppRoute.ADD_COMMENT}/${id}`);
                 }} href="#" className="btn movie-card__button">Add review</a>
               </div>
             </div>
@@ -161,7 +161,6 @@ FilmInfo.propTypes = {
 export {FilmInfo};
 
 const mapStateToProps = (state) => ({
-  // activeFilm: getActiveFilm(state),
   filteredFilms: getFilmsToRender(state),
   authorizationStatus: getAuthorizationStatus(state),
 });

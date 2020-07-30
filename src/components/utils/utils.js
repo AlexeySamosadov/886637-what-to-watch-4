@@ -4,6 +4,11 @@ export const extend = (a, b) => {
   return Object.assign({}, a, b);
 };
 
+export const getRouteActiveFilm = (routeProps, films) => {
+  const id = parseInt(routeProps.match.params.id, 10);
+  return films.find((offer) => offer.id === id);
+};
+
 export const changeFirstLetterUppercase = (word) => word[0].toUpperCase() + word.slice(1);
 
 export const formatMovieDuration = (movieDuration) => {

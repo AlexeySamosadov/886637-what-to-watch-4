@@ -1,7 +1,6 @@
 import React, {PureComponent, createRef} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {getActiveFilm} from "../../reducer/data/selectors";
 import history from "../../history/history";
 import {AppRoute, LENGTH} from "../const/const.js";
 import {Operation} from "../../reducer/data/data.js";
@@ -24,12 +23,12 @@ class AddComment extends PureComponent {
       rating: this.ratingRef.current.elements.rating.value,
       comment: this.commentRef.current.value
     });
-    history.goBack();
-    // history.push(`${AppRoute.MOVIE_PAGE}/${id}`);
+    // history.goBack();
+    history.push(`${AppRoute.FILM_INFO}/${id}`);
   }
 
   render() {
-    const {name, backgroundImage, posterImage, backgroundColor} = this.props.activeFilm;
+    const {name, backgroundImage, posterImage, backgroundColor, id} = this.props.activeFilm;
     const styleCard = {
       backgroundColor,
     };
@@ -59,7 +58,7 @@ class AddComment extends PureComponent {
                 <li className="breadcrumbs__item">
                   <a href="#" onClick={(e)=> {
                     e.preventDefault();
-                    history.goBack();
+                    history.push(`${AppRoute.FILM_INFO}/${id}`);
                   }} className="breadcrumbs__link">{name}</a>
                 </li>
                 <li className="breadcrumbs__item">
@@ -70,7 +69,7 @@ class AddComment extends PureComponent {
 
             <a href="#" onClick={(e)=>{
               e.preventDefault();
-              history.goBack();
+              history.push(`${AppRoute.FILM_INFO}/${id}`);
             }} className="user-block">
               <div className="user-block__avatar">
                 <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
@@ -135,14 +134,10 @@ AddComment.propTypes = {
   postReview: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  activeFilm: getActiveFilm(state),
-});
-
 const mapStateToDispatch = (dispatch) => ({
   postReview: (id, review) => {
     dispatch(Operation.postReview(id, review));
   }
 });
 
-export default connect(mapStateToProps, mapStateToDispatch)(AddComment);
+export default connect(null, mapStateToDispatch)(AddComment);
