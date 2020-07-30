@@ -5,7 +5,6 @@ import {ActionCreators} from "../../reducer/app-status/app-status";
 import {ActiveMenu} from "../const/const.js";
 import PropTypes from "prop-types";
 import {getActiveMenuFilmInfo} from "../../reducer/app-status/selectors";
-import {getActiveFilm} from "../../reducer/data/selectors";
 
 
 const FilmInfoDescriptionNav = ({setActiveMenuFilmInfo, activeMenuFilmInfo, activeFilm, loadReviews}) => {
@@ -56,6 +55,5 @@ const mapStateToDispatch = (dispatch) => ({
 
 const mapStateToProps = (state) => ({
   activeMenuFilmInfo: getActiveMenuFilmInfo(state),
-  activeFilm: getActiveFilm(state),
 });
 export default connect(mapStateToProps, mapStateToDispatch)(FilmInfoDescriptionNav);

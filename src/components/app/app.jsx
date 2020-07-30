@@ -12,16 +12,23 @@ import SignIn from "../sign-in/sign-in";
 import AddComment from "../add-comment/add-comment";
 import {getAuthorizationStatus} from "../../reducer/user/selectors";
 import PrivateRoute from "../private-route/private-route";
+import {getFilms} from "../../reducer/data/selectors";
 
-const App = ({authorizationStatus}) => {
+const App = ({authorizationStatus, films}) => {
   return (
     <Router history={history}>
       <Switch>
         <Route exact path={AppRoute.MAIN}
           render={()=><Main/>}
         />
-        <Route exact path={AppRoute.FILM_INFO}
-          render={()=><FilmInfo/>}
+        <Route exact path={`${AppRoute.FILM_INFO}/:id?`}
+          render={(routeProps)=>{
+            const id = parseInt(routeProps.match.params.id, 10);
+            const activeFilm = films.find((offer) => offer.id === id);
+            return (<FilmInfo
+              activeFilm={activeFilm}
+            />);
+          }}
         />
         <PrivateRoute exact path={AppRoute.MY_LIST}
           auth={authorizationStatus}
@@ -46,12 +53,14 @@ const App = ({authorizationStatus}) => {
 
 App.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
+  films: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
 export {App};
 
 const mapStateToProps = (state) => ({
   authorizationStatus: getAuthorizationStatus(state),
+  films: getFilms(state),
 });
 
 export default connect(mapStateToProps, null)(App);

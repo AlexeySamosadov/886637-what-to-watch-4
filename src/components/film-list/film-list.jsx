@@ -9,14 +9,13 @@ import MovieVideoPlayer from "../video-player/video-player.jsx";
 
 const VideoPlayer = withVideoPlayer(MovieVideoPlayer);
 
-const FilmList = ({films, getActiveFilm}) => {
+const FilmList = ({films}) => {
   return (
     <div className="catalog__movies-list">
       {films.map((film, i)=>{
         return (
           <article onClick={()=> {
-            getActiveFilm(film);
-            history.push(AppRoute.FILM_INFO);
+            history.push(`${AppRoute.FILM_INFO}/${film.id}`);
           }} key={i} className="small-movie-card catalog__movies-card">
             <VideoPlayer
               srcPoster={film.previewImage}

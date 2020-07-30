@@ -2,16 +2,16 @@ import React from "react";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import history from "../../history/history.js";
-import {filterFilms} from "../utils/utils.js";
 import FilmInfoDescription from "../film-info-description/film-info-description.jsx";
 import FilmList from "../film-list/film-list.jsx";
 import {AppRoute} from "../const/const.js";
-import {getActiveFilm, getFilms} from "../../reducer/data/selectors";
+import {getActiveFilm, getFilmsToRender} from "../../reducer/data/selectors";
 import {Operation as DataOperation} from "../../reducer/data/data.js";
 import {AuthorizationStatus} from "../const/const";
 import {getAuthorizationStatus} from "../../reducer/user/selectors";
 
-const FilmInfo = ({activeFilm, films, updateFavouriteFilms, authorizationStatus}) => {
+const FilmInfo = ({activeFilm, filteredFilms, updateFavouriteFilms, authorizationStatus}) => {
+  console.log(`activeFilm`, activeFilm);
   if (JSON.stringify(activeFilm) === `{}`) {
     history.push(AppRoute.MAIN);
   }
@@ -21,7 +21,6 @@ const FilmInfo = ({activeFilm, films, updateFavouriteFilms, authorizationStatus}
     backgroundColor,
   };
 
-  const filteredFilms = filterFilms(films, genre);
   const changeFavorite = () => {
     if (authorizationStatus === AuthorizationStatus.AUTH) {
       if (isFavorite) {
@@ -121,7 +120,7 @@ const FilmInfo = ({activeFilm, films, updateFavouriteFilms, authorizationStatus}
               <img src={posterImage} alt="The Grand Budapest Hotel poster" width="218"
                 height="327"/>
             </div>
-            <FilmInfoDescription/>
+            <FilmInfoDescription activeFilm={activeFilm}/>
           </div>
         </div>
       </section>
@@ -155,7 +154,7 @@ const FilmInfo = ({activeFilm, films, updateFavouriteFilms, authorizationStatus}
 
 FilmInfo.propTypes = {
   activeFilm: PropTypes.object.isRequired,
-  films: PropTypes.array.isRequired,
+  filteredFilms: PropTypes.array.isRequired,
   updateFavouriteFilms: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
 };
@@ -163,8 +162,8 @@ FilmInfo.propTypes = {
 export {FilmInfo};
 
 const mapStateToProps = (state) => ({
-  activeFilm: getActiveFilm(state),
-  films: getFilms(state),
+  // activeFilm: getActiveFilm(state),
+  filteredFilms: getFilmsToRender(state),
   authorizationStatus: getAuthorizationStatus(state),
 });
 

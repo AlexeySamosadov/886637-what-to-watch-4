@@ -7,7 +7,6 @@ import FilmInfoDescriptionReviews from "../film-info-description-reviews/film-in
 import FilmInfoDescriptionDetails from "../film-info-description-details/film-info-description-details.jsx";
 import PropTypes from "prop-types";
 import {getActiveMenuFilmInfo} from "../../reducer/app-status/selectors";
-import {getActiveFilm} from "../../reducer/data/selectors";
 
 const renderAdditionalInfo = (activeFilm, activeMenu) => {
   switch (activeMenu) {
@@ -30,7 +29,7 @@ const renderAdditionalInfo = (activeFilm, activeMenu) => {
 const FilmInfoDescription = ({activeFilm, activeMenuFilmInfo}) => {
   return (
     <div className="movie-card__desc">
-      <MovieCardDescriptionNav/>
+      <MovieCardDescriptionNav activeFilm={activeFilm}/>
       {renderAdditionalInfo(activeFilm, activeMenuFilmInfo)}
     </div>
   );
@@ -45,7 +44,6 @@ export {FilmInfoDescription};
 
 const mapStateToProps = (state) => ({
   activeMenuFilmInfo: getActiveMenuFilmInfo(state),
-  activeFilm: getActiveFilm(state),
 });
 
 export default connect(mapStateToProps, null)(FilmInfoDescription);

@@ -2,15 +2,14 @@ import React from "react";
 import {connect} from "react-redux";
 import PageContent from "../page-content/page-content.jsx";
 import PropTypes from "prop-types";
-import {ActionCreators, Operation as DataOperation} from "../../reducer/data/data";
+import {Operation as DataOperation} from "../../reducer/data/data";
 import history from "../../history/history.js";
 import {AppRoute, AuthorizationStatus} from "../const/const";
 import {getPromoFilm} from "../../reducer/data/selectors";
 import {getAuthorizationStatus} from "../../reducer/user/selectors";
 
-const Main = ({promoFilm, getActiveFilm, authorizationStatus, updateFavouriteFilms}) => {
+const Main = ({promoFilm, authorizationStatus, updateFavouriteFilms}) => {
   const {name, genre, released, posterImage, backgroundImage, id, isFavorite} = promoFilm;
-  getActiveFilm(promoFilm);
 
   const changeFavorite = () => {
     if (authorizationStatus === AuthorizationStatus.AUTH) {
@@ -56,16 +55,14 @@ const Main = ({promoFilm, getActiveFilm, authorizationStatus, updateFavouriteFil
           <div className="movie-card__info">
             <div className="movie-card__poster">
               <img onClick={()=> {
-                getActiveFilm(promoFilm);
-                history.push(AppRoute.FILM_INFO);
+                history.push(`${AppRoute.FILM_INFO}/${id}`);
               }} src={posterImage} alt={`${name} poster`} width="218"
               height="327"/>
             </div>
 
             <div className="movie-card__desc">
               <h2 onClick={()=> {
-                getActiveFilm(promoFilm);
-                history.push(AppRoute.FILM_INFO);
+                history.push(`${AppRoute.FILM_INFO}/${id}`);
               }} className="movie-card__title">{name}</h2>
               <p className="movie-card__meta">
                 <span className="movie-card__genre">{genre}</span>
@@ -86,7 +83,6 @@ const Main = ({promoFilm, getActiveFilm, authorizationStatus, updateFavouriteFil
                   onClick={changeFavorite}
                   className="btn btn--list movie-card__button" type="button">
                   {isFavorite ?
-
                     <>
                       <svg viewBox="0 0 19 20" width="19" height="20">
                         <use xlinkHref="#remove"/>
@@ -100,7 +96,6 @@ const Main = ({promoFilm, getActiveFilm, authorizationStatus, updateFavouriteFil
                       </svg>
                       <span>My list</span>
                     </>
-
                   }
                 </button>
               </div>
@@ -123,7 +118,6 @@ Main.propTypes = {
     posterImage: PropTypes.string,
     backgroundImage: PropTypes.string,
   }),
-  getActiveFilm: PropTypes.func.isRequired,
   updateFavouriteFilms: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
 };
@@ -136,9 +130,6 @@ const mapStateToProps = (state) => ({
 });
 
 const mapStateToDispatch = (dispatch) => ({
-  getActiveFilm: (film) => {
-    dispatch(ActionCreators.getActiveFilm(film));
-  },
   updateFavouriteFilms: (id, status) => {
     dispatch(DataOperation.postFavoriteFilm(id, status));
   },
