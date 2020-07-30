@@ -179,13 +179,13 @@ class VideoPlayer extends PureComponent {
 VideoPlayer.propTypes = {
   onMouseEnter: PropTypes.func.isRequired,
   onClick: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired,
   onMouseLeave: PropTypes.func.isRequired,
   onFullScreenButtonClick: PropTypes.func.isRequired,
   children: PropTypes.oneOfType([
     PropTypes.node.isRequired,
     PropTypes.arrayOf(PropTypes.node)
   ]).isRequired,
+  id: PropTypes.number,
   progressInPercent: PropTypes.number.isRequired,
   valueInPercent: PropTypes.number.isRequired,
   progressInSeconds: PropTypes.number.isRequired,
