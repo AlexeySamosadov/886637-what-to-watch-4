@@ -1,0 +1,143 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Correctly render component BigVideoPlayer 1`] = `
+<div
+  className="player"
+>
+  <span
+    onClick={[Function]}
+    onDoubleClick={[Function]}
+    onWheel={[Function]}
+  >
+    <video
+      alt=""
+      className="player__video"
+      height={null}
+      poster="https://htmlacademy-react-3.appspot.com/wtw/static/film/poster/Shutter_Island.jpg"
+      src="http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4"
+      width={null}
+    />
+  </span>
+  <button
+    className="player__exit"
+    onClick={[Function]}
+    type="button"
+  >
+    Exit
+  </button>
+  <span
+    className="player-value-indicator"
+  >
+    100
+    %
+  </span>
+  <div
+    className="player__controls"
+  >
+    <div
+      className="player__controls-row"
+    >
+      <div
+        className="player__time"
+      >
+        <input
+          className="player__progress"
+          max="100"
+          onChange={[Function]}
+          step="1"
+          type="range"
+        />
+        <div
+          className="player__toggler"
+          style={
+            Object {
+              "left": "0%",
+            }
+          }
+        >
+          Toggler
+        </div>
+      </div>
+      <div
+        className="player__time-value"
+      >
+        0:00:00
+      </div>
+    </div>
+    <div
+      className="player__controls-row"
+    >
+      <button
+        className="player__play"
+        onClick={[Function]}
+        type="button"
+      >
+        <svg
+          height="19"
+          viewBox="0 0 19 19"
+          width="19"
+        >
+          <use
+            xlinkHref="#play-s"
+          />
+        </svg>
+        <span>
+          Play
+        </span>
+      </button>
+      <div
+        className="player__controls-audio-on-off"
+        onClick={[Function]}
+      >
+        <svg
+          className="player__controls-audio-svg player__controls-audio-svg--off"
+          height="35"
+          viewBox="0 0 10 10"
+          width="35"
+        >
+          <use
+            xlinkHref="#speaker"
+          />
+        </svg>
+      </div>
+      <div
+        className="player__controls-audio"
+      >
+        <input
+          className="player__controls-audio-range"
+          onChange={[Function]}
+          type="range"
+        />
+        <div
+          className="player__controls-audio-toggler"
+          style={
+            Object {
+              "left": "100%",
+            }
+          }
+        >
+          Toggler
+        </div>
+      </div>
+      <button
+        className="player__full-screen"
+        onClick={[Function]}
+        type="button"
+      >
+        <svg
+          height="27"
+          viewBox="0 0 27 27"
+          width="27"
+        >
+          <use
+            xlinkHref="#full-screen"
+          />
+        </svg>
+        <span>
+          Full screen
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;

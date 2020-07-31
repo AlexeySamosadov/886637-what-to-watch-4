@@ -11,13 +11,14 @@ const BigVideoPlayer = ({activeFilm}) => {
   if (JSON.stringify(activeFilm) === `{}`) {
     history.push(AppRoute.MAIN);
   }
+  const {videoLink, posterImage, id} = activeFilm;
   return (
     <VideoPlayer
       type={playerType.MOVIE}
       className={playerClass.PLAYER_VIDEO}
-      srcVideo={activeFilm.videoLink}
-      srcPoster={activeFilm.posterImage}
-      id={activeFilm.id}
+      srcVideo={videoLink}
+      srcPoster={posterImage}
+      id={id}
       isMuted
     />
   );
