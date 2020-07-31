@@ -1,12 +1,17 @@
 import React from "react";
+import App from "./app.jsx";
 import renderer from "react-test-renderer";
-import AddComment from "./add-comment.jsx";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 
+const AuthorizationStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`,
+};
+
 const mockStore = configureStore([]);
 
-const activeFilm = {
+const promoFilm = {
   backgroundColor: `#977461`,
   backgroundImage: `https://htmlacademy-react-3.appspot.com/wtw/static/film/background/Shutter_Island.jpg`,
   description: `In 1954, a U.S. Marshal investigates the disappearance of a murderer, who escaped from a hospital for the criminally insane.`,
@@ -26,6 +31,8 @@ const activeFilm = {
   videoLink: `http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4`,
 };
 
+const films = [promoFilm];
+
 const store = mockStore({
   APP_STATUS: {
     genre: `All genres`,
@@ -35,14 +42,21 @@ const store = mockStore({
     popupFilmData: null,
   },
   DATA: {
-    activeFilm,
+    films,
+    promoFilm,
+  },
+  USER: {
+    authorizationStatus: AuthorizationStatus.AUTH
   }
 });
 
-it(`Correctly render component Add Comment`, ()=> {
+it(`Correctly render component App`, () => {
   const tree = renderer.create(
       <Provider store={store}>
-        <AddComment activeFilm={activeFilm}/>
+        <App
+          films={films}
+          authorizationStatus={AuthorizationStatus.AUTH}
+        />
       </Provider>, {
         createNodeMock: () => {
           return {};
