@@ -1,16 +1,16 @@
 import React from "react";
 import renderer from "react-test-renderer";
+import FilmInfoDescription from "./film-info-description";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import {ActiveMenu, genreType} from "../const/const";
-import FilmInfo from "./film-info";
+
+const mockStore = configureStore([]);
 
 const AuthorizationStatus = {
   AUTH: `AUTH`,
   NO_AUTH: `NO_AUTH`,
 };
-
-const mockStore = configureStore([]);
 
 const activeFilm = {
   backgroundColor: `#977461`,
@@ -49,16 +49,19 @@ const store = mockStore({
   }
 });
 
-it(`Correctly render component FilmInfo`, () => {
+it(`Correctly render component FilmInfoDescription`, () => {
   const tree = renderer.create(
       <Provider store={store}>
-        <FilmInfo
+        <FilmInfoDescription
           activeFilm={activeFilm}
         />
       </Provider>, {
         createNodeMock: () => {
           return {};
-        },
-      }).toJSON();
+        }
+      }
+  ).toJSON();
+
   expect(tree).toMatchSnapshot();
 });
+

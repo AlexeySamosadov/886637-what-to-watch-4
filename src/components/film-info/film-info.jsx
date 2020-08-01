@@ -11,7 +11,6 @@ import {AuthorizationStatus} from "../const/const";
 import {getAuthorizationStatus} from "../../reducer/user/selectors";
 
 const FilmInfo = ({activeFilm, filteredFilms, updateFavouriteFilms, authorizationStatus}) => {
-  console.log(`filteredFilms`, filteredFilms);
   if (JSON.stringify(activeFilm) === `{}`) {
     history.push(AppRoute.MAIN);
   }
