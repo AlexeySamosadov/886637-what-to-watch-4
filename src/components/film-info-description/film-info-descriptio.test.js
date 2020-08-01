@@ -56,9 +56,7 @@ it(`Correctly render component FilmInfoDescription`, () => {
           activeFilm={activeFilm}
         />
       </Provider>, {
-        createNodeMock: () => {
-          return {};
-        }
+        createNodeMock: () => ({})
       }
   ).toJSON();
 
