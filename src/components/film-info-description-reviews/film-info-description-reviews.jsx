@@ -22,7 +22,6 @@ const renderComment = (review) => {
 };
 
 const FilmInfoDescriptionReviews = ({reviews}) => {
-  console.log(`reviews`, reviews);
   return (
     <div className="movie-card__reviews movie-card__row">
       <div className="movie-card__reviews-col">
