@@ -1,10 +1,10 @@
 import React from "react";
-import FilmInfoDescriptionNav from "../film-info-description-nav/film-info-description-nav.jsx";
-import FilmInfoDescriptionOverview from "../film-info-description-overview/film-info-description-overview.jsx";
+import FilmInfoDescriptionNav from "../film-info-description-nav/film-info-description-nav";
+import FilmInfoDescriptionOverview from "../film-info-description-overview/film-info-description-overview";
 import {connect} from "react-redux";
-import {ActiveMenu} from "../const/const.js";
-import FilmInfoDescriptionReviews from "../film-info-description-reviews/film-info-description-reviews.jsx";
-import FilmInfoDescriptionDetails from "../film-info-description-details/film-info-description-details.jsx";
+import {ActiveMenu} from "../const/const";
+import FilmInfoDescriptionReviews from "../film-info-description-reviews/film-info-description-reviews";
+import FilmInfoDescriptionDetails from "../film-info-description-details/film-info-description-details";
 import PropTypes from "prop-types";
 import {getActiveMenuFilmInfo} from "../../reducer/app-status/selectors";
 

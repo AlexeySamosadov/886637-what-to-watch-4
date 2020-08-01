@@ -2,8 +2,8 @@ import React, {PureComponent, createRef} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import history from "../../history/history";
-import {AppRoute, LENGTH} from "../const/const.js";
-import {Operation} from "../../reducer/data/data.js";
+import {AppRoute, LENGTH} from "../const/const";
+import {Operation} from "../../reducer/data/data";
 
 class AddComment extends PureComponent {
   constructor(props) {

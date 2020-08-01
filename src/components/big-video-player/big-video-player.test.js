@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import BigVideoPlayer from "./big-video-player.jsx";
+import BigVideoPlayer from "./big-video-player";
 
 const activeFilm = {
   backgroundColor: `#977461`,

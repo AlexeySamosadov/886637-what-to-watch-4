@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import history from "../../history/history.js";
-import {AppRoute} from "../const/const.js";
+import history from "../../history/history";
+import {AppRoute} from "../const/const";
 import {getFavouriteFilmList} from "../../reducer/data/selectors";
-import FilmList from "../film-list/film-list.jsx";
+import FilmList from "../film-list/film-list";
 
 const MyList = ({favouriteFilmList}) => {
   return (

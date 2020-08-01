@@ -1,8 +1,8 @@
 import React from "react";
 import {connect} from "react-redux";
-import {Operation} from "../../reducer/data/data.js";
+import {Operation} from "../../reducer/data/data";
 import {ActionCreators} from "../../reducer/app-status/app-status";
-import {ActiveMenu} from "../const/const.js";
+import {ActiveMenu} from "../const/const";
 import PropTypes from "prop-types";
 import {getActiveMenuFilmInfo} from "../../reducer/app-status/selectors";
 

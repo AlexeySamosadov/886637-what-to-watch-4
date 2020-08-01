@@ -1,9 +1,9 @@
 import React from "react";
 import {connect} from "react-redux";
-import PageContent from "../page-content/page-content.jsx";
+import PageContent from "../page-content/page-content";
 import PropTypes from "prop-types";
 import {Operation as DataOperation} from "../../reducer/data/data";
-import history from "../../history/history.js";
+import history from "../../history/history";
 import {AppRoute, AuthorizationStatus} from "../const/const";
 import {getPromoFilm} from "../../reducer/data/selectors";
 import {getAuthorizationStatus} from "../../reducer/user/selectors";

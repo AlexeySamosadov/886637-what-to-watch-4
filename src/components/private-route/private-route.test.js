@@ -1,7 +1,7 @@
 import React from 'react';
 import Enzyme, {shallow} from "enzyme";
 import {Route, Redirect} from 'react-router-dom';
-import PrivateRoute from "./private-route.jsx";
+import PrivateRoute from "./private-route";
 import Adapter from "enzyme-adapter-react-16";
 import Main from "../main/main";
 

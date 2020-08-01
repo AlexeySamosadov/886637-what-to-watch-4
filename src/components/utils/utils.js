@@ -1,4 +1,4 @@
-import {MONTHS, genreType, RatingLevels} from "../const/const.js";
+import {MONTHS, genreType, RatingLevels} from "../const/const";
 
 export const extend = (a, b) => {
   return Object.assign({}, a, b);

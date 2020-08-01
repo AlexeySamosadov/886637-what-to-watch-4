@@ -1,12 +1,12 @@
 import React from "react";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
-import history from "../../history/history.js";
-import FilmInfoDescription from "../film-info-description/film-info-description.jsx";
-import FilmList from "../film-list/film-list.jsx";
-import {AppRoute} from "../const/const.js";
+import history from "../../history/history";
+import FilmInfoDescription from "../film-info-description/film-info-description";
+import FilmList from "../film-list/film-list";
+import {AppRoute} from "../const/const";
 import {getFilmsToRender} from "../../reducer/data/selectors";
-import {Operation as DataOperation} from "../../reducer/data/data.js";
+import {Operation as DataOperation} from "../../reducer/data/data";
 import {AuthorizationStatus} from "../const/const";
 import {getAuthorizationStatus} from "../../reducer/user/selectors";
 

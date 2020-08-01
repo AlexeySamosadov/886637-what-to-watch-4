@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
-import {formatDateForReview} from "../utils/utils.js";
+import {formatDateForReview} from "../utils/utils";
 import {getReviews} from "../../reducer/data/selectors";
 
 const renderComment = (review) => {

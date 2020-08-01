@@ -1,5 +1,5 @@
 import React, {Fragment} from "react";
-import {getRatingLevel} from "../utils/utils.js";
+import {getRatingLevel} from "../utils/utils";
 import PropTypes from "prop-types";
 
 const FilmInfoDescriptionOverview = ({activeFilm}) => {

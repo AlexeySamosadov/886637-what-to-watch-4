@@ -8,7 +8,7 @@ module.exports = {
     path: projectLink,
   },
   resolve: {
-    extensions: [`.js`, `.jsx`, `.less`, `.css`, `tpx`],
+    extensions: [`.js`, `.jsx`, `.less`, `.css`, `.tsx`, `.ts`],
   },
   devServer: {
     contentBase: projectLink,

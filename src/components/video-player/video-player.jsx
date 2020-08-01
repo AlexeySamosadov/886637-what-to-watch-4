@@ -1,8 +1,8 @@
 import React, {PureComponent, createRef, Fragment} from "react";
 import PropTypes from "prop-types";
-import {playerType, keyCode, typeEvent, arrowTimingPercent} from "../const/const.js";
+import {playerType, keyCode, typeEvent, arrowTimingPercent} from "../const/const";
 import "./video-player.css";
-import history from "../../history/history.js";
+import history from "../../history/history";
 import {AppRoute} from "../const/const";
 
 const convertVideoTime = (time) => {

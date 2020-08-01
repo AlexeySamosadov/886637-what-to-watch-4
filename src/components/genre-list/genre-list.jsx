@@ -1,9 +1,9 @@
 import React from "react";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
-import {ActionCreators} from "../../reducer/app-status/app-status.js";
-import {changeFirstLetterUppercase} from "../utils/utils.js";
-import {genreType} from "../const/const.js";
+import {ActionCreators} from "../../reducer/app-status/app-status";
+import {changeFirstLetterUppercase} from "../utils/utils";
+import {genreType} from "../const/const";
 import {getFilms} from "../../reducer/data/selectors";
 import {getActiveGenre} from "../../reducer/app-status/selectors";
 

@@ -1,11 +1,11 @@
 import React from "react";
 import {connect} from "react-redux";
 import history from "../../history/history";
-import {AppRoute, playerType} from "../const/const.js";
-import {ActionCreators} from "../../reducer/data/data.js";
+import {AppRoute, playerType} from "../const/const";
+import {ActionCreators} from "../../reducer/data/data";
 import PropTypes from "prop-types";
-import withVideoPlayer from "../../hocs/with-video-player/with-video-player.js";
-import MovieVideoPlayer from "../video-player/video-player.jsx";
+import withVideoPlayer from "../../hocs/with-video-player/with-video-player";
+import MovieVideoPlayer from "../video-player/video-player";
 
 const VideoPlayer = withVideoPlayer(MovieVideoPlayer);
 
