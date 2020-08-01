@@ -1,5 +1,5 @@
 import React from "react";
-import MovieCardDescriptionNav from "../film-info-description-nav/film-info-nav.jsx";
+import FilmInfoDescriptionNav from "../film-info-description-nav/film-info-description-nav.jsx";
 import FilmInfoDescriptionOverview from "../film-info-description-overview/film-info-description-overview.jsx";
 import {connect} from "react-redux";
 import {ActiveMenu} from "../const/const.js";
@@ -29,7 +29,7 @@ const renderAdditionalInfo = (activeFilm, activeMenu) => {
 const FilmInfoDescription = ({activeFilm, activeMenuFilmInfo}) => {
   return (
     <div className="movie-card__desc">
-      <MovieCardDescriptionNav activeFilm={activeFilm}/>
+      <FilmInfoDescriptionNav activeFilm={activeFilm}/>
       {renderAdditionalInfo(activeFilm, activeMenuFilmInfo)}
     </div>
   );
