@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Correctly render component FilmList 1`] = `
+<div
+  className="catalog__movies-list"
+>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onClick={[Function]}
+  >
+    <section
+      className="small-movie-card__image"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <video
+        alt=""
+        className=""
+        height={175}
+        poster="https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/shutter-island.jpg"
+        src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+        width={280}
+      />
+    </section>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="#!"
+      >
+        Shutter Island
+      </a>
+    </h3>
+  </article>
+</div>
+`;
