@@ -1,0 +1,114 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Correctly render component FilmInfoDescriptionReviews 1`] = `
+<div
+  className="movie-card__reviews movie-card__row"
+>
+  <div
+    className="movie-card__reviews-col"
+  >
+    <div
+      className="review"
+    >
+      <blockquote
+        className="review__quote"
+      >
+        <p
+          className="review__text"
+        >
+          Unfortunately we don't have a reliable way to tell the true ratings of a movie.
+        </p>
+        <footer
+          className="review__details"
+        >
+          <cite
+            className="review__author"
+          >
+            Emely
+          </cite>
+          <time
+            className="review__date"
+            dateTime="July 12, 2020"
+          >
+            July 12, 2020
+          </time>
+        </footer>
+      </blockquote>
+      <div
+        className="review__rating"
+      >
+        6.6
+      </div>
+    </div>
+    <div
+      className="review"
+    >
+      <blockquote
+        className="review__quote"
+      >
+        <p
+          className="review__text"
+        >
+          I personally found this movie to be boring. Definitely one of the most boring movies I've ever seen.
+        </p>
+        <footer
+          className="review__details"
+        >
+          <cite
+            className="review__author"
+          >
+            Sophie
+          </cite>
+          <time
+            className="review__date"
+            dateTime="July 8, 2020"
+          >
+            July 8, 2020
+          </time>
+        </footer>
+      </blockquote>
+      <div
+        className="review__rating"
+      >
+        2.3
+      </div>
+    </div>
+    <div
+      className="review"
+    >
+      <blockquote
+        className="review__quote"
+      >
+        <p
+          className="review__text"
+        >
+          Poised to be an instant classic, almost everything about this film is phenomenal - the acting, the cinematography, the discography, etc.
+        </p>
+        <footer
+          className="review__details"
+        >
+          <cite
+            className="review__author"
+          >
+            Corey
+          </cite>
+          <time
+            className="review__date"
+            dateTime="July 28, 2020"
+          >
+            July 28, 2020
+          </time>
+        </footer>
+      </blockquote>
+      <div
+        className="review__rating"
+      >
+        7.7
+      </div>
+    </div>
+  </div>
+  <div
+    className="movie-card__reviews-col"
+  />
+</div>
+`;
