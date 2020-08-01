@@ -1,9 +1,9 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import App from "./app.jsx";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import {ActiveMenu, genreType} from "../const/const";
+import {FilmInfo} from "./film-info";
 
 const AuthorizationStatus = {
   AUTH: `AUTH`,
@@ -12,7 +12,7 @@ const AuthorizationStatus = {
 
 const mockStore = configureStore([]);
 
-const promoFilm = {
+const activeFilm = {
   backgroundColor: `#977461`,
   backgroundImage: `https://htmlacademy-react-3.appspot.com/wtw/static/film/background/Shutter_Island.jpg`,
   description: `In 1954, a U.S. Marshal investigates the disappearance of a murderer, who escaped from a hospital for the criminally insane.`,
@@ -32,7 +32,7 @@ const promoFilm = {
   videoLink: `http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4`,
 };
 
-const films = [promoFilm];
+const films = [activeFilm];
 
 const store = mockStore({
   APP_STATUS: {
@@ -42,8 +42,7 @@ const store = mockStore({
   },
   DATA: {
     films,
-    promoFilm,
-    reviews: [],
+    activeFilm,
   },
   USER: {
     authorizationStatus: AuthorizationStatus.AUTH
@@ -53,12 +52,16 @@ const store = mockStore({
 it(`Correctly render component App`, () => {
   const tree = renderer.create(
       <Provider store={store}>
-        <App/>
+        <FilmInfo
+          activeFilm={activeFilm}
+          authorizationStatus={AuthorizationStatus.AUTH}
+          updateFavouriteFilms={()=>{}}
+          filteredFilms={films}
+        />
       </Provider>, {
         createNodeMock: () => {
           return {};
         },
       }).toJSON();
-
   expect(tree).toMatchSnapshot();
 });
