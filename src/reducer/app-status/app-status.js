@@ -7,7 +7,7 @@ const initializeState = {
   showingFilmsNumber: 8,
 };
 
-const ActionTypes = {
+export const ActionTypes = {
   GET_ACTIVE_MENU_FILM_INFO: `ACTIVE_MENU_FILM_INFO`,
   SET_ACTIVE_GENRE: `SET_ACTIVE_GENRE`,
   SHOW_MORE: `SHOW_MORE`,
