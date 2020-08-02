@@ -6,6 +6,8 @@ exports[`withVideoPlayer is rendered correctly 1`] = `
     alt=""
     className=""
     height={null}
+    poster=""
+    src=""
     width={null}
   />
 </div>

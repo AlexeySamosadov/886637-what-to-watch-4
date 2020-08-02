@@ -1,4 +1,4 @@
-import {ActionCreators, ActionTypes, Operation, reducer} from "./data";
+import {ActionCreators, ActionTypes, reducer} from "./data";
 
 const promoFilm = {
   backgroundColor: `#977461`,

@@ -104,10 +104,12 @@ const FilmInfo = ({activeFilm, filteredFilms, updateFavouriteFilms, authorizatio
 
                   }
                 </button>
+                {authorizationStatus === AuthorizationStatus.AUTH &&
                 <a onClick={(e)=> {
                   e.preventDefault();
                   history.push(`${AppRoute.FILM_INFO}/${id}/${AppRoute.ADD_COMMENT}`);
                 }} href="#" className="btn movie-card__button">Add review</a>
+                }
               </div>
             </div>
           </div>
