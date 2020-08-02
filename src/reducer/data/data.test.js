@@ -20,26 +20,27 @@ const promoFilm = {
   videoLink: `http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4`,
 };
 const films = [promoFilm];
+
 const reviews = [
   {
-  comment: `Unfortunately we don't have a reliable way to tell the true ratings of a movie.`,
-  date: `2020-07-12T00:57:17.006Z`,
-  id: 1,
-  rating: 6.6,
-  user: {id: 17, name: `Emely`}
-}, {
-  comment: `I personally found this movie to be boring. Definitely one of the most boring movies I've ever seen.`,
-  date: `2020-07-08T00:57:17.006Z`,
-  id: 2,
-  rating: 2.3,
-  user: {id: 18, name: `Sophie`}
-}, {
-  comment: `Poised to be an instant classic, almost everything about this film is phenomenal - the acting, the cinematography, the discography, etc.`,
+    comment: `Unfortunately we don't have a reliable way to tell the true ratings of a movie.`,
+    date: `2020-07-12T00:57:17.006Z`,
+    id: 1,
+    rating: 6.6,
+    user: {id: 17, name: `Emely`}
+  }, {
+    comment: `I personally found this movie to be boring. Definitely one of the most boring movies I've ever seen.`,
+    date: `2020-07-08T00:57:17.006Z`,
+    id: 2,
+    rating: 2.3,
+    user: {id: 18, name: `Sophie`}
+  }, {
+    comment: `Poised to be an instant classic, almost everything about this film is phenomenal - the acting, the cinematography, the discography, etc.`,
     date: `2020-07-28T00:57:17.006Z`,
     id: 3,
     rating: 7.7,
     user: {id: 14, name: `Corey`}
-}];
+  }];
 
 
 describe(`Reducer and initial state creators work correctly`, () => {
