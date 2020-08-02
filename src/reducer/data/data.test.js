@@ -1,4 +1,4 @@
-import {ActionCreators, ActionTypes, reducer} from "./data";
+import {ActionCreators, ActionTypes, Operation, reducer} from "./data";
 
 const promoFilm = {
   backgroundColor: `#977461`,
@@ -156,4 +156,3 @@ describe(`Actions creators work correctly`, () => {
     });
   });
 });
-
