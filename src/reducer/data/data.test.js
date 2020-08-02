@@ -52,4 +52,9 @@ describe(`Reducer and initial state creators work correctly`, () => {
       favouriteFilmList: [],
     });
   });
-});
+
+  it(`Reducer with additional parameter should return new state`, () => {
+    expect
+  });
+
+  });

@@ -28,7 +28,7 @@ const ActionCreators = {
   loadPromoFilm: (film) => {
     return {
       type: ActionTypes.LOAD_PROMO_FILM,
-      payload: adaptFilmData(film),
+      payload: film,
     };
   },
   loadReviews: (reviews) => {
@@ -40,7 +40,7 @@ const ActionCreators = {
   loadFavouriteFilms: (films) => {
     return {
       type: ActionTypes.LOAD_FAVORITE_FILMS,
-      payload: adaptFilmsData(films),
+      payload: films,
     };
   },
 };
@@ -56,7 +56,7 @@ const Operation = {
   loadPromoFilms: () => (dispatch, getState, api) => {
     return api.get(`/films/promo`)
       .then((response) => {
-        dispatch(ActionCreators.loadPromoFilm(response.data));
+        dispatch(ActionCreators.loadPromoFilm(adaptFilmData(response.data)));
       });
   },
   loadReviews: (id) => (dispatch, getState, api) => {
@@ -79,7 +79,7 @@ const Operation = {
   loadFavoriteFilms: () => (dispatch, getState, api) => {
     return api.get(`/favorite`)
       .then((response)=>{
-        dispatch(ActionCreators.loadFavouriteFilms(response.data));
+        dispatch(ActionCreators.loadFavouriteFilms(adaptFilmsData(response.data)));
       });
   },
   postFavoriteFilm: (id, status) => (dispatch, getState, api) => {
