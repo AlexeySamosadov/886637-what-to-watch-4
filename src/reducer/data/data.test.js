@@ -1,6 +1,6 @@
 import {ActionTypes, reducer} from "./data";
 
-const activeFilm = {
+const promoFilm = {
   backgroundColor: `#977461`,
   backgroundImage: `https://htmlacademy-react-3.appspot.com/wtw/static/film/background/Shutter_Island.jpg`,
   description: `In 1954, a U.S. Marshal investigates the disappearance of a murderer, who escaped from a hospital for the criminally insane.`,
@@ -19,7 +19,28 @@ const activeFilm = {
   starring: [`Leonardo DiCaprio`, `Emily Mortimer`, `Mark Ruffalo`],
   videoLink: `http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4`,
 };
-const films = [activeFilm];
+const films = [promoFilm];
+const reviews = [
+  {
+  comment: `Unfortunately we don't have a reliable way to tell the true ratings of a movie.`,
+  date: `2020-07-12T00:57:17.006Z`,
+  id: 1,
+  rating: 6.6,
+  user: {id: 17, name: `Emely`}
+}, {
+  comment: `I personally found this movie to be boring. Definitely one of the most boring movies I've ever seen.`,
+  date: `2020-07-08T00:57:17.006Z`,
+  id: 2,
+  rating: 2.3,
+  user: {id: 18, name: `Sophie`}
+}, {
+  comment: `Poised to be an instant classic, almost everything about this film is phenomenal - the acting, the cinematography, the discography, etc.`,
+    date: `2020-07-28T00:57:17.006Z`,
+    id: 3,
+    rating: 7.7,
+    user: {id: 14, name: `Corey`}
+}];
+
 
 describe(`Reducer and initial state creators work correctly`, () => {
   it(`Reducer without additional parameters should return initial state`, () => {
@@ -54,7 +75,53 @@ describe(`Reducer and initial state creators work correctly`, () => {
   });
 
   it(`Reducer with additional parameter should return new state`, () => {
-    expect
+    expect(reducer({
+      films: [],
+      promoFilm: {},
+      reviews: [],
+      favouriteFilmList: [],
+    }, {
+      type: ActionTypes.LOAD_PROMO_FILM,
+      payload: promoFilm,
+    })).toEqual({
+      films: [],
+      promoFilm,
+      reviews: [],
+      favouriteFilmList: [],
+    });
   });
 
+  it(`Reducer with additional parameter should return new state`, () => {
+    expect(reducer({
+      films: [],
+      promoFilm: {},
+      reviews: [],
+      favouriteFilmList: [],
+    }, {
+      type: ActionTypes.LOAD_REVIEWS,
+      payload: reviews,
+    })).toEqual({
+      films: [],
+      promoFilm: {},
+      reviews,
+      favouriteFilmList: [],
+    });
   });
+
+  it(`Reducer with additional parameter should return new state`, () => {
+    expect(reducer({
+      films: [],
+      promoFilm: {},
+      reviews: [],
+      favouriteFilmList: [],
+    }, {
+      type: ActionTypes.LOAD_FAVORITE_FILMS,
+      payload: films,
+    })).toEqual({
+      films: [],
+      promoFilm: {},
+      reviews: [],
+      favouriteFilmList: films,
+    });
+  });
+});
