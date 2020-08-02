@@ -114,4 +114,4 @@ const reducer = (state = initializeState, action) => {
   return state;
 };
 
-export {reducer, Operation, ActionCreators};
+export {reducer, Operation, ActionTypes, ActionCreators};
