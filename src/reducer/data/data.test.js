@@ -1,4 +1,4 @@
-import {ActionTypes, reducer} from "./data";
+import {ActionCreators, ActionTypes, reducer} from "./data";
 
 const promoFilm = {
   backgroundColor: `#977461`,
@@ -126,3 +126,34 @@ describe(`Reducer and initial state creators work correctly`, () => {
     });
   });
 });
+
+describe(`Actions creators work correctly`, () => {
+  it(`Action creators for load films return correct action`, () => {
+    expect(ActionCreators.loadFilms(films)).toEqual({
+      type: ActionTypes.LOAD_FILMS,
+      payload: films,
+    });
+  });
+
+  it(`Action creators for load promo film return correct action`, () => {
+    expect(ActionCreators.loadPromoFilm(promoFilm)).toEqual({
+      type: ActionTypes.LOAD_PROMO_FILM,
+      payload: promoFilm,
+    });
+  });
+
+  it(`Action creators for load reviews return correct action`, () => {
+    expect(ActionCreators.loadReviews(reviews)).toEqual({
+      type: ActionTypes.LOAD_REVIEWS,
+      payload: reviews,
+    });
+  });
+
+  it(`Action creators for load reviews return correct action`, () => {
+    expect(ActionCreators.loadFavouriteFilms(films)).toEqual({
+      type: ActionTypes.LOAD_FAVORITE_FILMS,
+      payload: films,
+    });
+  });
+});
+
