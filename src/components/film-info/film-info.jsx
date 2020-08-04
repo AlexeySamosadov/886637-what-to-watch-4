@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import history from "../../history/history";
 import FilmInfoDescription from "../film-info-description/film-info-description";
 import FilmList from "../film-list/film-list";
+import {Link} from "react-router-dom";
 import {AppRoute} from "../const/const";
 import {getFilmsToRender} from "../../reducer/data/selectors";
 import {Operation as DataOperation} from "../../reducer/data/data";
@@ -59,9 +60,18 @@ const FilmInfo = ({activeFilm, filteredFilms, updateFavouriteFilms, authorizatio
               e.preventDefault();
               history.push(AppRoute.MY_LIST);
             }} className="user-block">
-              <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
-              </div>
+              {authorizationStatus === AuthorizationStatus.AUTH ? (
+                <div onClick={()=>{
+                  history.push(AppRoute.MY_LIST);
+                }} className="user-block__avatar">
+                  <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
+                </div>
+              ) :
+                (
+                  <Link
+                    to={AppRoute.SIGN_IN}
+                    href="#" className="user-block__link">Sign in</Link>
+                )}
             </a>
           </header>
 

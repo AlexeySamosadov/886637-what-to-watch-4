@@ -7,6 +7,7 @@ import history from "../../history/history";
 import {AppRoute, AuthorizationStatus} from "../const/const";
 import {getPromoFilm} from "../../reducer/data/selectors";
 import {getAuthorizationStatus} from "../../reducer/user/selectors";
+import {Link} from "react-router-dom";
 
 const Main = ({promoFilm, authorizationStatus, updateFavouriteFilms}) => {
   const {name, genre, released, posterImage, backgroundImage, id, isFavorite} = promoFilm;
@@ -45,9 +46,18 @@ const Main = ({promoFilm, authorizationStatus, updateFavouriteFilms}) => {
             e.preventDefault();
             history.push(AppRoute.MY_LIST);
           }} className="user-block">
-            <div className="user-block__avatar">
-              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
-            </div>
+            {authorizationStatus === AuthorizationStatus.AUTH ? (
+              <div onClick={()=>{
+                history.push(AppRoute.MY_LIST);
+              }} className="user-block__avatar">
+                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
+              </div>
+            ) :
+              (
+                <Link
+                  to={AppRoute.SIGN_IN}
+                  href="#" className="user-block__link">Sign in</Link>
+              )}
           </a>
         </header>
 
