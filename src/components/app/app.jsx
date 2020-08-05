@@ -35,8 +35,7 @@ const App = ({authorizationStatus, films}) => {
           auth={authorizationStatus}
           render={()=><MyList/>}
         />
-        <PrivateRoute exact path={`${AppRoute.FILM_INFO}/:id/${AppRoute.PLAYER}`}
-          auth={authorizationStatus}
+        <Route exact path={`${AppRoute.FILM_INFO}/:id/${AppRoute.PLAYER}`}
           render={(routeProps)=>{
             const activeFilm = getRouteActiveFilm(routeProps, films);
             return (

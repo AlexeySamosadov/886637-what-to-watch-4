@@ -88,7 +88,11 @@ const FilmInfo = ({films, activeFilm, updateFavouriteFilms, authorizationStatus}
 
               <div className="movie-card__buttons">
                 <button onClick={()=> {
-                  history.push(`${AppRoute.FILM_INFO}/${id}/${AppRoute.PLAYER}`);
+                  if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
+                    history.push(AppRoute.SIGN_IN);
+                  } else {
+                    history.push(`${AppRoute.FILM_INFO}/${id}/${AppRoute.PLAYER}`);
+                  }
                 }}
                 className="btn btn--play movie-card__button" type="button">
                   <svg viewBox="0 0 19 19" width="19" height="19">
