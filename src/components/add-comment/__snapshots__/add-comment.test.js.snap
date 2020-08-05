@@ -209,6 +209,11 @@ exports[`Correctly render component Add Comment 1`] = `
           <button
             className="add-review__btn"
             disabled={true}
+            style={
+              Object {
+                "opacity": 0.3,
+              }
+            }
             type="submit"
           >
             Post

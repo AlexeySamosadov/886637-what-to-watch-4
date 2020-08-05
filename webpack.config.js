@@ -14,7 +14,7 @@ module.exports = {
     contentBase: projectLink,
     open: true,
     inline: true,
-    port: 1337,
+    port: 1335,
     historyApiFallback: true,
   },
   module: {

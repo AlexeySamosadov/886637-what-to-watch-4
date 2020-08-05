@@ -47,6 +47,10 @@ class AddComment extends PureComponent {
     const styleCard = {
       backgroundColor,
     };
+
+    const styleButton = {
+      opacity: 0.3,
+    };
     return (
       <section className="movie-card movie-card--full" style={styleCard}>
         <div className="movie-card__header">
@@ -133,7 +137,7 @@ class AddComment extends PureComponent {
                 {isActiveButton ?
                   <button className="add-review__btn" type="submit">Post</button>
                   :
-                  <button className="add-review__btn" type="submit" disabled>Post</button>
+                  <button className="add-review__btn" type="submit" style={styleButton} disabled >Post</button>
                 }
               </div>
             </div>
