@@ -38,7 +38,10 @@ FilmInfoDescriptionReviews.propTypes = {
   reviews: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     comment: PropTypes.string.isRequired,
-    user: PropTypes.object.isRequired,
+    user: PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+    }).isRequired,
     rating: PropTypes.number.isRequired,
     date: PropTypes.string.isRequired,
   }).isRequired).isRequired,

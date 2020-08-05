@@ -37,8 +37,17 @@ const FilmInfoDescriptionNav = ({setActiveMenuFilmInfo, activeMenuFilmInfo, acti
 FilmInfoDescriptionNav.propTypes = {
   setActiveMenuFilmInfo: PropTypes.func.isRequired,
   activeMenuFilmInfo: PropTypes.string.isRequired,
-  activeFilm: PropTypes.object.isRequired,
   loadReviews: PropTypes.func.isRequired,
+  activeFilm: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    backgroundImage: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    released: PropTypes.number.isRequired,
+    posterImage: PropTypes.string.isRequired,
+    backgroundColor: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    isFavorite: PropTypes.bool.isRequired,
+  }).isRequired,
 };
 
 const mapStateToDispatch = (dispatch) => ({
