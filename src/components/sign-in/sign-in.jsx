@@ -95,8 +95,6 @@ SignIn.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
 };
 
-export {SignIn};
-
 const mapStateToProps = (state) => ({
   authorizationStatus: getAuthorizationStatus(state)
 });
@@ -107,4 +105,5 @@ const mapStateToDispatch = (dispatch) => ({
   }
 });
 
+export {SignIn};
 export default connect(mapStateToProps, mapStateToDispatch)(SignIn);

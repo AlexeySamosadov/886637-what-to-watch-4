@@ -7,7 +7,6 @@ import history from "../../history/history";
 import {AppRoute, AuthorizationStatus} from "../const/const";
 import {getPromoFilm} from "../../reducer/data/selectors";
 import {getAuthorizationStatus} from "../../reducer/user/selectors";
-import {Link} from "react-router-dom";
 
 const Main = ({promoFilm, authorizationStatus, updateFavouriteFilms}) => {
   const {name, genre, released, posterImage, backgroundImage, id, isFavorite} = promoFilm;
@@ -134,8 +133,6 @@ Main.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
 };
 
-export {Main};
-
 const mapStateToProps = (state) => ({
   promoFilm: getPromoFilm(state),
   authorizationStatus: getAuthorizationStatus(state),
@@ -146,4 +143,6 @@ const mapStateToDispatch = (dispatch) => ({
     dispatch(DataOperation.postFavoriteFilm(id, status));
   },
 });
+
+export {Main};
 export default connect(mapStateToProps, mapStateToDispatch)(Main);

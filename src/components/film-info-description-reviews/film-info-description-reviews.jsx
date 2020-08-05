@@ -44,10 +44,9 @@ FilmInfoDescriptionReviews.propTypes = {
   }).isRequired).isRequired,
 };
 
-export {FilmInfoDescriptionReviews};
-
 const mapStateToProps = (state) => ({
   reviews: getReviews(state),
 });
 
+export {FilmInfoDescriptionReviews};
 export default connect(mapStateToProps, null)(FilmInfoDescriptionReviews);

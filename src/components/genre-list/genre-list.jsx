@@ -35,8 +35,6 @@ GenreList.propTypes = {
   setGenre: PropTypes.func.isRequired,
 };
 
-export {GenreList};
-
 const mapStateToProps = (state) => ({
   films: getFilms(state),
   activeGenre: getActiveGenre(state),
@@ -48,4 +46,5 @@ const mapStateToDispatch = (dispatch) => ({
   }
 });
 
+export {GenreList};
 export default connect(mapStateToProps, mapStateToDispatch)(GenreList);

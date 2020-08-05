@@ -22,4 +22,5 @@ PrivateRoute.propTypes = {
   auth: PropTypes.string.isRequired,
   render: PropTypes.func.isRequired,
 };
+
 export default PrivateRoute;

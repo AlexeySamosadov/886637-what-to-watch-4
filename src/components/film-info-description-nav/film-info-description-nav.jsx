@@ -41,8 +41,6 @@ FilmInfoDescriptionNav.propTypes = {
   loadReviews: PropTypes.func.isRequired,
 };
 
-export {FilmInfoDescriptionNav};
-
 const mapStateToDispatch = (dispatch) => ({
   setActiveMenuFilmInfo: (activeMenu) => {
     dispatch(ActionCreators.getActiveMenuFilmInfo(activeMenu));
@@ -55,4 +53,6 @@ const mapStateToDispatch = (dispatch) => ({
 const mapStateToProps = (state) => ({
   activeMenuFilmInfo: getActiveMenuFilmInfo(state),
 });
+
+export {FilmInfoDescriptionNav};
 export default connect(mapStateToProps, mapStateToDispatch)(FilmInfoDescriptionNav);

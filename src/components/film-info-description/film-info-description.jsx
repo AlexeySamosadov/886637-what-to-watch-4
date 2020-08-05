@@ -40,10 +40,9 @@ FilmInfoDescription.propTypes = {
   activeMenuFilmInfo: PropTypes.string.isRequired,
 };
 
-export {FilmInfoDescription};
-
 const mapStateToProps = (state) => ({
   activeMenuFilmInfo: getActiveMenuFilmInfo(state),
 });
 
+export {FilmInfoDescription};
 export default connect(mapStateToProps, null)(FilmInfoDescription);

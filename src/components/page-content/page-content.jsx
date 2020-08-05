@@ -36,8 +36,6 @@ PageContent.propTypes = {
   showingFilmsNumber: PropTypes.number.isRequired,
 };
 
-export {PageContent};
-
 const mapStateToProps = (state) => ({
   showingFilmsNumber: getShowingFilmsNumber(state),
   filmsToRender: getFilmsToRender(state),
@@ -49,4 +47,5 @@ const mapStateToDispatch = (dispatch) => ({
   }
 });
 
+export {PageContent};
 export default connect(mapStateToProps, mapStateToDispatch)(PageContent);

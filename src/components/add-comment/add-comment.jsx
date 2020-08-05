@@ -149,8 +149,6 @@ class AddComment extends PureComponent {
   }
 }
 
-export {AddComment};
-
 AddComment.propTypes = {
   activeFilm: PropTypes.object.isRequired,
   postReview: PropTypes.func.isRequired,
@@ -162,4 +160,5 @@ const mapStateToDispatch = (dispatch) => ({
   }
 });
 
+export {AddComment};
 export default connect(null, mapStateToDispatch)(AddComment);

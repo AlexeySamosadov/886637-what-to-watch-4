@@ -180,8 +180,6 @@ FilmInfo.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
 };
 
-export {FilmInfo};
-
 const mapStateToProps = (state) => ({
   films: getFilms(state),
   authorizationStatus: getAuthorizationStatus(state),
@@ -193,4 +191,5 @@ const mapStateToDispatch = (dispatch) => ({
   },
 });
 
+export {FilmInfo};
 export default connect(mapStateToProps, mapStateToDispatch)(FilmInfo);

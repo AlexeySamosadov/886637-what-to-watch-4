@@ -70,11 +70,10 @@ App.propTypes = {
   films: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
-export {App};
-
 const mapStateToProps = (state) => ({
   authorizationStatus: getAuthorizationStatus(state),
   films: getFilms(state),
 });
 
+export {App};
 export default connect(mapStateToProps, null)(App);

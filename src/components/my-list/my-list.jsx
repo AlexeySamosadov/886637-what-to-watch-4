@@ -58,17 +58,14 @@ const MyList = ({favouriteFilmList}) => {
   );
 };
 
-
 MyList.propTypes = {
   favouriteFilmList: PropTypes.arrayOf(PropTypes.shape({
   }).isRequired).isRequired,
 };
 
-
-export {MyList};
-
 const MapStateToProps = (state) => ({
   favouriteFilmList: getFavouriteFilmList(state),
 });
 
+export {MyList};
 export default connect(MapStateToProps, null)(MyList);
