@@ -1,9 +1,10 @@
 import React, {PureComponent, createRef} from "react";
 import history from "../../history/history";
-import {AppRoute} from "../const/const";
+import {AppRoute, AuthorizationStatus} from "../const/const";
 import {connect} from "react-redux";
 import {Operation} from "../../reducer/user/user";
 import PropTypes from "prop-types";
+import {getAuthorizationStatus} from "../../reducer/user/selectors";
 
 class SignIn extends PureComponent {
   constructor(props) {
@@ -11,11 +12,14 @@ class SignIn extends PureComponent {
     this.loginRef = createRef();
     this.passwordRef = createRef();
     this.handleSubmit = this.handleSubmit.bind(this);
+
+    if (props.authorizationStatus === AuthorizationStatus.AUTH) {
+      history.push(AppRoute.MAIN);
+    }
   }
 
   handleSubmit(evt) {
     const {signIn} = this.props;
-
     evt.preventDefault();
 
     signIn({
@@ -28,6 +32,7 @@ class SignIn extends PureComponent {
 
 
   render() {
+
     return (
       <div className="user-page">
         <header className="page-header user-page__head">
@@ -87,9 +92,14 @@ class SignIn extends PureComponent {
 
 SignIn.propTypes = {
   signIn: PropTypes.func.isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
 };
 
 export {SignIn};
+
+const mapStateToProps = (state) => ({
+  authorizationStatus: getAuthorizationStatus(state)
+});
 
 const mapStateToDispatch = (dispatch) => ({
   signIn: (data) => {
@@ -97,4 +107,4 @@ const mapStateToDispatch = (dispatch) => ({
   }
 });
 
-export default connect(null, mapStateToDispatch)(SignIn);
+export default connect(mapStateToProps, mapStateToDispatch)(SignIn);
