@@ -60,7 +60,15 @@ const MyList = ({favouriteFilmList}) => {
 
 MyList.propTypes = {
   favouriteFilmList: PropTypes.arrayOf(PropTypes.shape({
-  }).isRequired).isRequired,
+    name: PropTypes.string.isRequired,
+    backgroundImage: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    released: PropTypes.number.isRequired,
+    posterImage: PropTypes.string.isRequired,
+    backgroundColor: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    isFavorite: PropTypes.bool.isRequired,
+  })).isRequired,
 };
 
 const MapStateToProps = (state) => ({

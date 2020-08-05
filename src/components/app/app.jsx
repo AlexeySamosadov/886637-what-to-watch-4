@@ -67,7 +67,16 @@ const App = ({authorizationStatus, films}) => {
 
 App.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
-  films: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  films: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    backgroundImage: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    released: PropTypes.number.isRequired,
+    posterImage: PropTypes.string.isRequired,
+    backgroundColor: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    isFavorite: PropTypes.bool.isRequired,
+  })).isRequired,
 };
 
 const mapStateToProps = (state) => ({

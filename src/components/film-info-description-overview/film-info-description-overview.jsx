@@ -29,7 +29,7 @@ FilmInfoDescriptionOverview.propTypes = {
     rating: PropTypes.number.isRequired,
     description: PropTypes.string.isRequired,
     director: PropTypes.string.isRequired,
-    starring: PropTypes.array.isRequired,
+    starring: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
     scoresCount: PropTypes.number.isRequired,
   })
 };

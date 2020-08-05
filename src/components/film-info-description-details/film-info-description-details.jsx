@@ -42,7 +42,7 @@ const FilmInfoDescriptionDetails = ({activeFilm}) => {
 
 FilmInfoDescriptionDetails.propTypes = {
   activeFilm: PropTypes.shape({
-    starring: PropTypes.array.isRequired,
+    starring: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
     director: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     runTime: PropTypes.number.isRequired,

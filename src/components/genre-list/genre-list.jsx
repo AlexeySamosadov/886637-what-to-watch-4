@@ -29,8 +29,15 @@ const GenreList = ({films, activeGenre, setGenre}) => {
 
 GenreList.propTypes = {
   films: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    backgroundImage: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
-  }).isRequired).isRequired,
+    released: PropTypes.number.isRequired,
+    posterImage: PropTypes.string.isRequired,
+    backgroundColor: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    isFavorite: PropTypes.bool.isRequired,
+  })).isRequired,
   activeGenre: PropTypes.string.isRequired,
   setGenre: PropTypes.func.isRequired,
 };
