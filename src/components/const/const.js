@@ -26,7 +26,7 @@ export const RatingLevels = {
   BAD: `Bad`,
 };
 
-export const genreType = {
+export const GenreType = {
   ALL: `All genres`,
 };
 

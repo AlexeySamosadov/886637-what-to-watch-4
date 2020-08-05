@@ -1,9 +1,9 @@
 import {extend} from "../../components/utils/utils.js";
-import {ActiveMenu, genreType} from "../../components/const/const.js";
+import {ActiveMenu, GenreType} from "../../components/const/const.js";
 
 const initializeState = {
   activeMenuFilmInfo: ActiveMenu.OVERVIEW,
-  activeGenre: genreType.ALL,
+  activeGenre: GenreType.ALL,
   showingFilmsNumber: 8,
 };
 

@@ -1,15 +1,15 @@
 import {ActionCreators, ActionTypes, reducer} from "./app-status";
-import {ActiveMenu, genreType} from "../../components/const/const";
+import {ActiveMenu, GenreType} from "../../components/const/const";
 
 describe(`Reducer and initial state creators work correctly`, () => {
   it(`Reducer without additional parameters should return initial state`, () => {
     expect(reducer({
       activeMenuFilmInfo: ActiveMenu.OVERVIEW,
-      activeGenre: genreType.ALL,
+      activeGenre: GenreType.ALL,
       showingFilmsNumber: 8,
     }, {})).toEqual({
       activeMenuFilmInfo: ActiveMenu.OVERVIEW,
-      activeGenre: genreType.ALL,
+      activeGenre: GenreType.ALL,
       showingFilmsNumber: 8,
     });
   });
@@ -17,14 +17,14 @@ describe(`Reducer and initial state creators work correctly`, () => {
   it(`Reducer with additional parameter should return new state`, () => {
     expect(reducer({
       activeMenuFilmInfo: ActiveMenu.OVERVIEW,
-      activeGenre: genreType.ALL,
+      activeGenre: GenreType.ALL,
       showingFilmsNumber: 8,
     }, {
       type: ActionTypes.GET_ACTIVE_MENU_FILM_INFO,
       payload: ActiveMenu.REVIEWS,
     })).toEqual({
       activeMenuFilmInfo: ActiveMenu.REVIEWS,
-      activeGenre: genreType.ALL,
+      activeGenre: GenreType.ALL,
       showingFilmsNumber: 8,
     });
   });
@@ -32,7 +32,7 @@ describe(`Reducer and initial state creators work correctly`, () => {
   it(`Reducer with additional parameter should return new state`, () => {
     expect(reducer({
       activeMenuFilmInfo: ActiveMenu.OVERVIEW,
-      activeGenre: genreType.ALL,
+      activeGenre: GenreType.ALL,
       showingFilmsNumber: 8,
     }, {
       type: ActionTypes.SET_ACTIVE_GENRE,
@@ -47,14 +47,14 @@ describe(`Reducer and initial state creators work correctly`, () => {
   it(`Reducer with additional parameter should return new state`, () => {
     expect(reducer({
       activeMenuFilmInfo: ActiveMenu.OVERVIEW,
-      activeGenre: genreType.ALL,
+      activeGenre: GenreType.ALL,
       showingFilmsNumber: 8,
     }, {
       type: ActionTypes.SHOW_MORE,
       payload: 8,
     })).toEqual({
       activeMenuFilmInfo: ActiveMenu.OVERVIEW,
-      activeGenre: genreType.ALL,
+      activeGenre: GenreType.ALL,
       showingFilmsNumber: 16,
     });
   });

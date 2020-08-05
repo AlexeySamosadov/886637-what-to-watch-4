@@ -1,4 +1,4 @@
-import {Months, genreType, RatingLevels} from "../const/const";
+import {Months, GenreType, RatingLevels} from "../const/const";
 
 export const extend = (a, b) => {
   return Object.assign({}, a, b);
@@ -39,7 +39,7 @@ export const getRatingLevel = (rating) => {
 
 export const filterFilms = (data, genres) => {
   let films = data;
-  if (genres !== genreType.ALL) {
+  if (genres !== GenreType.ALL) {
     films = data.filter((it)=>it.genre === genres);
   }
   return films;

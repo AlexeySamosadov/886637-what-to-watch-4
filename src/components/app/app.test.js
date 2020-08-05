@@ -3,7 +3,7 @@ import renderer from "react-test-renderer";
 import App from "./app";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
-import {ActiveMenu, genreType} from "../const/const";
+import {ActiveMenu, GenreType} from "../const/const";
 
 const AuthorizationStatus = {
   AUTH: `AUTH`,
@@ -37,7 +37,7 @@ const films = [promoFilm];
 const store = mockStore({
   APP_STATUS: {
     activeMenuFilmInfo: ActiveMenu.OVERVIEW,
-    activeGenre: genreType.ALL,
+    activeGenre: GenreType.ALL,
     showingFilmsNumber: 8,
   },
   DATA: {

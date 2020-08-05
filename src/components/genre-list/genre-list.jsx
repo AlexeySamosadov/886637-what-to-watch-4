@@ -3,13 +3,13 @@ import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import {ActionCreators} from "../../reducer/app-status/app-status";
 import {changeFirstLetterUppercase} from "../utils/utils";
-import {genreType} from "../const/const";
+import {GenreType} from "../const/const";
 import {getFilms} from "../../reducer/data/selectors";
 import {getActiveGenre} from "../../reducer/app-status/selectors";
 
 const GenreList = ({films, activeGenre, onSetGenre}) => {
   const setGenres = new Set();
-  setGenres.add(genreType.ALL);
+  setGenres.add(GenreType.ALL);
   films.forEach((it)=> setGenres.add(it.genre));
   const genreList = Array.from(setGenres);
 

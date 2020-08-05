@@ -3,7 +3,7 @@ import renderer from "react-test-renderer";
 import MyList from "./my-list";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
-import {ActiveMenu, genreType} from "../const/const";
+import {ActiveMenu, GenreType} from "../const/const";
 
 const mockStore = configureStore({});
 
@@ -37,7 +37,7 @@ const films = [activeFilm];
 const store = mockStore({
   APP_STATUS: {
     activeMenuFilmInfo: ActiveMenu.OVERVIEW,
-    activeGenre: genreType.ALL,
+    activeGenre: GenreType.ALL,
     showingFilmsNumber: 8,
   },
   DATA: {
