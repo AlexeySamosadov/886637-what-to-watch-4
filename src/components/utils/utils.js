@@ -18,19 +18,19 @@ export const formatMovieDuration = (movieDuration) => {
 export const getRatingLevel = (rating) => {
   let ratingLevel;
   switch (true) {
-    case rating >= 0:
+    case rating < 3:
       ratingLevel = RatingLevels.BAD;
       break;
-    case rating > 4:
+    case rating < 5:
       ratingLevel = RatingLevels.NORMAL;
       break;
-    case rating > 6:
+    case rating < 8:
       ratingLevel = RatingLevels.GOOD;
       break;
-    case rating > 8:
+    case rating < 10:
       ratingLevel = RatingLevels.VERY_GOOD;
       break;
-    case rating > 9:
+    case rating = 10:
       ratingLevel = RatingLevels.AWESOME;
       break;
   }
