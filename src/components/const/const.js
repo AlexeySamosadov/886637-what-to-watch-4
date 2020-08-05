@@ -30,35 +30,35 @@ export const genreType = {
   ALL: `All genres`,
 };
 
-export const MONTHS = [`January`, `February`, `March`, `April`, `May`, `June`, `July`, `August`, `September`, `October`, `November`, `December`];
+export const Months = [`January`, `February`, `March`, `April`, `May`, `June`, `July`, `August`, `September`, `October`, `November`, `December`];
 
-export const playerType = {
+export const PlayerType = {
   MOVIE: `MOVIE`,
   TRAILER: `TRAILER`,
 };
 
-export const playerClass = {
+export const PlayerClass = {
   PLAYER_VIDEO: `player__video`,
 };
 
-export const keyCode = {
+export const KeyCode = {
   ESCAPE: `Escape`,
   SPACE: `Space`,
   ARROW_RIGHT: `ArrowRight`,
   ARROW_LEFT: `ArrowLeft`,
 };
 
-export const typeEvent = {
+export const TypeEvent = {
   FULL_SCREEN_CHANGE: `fullscreenchange`,
   KEYDOWN: `keydown`,
 };
 
-export const arrowTimingPercent = {
+export const ArrowTimingPercent = {
   TEN: 3,
   MINUS_TEN: -3,
 };
 
-export const LENGTH = {
+export const Length = {
   MIN: 50,
   MAX: 400
 };

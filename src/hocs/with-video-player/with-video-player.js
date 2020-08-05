@@ -1,6 +1,6 @@
 import React, {createRef, PureComponent} from "react";
 import PropTypes from "prop-types";
-import {playerType} from "../../components/const/const.js";
+import {PlayerType} from "../../components/const/const.js";
 
 const roundVolume = (value) => {
   const result = parseFloat(value.toFixed(2));
@@ -33,31 +33,31 @@ const withVideoPlayer = (Component) => {
 
       this._interval = null;
 
-      this._handlerPlayButtonClick = this._handlerPlayButtonClick.bind(this);
-      this._handlerFullScreenButtonClick = this._handlerFullScreenButtonClick.bind(this);
-      this._handlerMouseEnter = this._handlerMouseEnter.bind(this);
-      this._handlerMouseLeave = this._handlerMouseLeave.bind(this);
-      this._handlerMouseClick = this._handlerMouseClick.bind(this);
-      this._handlerOnOffSound = this._handlerOnOffSound.bind(this);
+      this._handlePlayButtonClick = this._handlePlayButtonClick.bind(this);
+      this._handleFullScreenButtonClick = this._handleFullScreenButtonClick.bind(this);
+      this._handleMouseEnter = this._handleMouseEnter.bind(this);
+      this._handleMouseLeave = this._handleMouseLeave.bind(this);
+      this._handleMouseClick = this._handleMouseClick.bind(this);
+      this._handleOnOffSound = this._handleOnOffSound.bind(this);
       this._handleValueSet = this._handleValueSet.bind(this);
       this._setPercentFilm = this._setPercentFilm.bind(this);
-      this._handlerWheel = this._handlerWheel.bind(this);
-      this._handlerButtonArrow = this._handlerButtonArrow.bind(this);
+      this._handleWheel = this._handleWheel.bind(this);
+      this._handleButtonArrow = this._handleButtonArrow.bind(this);
     }
 
-    _handlerPlayButtonClick() {
+    _handlePlayButtonClick() {
       this.setState((prevState) => ({
         isPlaying: !prevState.isPlaying,
       }));
     }
 
-    _handlerFullScreenButtonClick() {
+    _handleFullScreenButtonClick() {
       this.setState((prevState) => ({
         isFullScreen: !prevState.isFullScreen,
       }));
     }
 
-    _handlerMouseEnter() {
+    _handleMouseEnter() {
       this._timer = setTimeout(()=>{
         this.setState({
           isPlaying: true,
@@ -65,7 +65,7 @@ const withVideoPlayer = (Component) => {
       }, 1000);
     }
 
-    _handlerOnOffSound() {
+    _handleOnOffSound() {
       this.setState((prevState) => ({
         isSoundOff: !prevState.isSoundOff,
       }));
@@ -88,7 +88,7 @@ const withVideoPlayer = (Component) => {
       video.currentTime = Math.round(video.duration * (value / 100));
     }
 
-    _handlerButtonArrow(percent) {
+    _handleButtonArrow(percent) {
       this.setState((prevState) => {
         const correctPercent = () => {
           let result = prevState.progressInPercent + percent;
@@ -109,18 +109,18 @@ const withVideoPlayer = (Component) => {
       video.currentTime = Math.round(video.duration * (this.state.progressInPercent / 100));
     }
 
-    _handlerMouseLeave() {
+    _handleMouseLeave() {
       clearTimeout(this._timer);
       this.setState({
         isPlaying: false,
       });
     }
 
-    _handlerMouseClick() {
+    _handleMouseClick() {
       clearTimeout(this._timer);
     }
 
-    _handlerWheel(evt) {
+    _handleWheel(evt) {
       const diff = evt.deltaY / 530 * -1;
       this.setState((prevState) => ({
         value: roundVolume(prevState.value + diff),
@@ -139,7 +139,7 @@ const withVideoPlayer = (Component) => {
         });
       };
 
-      if (type === playerType.MOVIE) {
+      if (type === PlayerType.MOVIE) {
         video.onpause = () => {
           this.setState({
             isPlaying: false
@@ -173,7 +173,7 @@ const withVideoPlayer = (Component) => {
       });
 
       const {type} = this.props;
-      if (type === playerType.MOVIE) {
+      if (type === PlayerType.MOVIE) {
         if (this.state.isPlaying) {
           video.play();
         } else {
@@ -181,7 +181,7 @@ const withVideoPlayer = (Component) => {
         }
       }
 
-      if (type === playerType.TRAILER) {
+      if (type === PlayerType.TRAILER) {
         if (this.state.isPlaying) {
           video.play();
         } else {
@@ -207,16 +207,16 @@ const withVideoPlayer = (Component) => {
       return <Component
         {...this.props}
         id={id}
-        onFullScreenButtonClick={this._handlerFullScreenButtonClick}
-        onPlayButtonClick={this._handlerPlayButtonClick}
-        onMouseEnter={this._handlerMouseEnter}
-        onMouseLeave={this._handlerMouseLeave}
-        onClick={this._handlerMouseClick}
-        onSoundClick={this._handlerOnOffSound}
+        onFullScreenButtonClick={this._handleFullScreenButtonClick}
+        onPlayButtonClick={this._handlePlayButtonClick}
+        onMouseEnter={this._handleMouseEnter}
+        onMouseLeave={this._handleMouseLeave}
+        onClick={this._handleMouseClick}
+        onSoundClick={this._handleOnOffSound}
         onSetValue={this._handleValueSet}
         onSetPercentFilm={this._setPercentFilm}
-        onWheel={this._handlerWheel}
-        onPressArrowButton={this._handlerButtonArrow }
+        onWheel={this._handleWheel}
+        onPressArrowButton={this._handleButtonArrow }
         isSoundOff={isSoundOff}
         isPlaying={isPlaying}
         isFullScreen={isFullScreen}

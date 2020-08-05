@@ -1,6 +1,6 @@
 import React from "react";
 import history from "../../history/history";
-import {AppRoute, playerType} from "../const/const";
+import {AppRoute, PlayerType} from "../const/const";
 import PropTypes from "prop-types";
 import withVideoPlayer from "../../hocs/with-video-player/with-video-player";
 import MovieVideoPlayer from "../video-player/video-player";
@@ -20,7 +20,7 @@ const FilmList = ({films}) => {
               srcVideo={film.previewVideoLink}
               widthAtr={280}
               heightAtr={175}
-              type={playerType.TRAILER}
+              type={PlayerType.TRAILER}
             />
             <h3 className="small-movie-card__title">
               <a className="small-movie-card__link" href="#!">{film.name}</a>

@@ -1,6 +1,6 @@
 import React from "react";
 import withVideoPlayer from "../../hocs/with-video-player/with-video-player";
-import {playerClass, playerType} from "../const/const";
+import {PlayerClass, PlayerType} from "../const/const";
 import PropTypes from "prop-types";
 import MovieVideoPlayer from "../video-player/video-player";
 import history from "../../history/history";
@@ -14,8 +14,8 @@ const BigVideoPlayer = ({activeFilm}) => {
   const {videoLink, posterImage, id} = activeFilm;
   return (
     <VideoPlayer
-      type={playerType.MOVIE}
-      className={playerClass.PLAYER_VIDEO}
+      type={PlayerType.MOVIE}
+      className={PlayerClass.PLAYER_VIDEO}
       srcVideo={videoLink}
       srcPoster={posterImage}
       id={id}

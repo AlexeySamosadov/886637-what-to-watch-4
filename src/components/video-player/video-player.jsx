@@ -1,6 +1,6 @@
 import React, {PureComponent, createRef, Fragment} from "react";
 import PropTypes from "prop-types";
-import {playerType, keyCode, typeEvent, arrowTimingPercent} from "../const/const";
+import {PlayerType, KeyCode, TypeEvent, ArrowTimingPercent} from "../const/const";
 import "./video-player.css";
 import history from "../../history/history";
 import {AppRoute} from "../const/const";
@@ -33,11 +33,11 @@ class VideoPlayer extends PureComponent {
   constructor(props) {
     super(props);
     this._rootElRef = createRef();
-    this._handlerFullScreenChange = this._handlerFullScreenChange.bind(this);
+    this._handleFullScreenChange = this._handleFullScreenChange.bind(this);
     this._onPressButton = this._onPressButton.bind(this);
   }
 
-  _handlerFullScreenChange() {
+  _handleFullScreenChange() {
     this.props.onFullScreenButtonClick();
   }
 
@@ -45,11 +45,11 @@ class VideoPlayer extends PureComponent {
     const {children, onSetPercentFilm, onWheel, id, valueInPercent, progressInPercent, progressInSeconds, onMouseEnter, onMouseLeave, onClick,
       onPlayButtonClick, isPlaying, isIndicatorShow, onSetValue, onSoundClick, isSoundOff, isFullScreen, type} = this.props;
     switch (type) {
-      case playerType.TRAILER:
+      case PlayerType.TRAILER:
         return <section onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} onClick={onClick} className="small-movie-card__image">
           {children}
         </section>;
-      case playerType.MOVIE:
+      case PlayerType.MOVIE:
         return (
           <div ref={this._rootElRef} className="player">
             <span
@@ -134,30 +134,30 @@ class VideoPlayer extends PureComponent {
   }
 
   _onPressButton(evt) {
-    if (evt.code === keyCode.ESCAPE) {
+    if (evt.code === KeyCode.ESCAPE) {
       history.push(`${AppRoute.FILM_INFO}/${this.props.id}`);
     }
-    if (evt.code === keyCode.ARROW_RIGHT) {
-      const percent = arrowTimingPercent.TEN;
+    if (evt.code === KeyCode.ARROW_RIGHT) {
+      const percent = ArrowTimingPercent.TEN;
       this.onPressArrowButton(percent);
     }
-    if (evt.code === keyCode.ARROW_LEFT) {
-      const percent = arrowTimingPercent.MINUS_TEN;
+    if (evt.code === KeyCode.ARROW_LEFT) {
+      const percent = ArrowTimingPercent.MINUS_TEN;
       this.onPressArrowButton(percent);
     }
-    if (evt.code === keyCode.SPACE) {
+    if (evt.code === KeyCode.SPACE) {
       this.onPlayButtonClick(evt);
     }
   }
 
 
   componentDidMount() {
-    if (this.props.type === playerType.MOVIE) {
+    if (this.props.type === PlayerType.MOVIE) {
       this.onPlayButtonClick = this.props.onPlayButtonClick;
       this.onPressArrowButton = this.props.onPressArrowButton;
 
-      document.addEventListener(typeEvent.FULL_SCREEN_CHANGE, this._handlerFullScreenChange);
-      document.addEventListener(typeEvent.KEYDOWN, this._onPressButton);
+      document.addEventListener(TypeEvent.FULL_SCREEN_CHANGE, this._handleFullScreenChange);
+      document.addEventListener(TypeEvent.KEYDOWN, this._onPressButton);
     }
   }
 
@@ -166,9 +166,9 @@ class VideoPlayer extends PureComponent {
   }
 
   componentWillUnmount() {
-    if (this.props.type === playerType.MOVIE) {
-      document.removeEventListener(typeEvent.FULL_SCREEN_CHANGE, this._handlerFullScreenChange);
-      document.removeEventListener(typeEvent.KEYDOWN, this._onPressButton);
+    if (this.props.type === PlayerType.MOVIE) {
+      document.removeEventListener(TypeEvent.FULL_SCREEN_CHANGE, this._handleFullScreenChange);
+      document.removeEventListener(TypeEvent.KEYDOWN, this._onPressButton);
     }
   }
 }
@@ -197,7 +197,7 @@ VideoPlayer.propTypes = {
   isSoundOff: PropTypes.bool.isRequired,
   title: PropTypes.string,
   isFullScreen: PropTypes.bool.isRequired,
-  type: PropTypes.oneOf([playerType.TRAILER, playerType.MOVIE]),
+  type: PropTypes.oneOf([PlayerType.TRAILER, PlayerType.MOVIE]),
 };
 
 export default VideoPlayer;

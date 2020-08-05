@@ -1,4 +1,4 @@
-import {MONTHS, genreType, RatingLevels} from "../const/const";
+import {Months, genreType, RatingLevels} from "../const/const";
 
 export const extend = (a, b) => {
   return Object.assign({}, a, b);
@@ -48,7 +48,7 @@ export const filterFilms = (data, genres) => {
 export const formatDateForReview = (date) => {
   const _date = new Date(date);
   const day = _date.getDate();
-  const month = MONTHS[_date.getMonth()];
+  const month = Months[_date.getMonth()];
   const year = _date.getFullYear();
   return `${month} ${day}, ${year}`;
 };

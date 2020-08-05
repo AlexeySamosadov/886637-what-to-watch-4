@@ -2,7 +2,7 @@ import React, {PureComponent, createRef} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import history from "../../history/history";
-import {AppRoute, LENGTH} from "../const/const";
+import {AppRoute, Length} from "../const/const";
 import {Operation} from "../../reducer/data/data";
 
 class AddComment extends PureComponent {
@@ -29,12 +29,12 @@ class AddComment extends PureComponent {
     history.push(`${AppRoute.FILM_INFO}/${id}`);
   }
 
-  handlerChange(e) {
-    if (e.target.value.length >= LENGTH.MIN && e.target.value.length < LENGTH.MAX) {
+  _handleButtonChange(e) {
+    if (e.target.value.length >= Length.MIN && e.target.value.length < Length.MAX) {
       this.setState({
         isActiveButton: true,
       });
-    } else if (e.target.value.length < LENGTH.MIN) {
+    } else if (e.target.value.length < Length.MIN) {
       this.setState({
         isActiveButton: false,
       });
@@ -126,12 +126,12 @@ class AddComment extends PureComponent {
             </div>
 
             <div className="add-review__text">
-              <textarea onChange={(e) => this.handlerChange(e)} className="add-review__textarea"
+              <textarea onChange={(e) => this._handleButtonChange(e)} className="add-review__textarea"
                 ref={this.commentRef}
                 name="review-text"
                 id="review-text"
-                minLength={LENGTH.MIN}
-                maxLength={LENGTH.MAX}
+                minLength={Length.MIN}
+                maxLength={Length.MAX}
                 placeholder="Review text"/>
               <div className="add-review__submit">
                 {isActiveButton ?
