@@ -1,8 +1,6 @@
 import React from "react";
-import {connect} from "react-redux";
 import history from "../../history/history";
 import {AppRoute, playerType} from "../const/const";
-import {ActionCreators} from "../../reducer/data/data";
 import PropTypes from "prop-types";
 import withVideoPlayer from "../../hocs/with-video-player/with-video-player";
 import MovieVideoPlayer from "../video-player/video-player";
@@ -39,7 +37,6 @@ FilmList.propTypes = {
     previewImage: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
   })).isRequired,
-  setGenre: PropTypes.func.isRequired,
 };
 
 export default FilmList;

@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import history from "../../history/history";
 import FilmInfoDescription from "../film-info-description/film-info-description";
 import FilmList from "../film-list/film-list";
-import {Link} from "react-router-dom";
 import {AppRoute} from "../const/const";
 import {getFilms} from "../../reducer/data/selectors";
 import {Operation as DataOperation} from "../../reducer/data/data";
@@ -17,8 +16,6 @@ const FilmInfo = ({films, activeFilm, updateFavouriteFilms, authorizationStatus}
     history.push(AppRoute.MAIN);
   }
   const sameFilms = filterFilms(films, activeFilm.genre).slice(0, 4);
-  console.log(sameFilms);
-
   const {name, backgroundImage, genre, released, posterImage, backgroundColor, id, isFavorite} = activeFilm;
   const styleCard = {
     backgroundColor,
@@ -58,24 +55,23 @@ const FilmInfo = ({films, activeFilm, updateFavouriteFilms, authorizationStatus}
                 <span className="logo__letter logo__letter--3">W</span>
               </a>
             </div>
-
-            <a href="#" onClick={(e)=> {
-              e.preventDefault();
-              history.push(AppRoute.MY_LIST);
-            }} className="user-block">
-              {authorizationStatus === AuthorizationStatus.AUTH ? (
+            {authorizationStatus === AuthorizationStatus.AUTH ? (
+              <a href="#" onClick={(e)=> {
+                e.preventDefault();
+                history.push(AppRoute.MY_LIST);
+              }} className="user-block">
                 <div onClick={()=>{
                   history.push(AppRoute.MY_LIST);
                 }} className="user-block__avatar">
                   <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
                 </div>
-              ) :
-                (
-                  <Link
-                    to={AppRoute.SIGN_IN}
-                    href="#" className="user-block__link">Sign in</Link>
-                )}
-            </a>
+              </a>) :
+              (< div className="user-block">
+                <a href="#" className="user-block__link" onClick={(e)=> {
+                  e.preventDefault();
+                  history.push(AppRoute.SIGN_IN);
+                }}>Sign in</a>
+              </div>)}
           </header>
 
           <div className="movie-card__wrap">

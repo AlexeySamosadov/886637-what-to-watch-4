@@ -42,23 +42,25 @@ const Main = ({promoFilm, authorizationStatus, updateFavouriteFilms}) => {
             </a>
           </div>
 
-          <a href="#" onClick={(e)=> {
-            e.preventDefault();
-            history.push(AppRoute.MY_LIST);
-          }} className="user-block">
-            {authorizationStatus === AuthorizationStatus.AUTH ? (
+          {authorizationStatus === AuthorizationStatus.AUTH ? (
+            <a href="#" onClick={(e)=> {
+              e.preventDefault();
+              history.push(AppRoute.MY_LIST);
+            }} className="user-block">
               <div onClick={()=>{
                 history.push(AppRoute.MY_LIST);
               }} className="user-block__avatar">
                 <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
               </div>
-            ) :
-              (
-                <Link
-                  to={AppRoute.SIGN_IN}
-                  href="#" className="user-block__link">Sign in</Link>
-              )}
-          </a>
+            </a>) :
+            (< div className="user-block">
+              <a href="#" className="user-block__link" onClick={(e)=> {
+                e.preventDefault();
+                history.push(AppRoute.SIGN_IN);
+              }}>Sign in</a>
+            </div>)}
+
+
         </header>
 
         <div className="movie-card__wrap">
