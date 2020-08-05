@@ -19,10 +19,10 @@ class SignIn extends PureComponent {
   }
 
   handleSubmit(evt) {
-    const {signIn} = this.props;
+    const {onSignIn} = this.props;
     evt.preventDefault();
 
-    signIn({
+    onSignIn({
       login: this.loginRef.current.value,
       password: this.loginRef.current.value,
     });
@@ -91,7 +91,7 @@ class SignIn extends PureComponent {
 }
 
 SignIn.propTypes = {
-  signIn: PropTypes.func.isRequired,
+  onSignIn: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
 };
 
@@ -100,7 +100,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapStateToDispatch = (dispatch) => ({
-  signIn: (data) => {
+  onSignIn: (data) => {
     dispatch(Operation.login(data));
   }
 });

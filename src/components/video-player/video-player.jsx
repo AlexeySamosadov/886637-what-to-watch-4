@@ -43,7 +43,7 @@ class VideoPlayer extends PureComponent {
 
   _renderPlayer() {
     const {children, onSetPercentFilm, onWheel, id, valueInPercent, progressInPercent, progressInSeconds, onMouseEnter, onMouseLeave, onClick,
-      onPlayButtonClick, isPlaying, isIndicatorShow, setValue, onSoundClick, isSoundOff, isFullScreen, type} = this.props;
+      onPlayButtonClick, isPlaying, isIndicatorShow, onSetValue, onSoundClick, isSoundOff, isFullScreen, type} = this.props;
     switch (type) {
       case playerType.TRAILER:
         return <section onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} onClick={onClick} className="small-movie-card__image">
@@ -107,7 +107,7 @@ class VideoPlayer extends PureComponent {
                   )}
                 </div>
                 <div className="player__controls-audio">
-                  <input className="player__controls-audio-range" onChange={(evt)=> setValue(evt)} type="range" />
+                  <input className="player__controls-audio-range" onChange={(evt)=> onSetValue(evt)} type="range" />
                   <div className="player__controls-audio-toggler" style={{left: `${valueInPercent}%`}}>Toggler</div>
                 </div>
 
@@ -189,7 +189,7 @@ VideoPlayer.propTypes = {
   onPlayButtonClick: PropTypes.func.isRequired,
   onPressArrowButton: PropTypes.func.isRequired,
   onSetPercentFilm: PropTypes.func.isRequired,
-  setValue: PropTypes.func.isRequired,
+  onSetValue: PropTypes.func.isRequired,
   onSoundClick: PropTypes.func.isRequired,
   onWheel: PropTypes.func.isRequired,
   isPlaying: PropTypes.bool.isRequired,

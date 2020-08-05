@@ -39,7 +39,7 @@ const withVideoPlayer = (Component) => {
       this._handlerMouseLeave = this._handlerMouseLeave.bind(this);
       this._handlerMouseClick = this._handlerMouseClick.bind(this);
       this._handlerOnOffSound = this._handlerOnOffSound.bind(this);
-      this._setValue = this._setValue.bind(this);
+      this._handleValueSet = this._handleValueSet.bind(this);
       this._setPercentFilm = this._setPercentFilm.bind(this);
       this._handlerWheel = this._handlerWheel.bind(this);
       this._handlerButtonArrow = this._handlerButtonArrow.bind(this);
@@ -71,7 +71,7 @@ const withVideoPlayer = (Component) => {
       }));
     }
 
-    _setValue(evt) {
+    _handleValueSet(evt) {
       const value = evt.target.value / 100;
       this.setState(() => ({
         value,
@@ -213,7 +213,7 @@ const withVideoPlayer = (Component) => {
         onMouseLeave={this._handlerMouseLeave}
         onClick={this._handlerMouseClick}
         onSoundClick={this._handlerOnOffSound}
-        setValue={this._setValue}
+        onSetValue={this._handleValueSet}
         onSetPercentFilm={this._setPercentFilm}
         onWheel={this._handlerWheel}
         onPressArrowButton={this._handlerButtonArrow }

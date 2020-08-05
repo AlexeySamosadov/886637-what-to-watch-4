@@ -8,15 +8,15 @@ import {AppRoute, AuthorizationStatus} from "../const/const";
 import {getPromoFilm} from "../../reducer/data/selectors";
 import {getAuthorizationStatus} from "../../reducer/user/selectors";
 
-const Main = ({promoFilm, authorizationStatus, updateFavouriteFilms}) => {
+const Main = ({promoFilm, authorizationStatus, onUpdateFavouriteFilms}) => {
   const {name, genre, released, posterImage, backgroundImage, id, isFavorite} = promoFilm;
 
   const changeFavorite = () => {
     if (authorizationStatus === AuthorizationStatus.AUTH) {
       if (isFavorite) {
-        updateFavouriteFilms(id, 0);
+        onUpdateFavouriteFilms(id, 0);
       } else {
-        updateFavouriteFilms(id, 1);
+        onUpdateFavouriteFilms(id, 1);
       }
     } else {
       history.push(AppRoute.SIGN_IN);
@@ -129,7 +129,7 @@ Main.propTypes = {
     posterImage: PropTypes.string,
     backgroundImage: PropTypes.string,
   }),
-  updateFavouriteFilms: PropTypes.func.isRequired,
+  onUpdateFavouriteFilms: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
 };
 
@@ -139,7 +139,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapStateToDispatch = (dispatch) => ({
-  updateFavouriteFilms: (id, status) => {
+  onUpdateFavouriteFilms: (id, status) => {
     dispatch(DataOperation.postFavoriteFilm(id, status));
   },
 });
