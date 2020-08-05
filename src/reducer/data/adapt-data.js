@@ -1,9 +1,5 @@
 import {extend} from "../../components/utils/utils.js";
 
-// export const extend = (a, b) => {
-//   return Object.assign({}, a, b);
-// };
-
 const adaptFilmData = (data) => {
   const newFilm = extend(data, {
     posterImage: data.poster_image,

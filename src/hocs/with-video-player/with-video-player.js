@@ -2,7 +2,6 @@ import React, {createRef, PureComponent} from "react";
 import PropTypes from "prop-types";
 import {playerType} from "../../components/const/const.js";
 
-
 const roundVolume = (value) => {
   const result = parseFloat(value.toFixed(2));
   if (result >= 1) {
@@ -13,7 +12,6 @@ const roundVolume = (value) => {
   }
   return result;
 };
-
 
 const withVideoPlayer = (Component) => {
   class WithVideo extends PureComponent {
