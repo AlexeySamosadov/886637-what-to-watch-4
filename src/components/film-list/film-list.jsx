@@ -35,19 +35,11 @@ const FilmList = ({films}) => {
 };
 
 FilmList.propTypes = {
-  getActiveFilm: PropTypes.func.isRequired,
   films: PropTypes.arrayOf(PropTypes.shape({
     previewImage: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
   })).isRequired,
+  setGenre: PropTypes.func.isRequired,
 };
 
-export {FilmList};
-
-const mapStateToDispatch = (dispatch) => ({
-  getActiveFilm: (film) => {
-    dispatch(ActionCreators.getActiveFilm(film));
-  }
-});
-
-export default connect(null, mapStateToDispatch)(FilmList);
+export default FilmList;

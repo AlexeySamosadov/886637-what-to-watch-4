@@ -6,15 +6,18 @@ import FilmInfoDescription from "../film-info-description/film-info-description"
 import FilmList from "../film-list/film-list";
 import {Link} from "react-router-dom";
 import {AppRoute} from "../const/const";
-import {getFilmsToRender} from "../../reducer/data/selectors";
+import {getFilms} from "../../reducer/data/selectors";
 import {Operation as DataOperation} from "../../reducer/data/data";
 import {AuthorizationStatus} from "../const/const";
 import {getAuthorizationStatus} from "../../reducer/user/selectors";
+import {filterFilms} from "../utils/utils";
 
-const FilmInfo = ({activeFilm, filteredFilms, updateFavouriteFilms, authorizationStatus}) => {
+const FilmInfo = ({films, activeFilm, updateFavouriteFilms, authorizationStatus}) => {
   if (JSON.stringify(activeFilm) === `{}`) {
     history.push(AppRoute.MAIN);
   }
+  const sameFilms = filterFilms(films, activeFilm.genre).slice(0, 4);
+  console.log(sameFilms);
 
   const {name, backgroundImage, genre, released, posterImage, backgroundColor, id, isFavorite} = activeFilm;
   const styleCard = {
@@ -137,7 +140,7 @@ const FilmInfo = ({activeFilm, filteredFilms, updateFavouriteFilms, authorizatio
       <div className="page-content">
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
-          <FilmList films={filteredFilms}/>
+          <FilmList films={sameFilms}/>
         </section>
 
         <footer className="page-footer">
@@ -172,7 +175,7 @@ FilmInfo.propTypes = {
     id: PropTypes.number.isRequired,
     isFavorite: PropTypes.bool.isRequired,
   }).isRequired,
-  filteredFilms: PropTypes.array.isRequired,
+  films: PropTypes.array.isRequired,
   updateFavouriteFilms: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
 };
@@ -180,7 +183,7 @@ FilmInfo.propTypes = {
 export {FilmInfo};
 
 const mapStateToProps = (state) => ({
-  filteredFilms: getFilmsToRender(state),
+  films: getFilms(state),
   authorizationStatus: getAuthorizationStatus(state),
 });
 
