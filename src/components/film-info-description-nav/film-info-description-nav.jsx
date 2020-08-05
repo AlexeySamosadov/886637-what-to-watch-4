@@ -6,27 +6,27 @@ import {ActiveMenu} from "../const/const";
 import PropTypes from "prop-types";
 import {getActiveMenuFilmInfo} from "../../reducer/app-status/selectors";
 
-const FilmInfoDescriptionNav = ({setActiveMenuFilmInfo, activeMenuFilmInfo, activeFilm, loadReviews}) => {
+const FilmInfoDescriptionNav = ({onActiveMenuFilmInfo, activeMenuFilmInfo, activeFilm, onLoadReviews}) => {
   return (
     <nav className="movie-nav movie-card__nav">
       <ul className="movie-nav__list">
         <li className={`movie-nav__item ${activeMenuFilmInfo === ActiveMenu.OVERVIEW && `movie-nav__item--active`}`} >
           <a onClick={(evt)=>{
             evt.preventDefault();
-            setActiveMenuFilmInfo(ActiveMenu.OVERVIEW);
+            onActiveMenuFilmInfo(ActiveMenu.OVERVIEW);
           }} href="#" className="movie-nav__link">Overview</a>
         </li>
         <li className={`movie-nav__item ${activeMenuFilmInfo === ActiveMenu.DETAILS && `movie-nav__item--active`}`}>
           <a onClick={(evt)=>{
             evt.preventDefault();
-            setActiveMenuFilmInfo(ActiveMenu.DETAILS);
+            onActiveMenuFilmInfo(ActiveMenu.DETAILS);
           }} href="#" className="movie-nav__link">Details</a>
         </li>
         <li className={`movie-nav__item ${activeMenuFilmInfo === ActiveMenu.REVIEWS && `movie-nav__item--active`}`}>
           <a onClick={(evt)=>{
             evt.preventDefault();
-            loadReviews(activeFilm.id);
-            setActiveMenuFilmInfo(ActiveMenu.REVIEWS);
+            onLoadReviews(activeFilm.id);
+            onActiveMenuFilmInfo(ActiveMenu.REVIEWS);
           }} href="#" className="movie-nav__link">Reviews</a>
         </li>
       </ul>
@@ -35,9 +35,9 @@ const FilmInfoDescriptionNav = ({setActiveMenuFilmInfo, activeMenuFilmInfo, acti
 };
 
 FilmInfoDescriptionNav.propTypes = {
-  setActiveMenuFilmInfo: PropTypes.func.isRequired,
+  onActiveMenuFilmInfo: PropTypes.func.isRequired,
   activeMenuFilmInfo: PropTypes.string.isRequired,
-  loadReviews: PropTypes.func.isRequired,
+  onLoadReviews: PropTypes.func.isRequired,
   activeFilm: PropTypes.shape({
     name: PropTypes.string.isRequired,
     backgroundImage: PropTypes.string.isRequired,
@@ -51,10 +51,10 @@ FilmInfoDescriptionNav.propTypes = {
 };
 
 const mapStateToDispatch = (dispatch) => ({
-  setActiveMenuFilmInfo: (activeMenu) => {
+  onActiveMenuFilmInfo: (activeMenu) => {
     dispatch(ActionCreators.getActiveMenuFilmInfo(activeMenu));
   },
-  loadReviews: (id) => {
+  onLoadReviews: (id) => {
     dispatch(Operation.loadReviews(id));
   },
 });

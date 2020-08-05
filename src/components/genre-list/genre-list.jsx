@@ -7,7 +7,7 @@ import {genreType} from "../const/const";
 import {getFilms} from "../../reducer/data/selectors";
 import {getActiveGenre} from "../../reducer/app-status/selectors";
 
-const GenreList = ({films, activeGenre, setGenre}) => {
+const GenreList = ({films, activeGenre, onSetGenre}) => {
   const setGenres = new Set();
   setGenres.add(genreType.ALL);
   films.forEach((it)=> setGenres.add(it.genre));
@@ -18,7 +18,7 @@ const GenreList = ({films, activeGenre, setGenre}) => {
       {genreList.map((it, i) => (
         <li key={i} onClick={(evt)=>{
           evt.preventDefault();
-          setGenre(it);
+          onSetGenre(it);
         }} className={`catalog__genres-item ${activeGenre === it && `catalog__genres-item--active`}`}>
           <a href="#" className="catalog__genres-link">{changeFirstLetterUppercase(it)}</a>
         </li>
@@ -39,7 +39,7 @@ GenreList.propTypes = {
     isFavorite: PropTypes.bool.isRequired,
   })).isRequired,
   activeGenre: PropTypes.string.isRequired,
-  setGenre: PropTypes.func.isRequired,
+  onSetGenre: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -48,7 +48,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapStateToDispatch = (dispatch) => ({
-  setGenre: (filterType) => {
+  onSetGenre: (filterType) => {
     dispatch(ActionCreators.setActiveGenre(filterType));
   }
 });

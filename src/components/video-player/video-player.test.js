@@ -34,8 +34,8 @@ it(`Correctly render component Video Player`, () =>{
         valueInPercent={50}
         progressInSeconds={300}
         onPlayButtonClick={()=>{}}
-        handlerButtonArrow={()=>{}}
-        setPercentFilm={()=>{}}
+        onPressArrowButton={()=>{}}
+        onSetPercentFilm={()=>{}}
         setValue={()=>{}}
         onSoundClick={()=>{}}
         onWheel={()=>{}}

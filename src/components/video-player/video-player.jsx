@@ -42,7 +42,7 @@ class VideoPlayer extends PureComponent {
   }
 
   _renderPlayer() {
-    const {children, setPercentFilm, onWheel, id, valueInPercent, progressInPercent, progressInSeconds, onMouseEnter, onMouseLeave, onClick,
+    const {children, onSetPercentFilm, onWheel, id, valueInPercent, progressInPercent, progressInSeconds, onMouseEnter, onMouseLeave, onClick,
       onPlayButtonClick, isPlaying, isIndicatorShow, setValue, onSoundClick, isSoundOff, isFullScreen, type} = this.props;
     switch (type) {
       case playerType.TRAILER:
@@ -71,7 +71,7 @@ class VideoPlayer extends PureComponent {
               <div className="player__controls-row">
                 <div className="player__time">
                   {/* <progress className="player__progress" value={`${progressInPercent}`} max="100"/>*/}
-                  <input onChange={(evt)=> setPercentFilm(evt)} type="range" className="player__progress" step="1" max="100"/>
+                  <input onChange={(evt)=> onSetPercentFilm(evt)} type="range" className="player__progress" step="1" max="100"/>
                   <div className="player__toggler" style={{left: `${progressInPercent}%`}}>Toggler</div>
                 </div>
                 <div className="player__time-value">{progressInSeconds ? convertVideoTime(progressInSeconds) : `Время`}</div>
@@ -139,11 +139,11 @@ class VideoPlayer extends PureComponent {
     }
     if (evt.code === keyCode.ARROW_RIGHT) {
       const percent = arrowTimingPercent.TEN;
-      this.handlerButtonArrow(percent);
+      this.onPressArrowButton(percent);
     }
     if (evt.code === keyCode.ARROW_LEFT) {
       const percent = arrowTimingPercent.MINUS_TEN;
-      this.handlerButtonArrow(percent);
+      this.onPressArrowButton(percent);
     }
     if (evt.code === keyCode.SPACE) {
       this.onPlayButtonClick(evt);
@@ -154,7 +154,7 @@ class VideoPlayer extends PureComponent {
   componentDidMount() {
     if (this.props.type === playerType.MOVIE) {
       this.onPlayButtonClick = this.props.onPlayButtonClick;
-      this.handlerButtonArrow = this.props.handlerButtonArrow;
+      this.onPressArrowButton = this.props.onPressArrowButton;
 
       document.addEventListener(typeEvent.FULL_SCREEN_CHANGE, this._handlerFullScreenChange);
       document.addEventListener(typeEvent.KEYDOWN, this._onPressButton);
@@ -187,8 +187,8 @@ VideoPlayer.propTypes = {
   valueInPercent: PropTypes.number.isRequired,
   progressInSeconds: PropTypes.number.isRequired,
   onPlayButtonClick: PropTypes.func.isRequired,
-  handlerButtonArrow: PropTypes.func.isRequired,
-  setPercentFilm: PropTypes.func.isRequired,
+  onPressArrowButton: PropTypes.func.isRequired,
+  onSetPercentFilm: PropTypes.func.isRequired,
   setValue: PropTypes.func.isRequired,
   onSoundClick: PropTypes.func.isRequired,
   onWheel: PropTypes.func.isRequired,

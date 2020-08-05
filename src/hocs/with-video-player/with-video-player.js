@@ -214,9 +214,9 @@ const withVideoPlayer = (Component) => {
         onClick={this._handlerMouseClick}
         onSoundClick={this._handlerOnOffSound}
         setValue={this._setValue}
-        setPercentFilm={this._setPercentFilm}
+        onSetPercentFilm={this._setPercentFilm}
         onWheel={this._handlerWheel}
-        handlerButtonArrow={this._handlerButtonArrow }
+        onPressArrowButton={this._handlerButtonArrow }
         isSoundOff={isSoundOff}
         isPlaying={isPlaying}
         isFullScreen={isFullScreen}
