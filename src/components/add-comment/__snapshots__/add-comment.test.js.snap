@@ -200,6 +200,7 @@ exports[`Correctly render component Add Comment 1`] = `
           maxLength={400}
           minLength={50}
           name="review-text"
+          onChange={[Function]}
           placeholder="Review text"
         />
         <div
@@ -207,6 +208,7 @@ exports[`Correctly render component Add Comment 1`] = `
         >
           <button
             className="add-review__btn"
+            disabled={true}
             type="submit"
           >
             Post

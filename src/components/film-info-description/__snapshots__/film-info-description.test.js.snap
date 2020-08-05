@@ -59,7 +59,7 @@ exports[`Correctly render component FilmInfoDescription 1`] = `
       <span
         className="movie-rating__level"
       >
-        Bad
+        Normal
       </span>
       <span
         className="movie-rating__count"

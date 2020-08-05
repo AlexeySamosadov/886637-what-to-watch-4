@@ -61,6 +61,7 @@ Array [
         >
           <div
             className="user-block__avatar"
+            onClick={[Function]}
           >
             <img
               alt="User avatar"
@@ -220,7 +221,7 @@ Array [
               <span
                 className="movie-rating__level"
               >
-                Bad
+                Normal
               </span>
               <span
                 className="movie-rating__count"

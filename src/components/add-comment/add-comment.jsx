@@ -11,6 +11,9 @@ class AddComment extends PureComponent {
 
     this.ratingRef = createRef();
     this.commentRef = createRef();
+    this.state = {
+      isActiveButton: false,
+    };
 
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -26,8 +29,21 @@ class AddComment extends PureComponent {
     history.push(`${AppRoute.FILM_INFO}/${id}`);
   }
 
+  handlerChange(e) {
+    if (e.target.value.length >= LENGTH.MIN && e.target.value.length < LENGTH.MAX) {
+      this.setState({
+        isActiveButton: true,
+      });
+    } else if (e.target.value.length < LENGTH.MIN) {
+      this.setState({
+        isActiveButton: false,
+      });
+    }
+  }
+
   render() {
     const {name, backgroundImage, posterImage, backgroundColor, id} = this.props.activeFilm;
+    const isActiveButton = this.state.isActiveButton;
     const styleCard = {
       backgroundColor,
     };
@@ -106,7 +122,7 @@ class AddComment extends PureComponent {
             </div>
 
             <div className="add-review__text">
-              <textarea className="add-review__textarea"
+              <textarea onChange={(e) => this.handlerChange(e)} className="add-review__textarea"
                 ref={this.commentRef}
                 name="review-text"
                 id="review-text"
@@ -114,9 +130,12 @@ class AddComment extends PureComponent {
                 maxLength={LENGTH.MAX}
                 placeholder="Review text"/>
               <div className="add-review__submit">
-                <button className="add-review__btn" type="submit">Post</button>
+                {isActiveButton ?
+                  <button className="add-review__btn" type="submit">Post</button>
+                  :
+                  <button className="add-review__btn" type="submit" disabled>Post</button>
+                }
               </div>
-
             </div>
           </form>
         </div>
