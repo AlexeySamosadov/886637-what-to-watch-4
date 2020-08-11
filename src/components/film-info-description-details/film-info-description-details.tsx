@@ -1,8 +1,12 @@
-import React from "react";
-import PropTypes from "prop-types";
+import * as React from "react";
 import {changeFirstLetterUppercase, formatMovieDuration} from "../utils/utils";
+import {Film} from "../type";
 
-const FilmInfoDescriptionDetails = ({activeFilm}) => {
+interface Props {
+  activeFilm: Film
+}
+
+const FilmInfoDescriptionDetails:React.FC<Props> = ({activeFilm}: Props) => {
   const {director, starring, runTime, genre, released} = activeFilm;
   const formattedGenre = changeFirstLetterUppercase(genre);
   const formattedRunTime = formatMovieDuration(runTime);
@@ -40,14 +44,14 @@ const FilmInfoDescriptionDetails = ({activeFilm}) => {
 };
 
 
-FilmInfoDescriptionDetails.propTypes = {
-  activeFilm: PropTypes.shape({
-    starring: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    director: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    runTime: PropTypes.number.isRequired,
-    released: PropTypes.number.isRequired
-  }).isRequired,
-};
+// FilmInfoDescriptionDetails.propTypes = {
+//   activeFilm: PropTypes.shape({
+//     starring: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+//     director: PropTypes.string.isRequired,
+//     genre: PropTypes.string.isRequired,
+//     runTime: PropTypes.number.isRequired,
+//     released: PropTypes.number.isRequired
+//   }).isRequired,
+// };
 
 export default FilmInfoDescriptionDetails;

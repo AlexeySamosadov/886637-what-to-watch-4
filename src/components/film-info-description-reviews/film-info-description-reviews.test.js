@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import renderer from "react-test-renderer";
 import FilmInfoDescriptionReviews from "./film-info-description-reviews";
 import {Provider} from "react-redux";

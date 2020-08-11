@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import FilmInfoDescriptionNav from "../film-info-description-nav/film-info-description-nav";
 import FilmInfoDescriptionOverview from "../film-info-description-overview/film-info-description-overview";
 import {connect} from "react-redux";

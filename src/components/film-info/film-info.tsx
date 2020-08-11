@@ -1,6 +1,5 @@
-import React from "react";
+import * as React from "react";
 import {connect} from "react-redux";
-import PropTypes from "prop-types";
 import history from "../../history/history";
 import FilmInfoDescription from "../film-info-description/film-info-description";
 import FilmList from "../film-list/film-list";
@@ -11,8 +10,17 @@ import {AuthorizationStatus} from "../const/const";
 import {getAuthorizationStatus} from "../../reducer/user/selectors";
 import {filterFilms} from "../utils/utils";
 import Footer from "../footer/footer";
+import {Film} from "../type";
 
-const FilmInfo = ({films, activeFilm, onUpdateFavouriteFilms, authorizationStatus}) => {
+interface Props {
+    films: Film[] ,
+    activeFilm: Film,
+    onUpdateFavouriteFilms:(id:number,ar:number)=>void,
+    authorizationStatus: string
+}
+
+
+const FilmInfo: React.FC<Props>= ({films, activeFilm, onUpdateFavouriteFilms, authorizationStatus}:Props) => {
   if (JSON.stringify(activeFilm) === `{}`) {
     history.push(AppRoute.MAIN);
   }
@@ -150,30 +158,7 @@ const FilmInfo = ({films, activeFilm, onUpdateFavouriteFilms, authorizationStatu
   );
 };
 
-FilmInfo.propTypes = {
-  activeFilm: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    backgroundImage: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    released: PropTypes.number.isRequired,
-    posterImage: PropTypes.string.isRequired,
-    backgroundColor: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
-    isFavorite: PropTypes.bool.isRequired,
-  }).isRequired,
-  films: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    backgroundImage: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    released: PropTypes.number.isRequired,
-    posterImage: PropTypes.string.isRequired,
-    backgroundColor: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
-    isFavorite: PropTypes.bool.isRequired,
-  })).isRequired,
-  onUpdateFavouriteFilms: PropTypes.func.isRequired,
-  authorizationStatus: PropTypes.string.isRequired,
-};
+
 
 const mapStateToProps = (state) => ({
   films: getFilms(state),

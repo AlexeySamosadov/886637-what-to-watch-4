@@ -1,4 +1,4 @@
-import {extend} from "../../components/utils/utils.js";
+import {extend} from "../../components/utils/utils";
 import {adaptFilmData, adaptFilmsData} from "./adapt-data";
 import StoreLocal from "../../components/localStorage/localStorage";
 

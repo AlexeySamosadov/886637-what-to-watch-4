@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import history from "../../history/history";
 import {AppRoute, PlayerType} from "../const/const";
 import PropTypes from "prop-types";

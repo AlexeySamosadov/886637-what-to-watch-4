@@ -1,5 +1,5 @@
-import {extend} from "../../components/utils/utils.js";
-import {ActiveMenu, GenreType} from "../../components/const/const.js";
+import {extend} from "../../components/utils/utils";
+import {ActiveMenu, GenreType} from "../../components/const/const";
 
 const initializeState = {
   activeMenuFilmInfo: ActiveMenu.OVERVIEW,

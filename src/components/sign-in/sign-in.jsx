@@ -1,4 +1,4 @@
-import React, {PureComponent, createRef} from "react";
+import * as React from "react";
 import history from "../../history/history";
 import {AppRoute, AuthorizationStatus} from "../const/const";
 import {connect} from "react-redux";
@@ -6,11 +6,11 @@ import {Operation} from "../../reducer/user/user";
 import PropTypes from "prop-types";
 import {getAuthorizationStatus} from "../../reducer/user/selectors";
 
-class SignIn extends PureComponent {
+class SignIn extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.loginRef = createRef();
-    this.passwordRef = createRef();
+    this.loginRef = React.createRef();
+    this.passwordRef = React.createRef();
     this.handleSubmit = this.handleSubmit.bind(this);
 
     if (props.authorizationStatus === AuthorizationStatus.AUTH) {

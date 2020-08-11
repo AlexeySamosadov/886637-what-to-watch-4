@@ -1,7 +1,7 @@
-import React from "react";
+import * as React from "react";
 import Main from "../main/main";
 import {Router, Switch, Route, Redirect} from "react-router-dom";
-import PropTypes from "prop-types";
+
 import {connect} from "react-redux";
 import history from "../../history/history";
 import FilmInfo from "../film-info/film-info";
@@ -14,9 +14,15 @@ import {getAuthorizationStatus} from "../../reducer/user/selectors";
 import PrivateRoute from "../private-route/private-route";
 import {getFilms} from "../../reducer/data/selectors";
 import {getRouteActiveFilm} from "../utils/utils";
+import {Film} from "../type";
+
+interface Props {
+  authorizationStatus: string,
+  films: Film[]
+}
 
 
-const App = ({authorizationStatus, films}) => {
+const App:React.FC<Props> = ({authorizationStatus, films}: Props) => {
   return (
     <Router history={history}>
       <Switch>
@@ -65,19 +71,19 @@ const App = ({authorizationStatus, films}) => {
   );
 };
 
-App.propTypes = {
-  authorizationStatus: PropTypes.string.isRequired,
-  films: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    backgroundImage: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    released: PropTypes.number.isRequired,
-    posterImage: PropTypes.string.isRequired,
-    backgroundColor: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
-    isFavorite: PropTypes.bool.isRequired,
-  })).isRequired,
-};
+// App.propTypes = {
+//   authorizationStatus: PropTypes.string.isRequired,
+//   films: PropTypes.arrayOf(PropTypes.shape({
+//     name: PropTypes.string.isRequired,
+//     backgroundImage: PropTypes.string.isRequired,
+//     genre: PropTypes.string.isRequired,
+//     released: PropTypes.number.isRequired,
+//     posterImage: PropTypes.string.isRequired,
+//     backgroundColor: PropTypes.string.isRequired,
+//     id: PropTypes.number.isRequired,
+//     isFavorite: PropTypes.bool.isRequired,
+//   })).isRequired,
+// };
 
 const mapStateToProps = (state) => ({
   authorizationStatus: getAuthorizationStatus(state),

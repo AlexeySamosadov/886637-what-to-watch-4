@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import {connect} from "react-redux";
 import PageContent from "../page-content/page-content";
 import PropTypes from "prop-types";

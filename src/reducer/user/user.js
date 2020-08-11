@@ -1,5 +1,5 @@
-import {extend} from "../../components/utils/utils.js";
-import {AuthorizationStatus} from "../../components/const/const.js";
+import {extend} from "../../components/utils/utils";
+import {AuthorizationStatus} from "../../components/const/const";
 import StoreLocal from "../../components/localStorage/localStorage";
 
 export const authorizationLocalStorage = new StoreLocal(`AuthorizationStatus`);

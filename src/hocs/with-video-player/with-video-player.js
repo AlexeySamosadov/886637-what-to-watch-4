@@ -1,6 +1,6 @@
 import React, {createRef, PureComponent} from "react";
 import PropTypes from "prop-types";
-import {PlayerType} from "../../components/const/const.js";
+import {PlayerType} from "../../components/const/const";
 
 const roundVolume = (value) => {
   const result = parseFloat(value.toFixed(2));

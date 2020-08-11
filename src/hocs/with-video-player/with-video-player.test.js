@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import renderer from "react-test-renderer";
 import PropTypes from "prop-types";
 import withVideoPlayer from "./with-video-player";

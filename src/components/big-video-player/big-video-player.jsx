@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import withVideoPlayer from "../../hocs/with-video-player/with-video-player";
 import {PlayerClass, PlayerType} from "../const/const";
 import PropTypes from "prop-types";

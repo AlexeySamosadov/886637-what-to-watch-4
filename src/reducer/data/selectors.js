@@ -1,6 +1,6 @@
-import NameSpace from "../name-space.js";
+import NameSpace from "../name-space";
 import {createSelector} from "reselect";
-import {getActiveGenre, getShowingFilmsNumber} from "../app-status/selectors.js";
+import {getActiveGenre, getShowingFilmsNumber} from "../app-status/selectors";
 import {filterFilms} from "../../components/utils/utils";
 
 export const getFilms = (state)=> {

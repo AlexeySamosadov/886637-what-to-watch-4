@@ -1,4 +1,4 @@
-import {extend} from "../../components/utils/utils.js";
+import {extend} from "../../components/utils/utils";
 
 const adaptFilmData = (data) => {
   const newFilm = extend(data, {

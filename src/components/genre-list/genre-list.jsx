@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import {ActionCreators} from "../../reducer/app-status/app-status";

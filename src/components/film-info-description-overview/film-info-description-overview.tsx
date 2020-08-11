@@ -1,11 +1,18 @@
-import React, {Fragment} from "react";
-import {getRatingLevel} from "../utils/utils";
-import PropTypes from "prop-types";
+import * as React from "react";
 
-const FilmInfoDescriptionOverview = ({activeFilm}) => {
+import {getRatingLevel} from "../utils/utils";
+
+import {Film} from "../type";
+
+
+interface Props {
+  activeFilm: Film
+}
+
+const FilmInfoDescriptionOverview: React.FC<Props> = ({activeFilm} :Props) => {
   const {rating, description, director, starring, scoresCount} = activeFilm;
   return (
-    <Fragment>
+    <React.Fragment>
       <div className="movie-rating">
         <div className="movie-rating__score">{rating}</div>
         <p className="movie-rating__meta">
@@ -20,18 +27,18 @@ const FilmInfoDescriptionOverview = ({activeFilm}) => {
 
         <p className="movie-card__starring"><strong>Starring: {starring.join(`, `)}.</strong></p>
       </div>
-    </Fragment>
+    </React.Fragment>
   );
 };
 
-FilmInfoDescriptionOverview.propTypes = {
-  activeFilm: PropTypes.shape({
-    rating: PropTypes.number.isRequired,
-    description: PropTypes.string.isRequired,
-    director: PropTypes.string.isRequired,
-    starring: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    scoresCount: PropTypes.number.isRequired,
-  })
-};
+// FilmInfoDescriptionOverview.propTypes = {
+//   activeFilm: PropTypes.shape({
+//     rating: PropTypes.number.isRequired,
+//     description: PropTypes.string.isRequired,
+//     director: PropTypes.string.isRequired,
+//     starring: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+//     scoresCount: PropTypes.number.isRequired,
+//   })
+// };
 
 export default FilmInfoDescriptionOverview;

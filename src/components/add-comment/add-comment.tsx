@@ -1,16 +1,29 @@
-import React, {PureComponent, createRef} from "react";
-import PropTypes from "prop-types";
+import * as React from "react";
 import {connect} from "react-redux";
 import history from "../../history/history";
 import {AppRoute, Length} from "../const/const";
 import {Operation} from "../../reducer/data/data";
+import {Film} from "../type";
 
-class AddComment extends PureComponent {
+
+
+
+interface State {
+  isActiveButton:boolean
+}
+interface Props {
+  postReview: (id:number,{rating,comment}:{rating:string,comment:string}) => void ,
+  activeFilm: Film
+}
+class AddComment extends React.PureComponent<Props, State> {
+  private ratingRef: React.RefObject<any>;
+  private commentRef: React.RefObject<HTMLTextAreaElement>;
+
   constructor(props) {
     super(props);
 
-    this.ratingRef = createRef();
-    this.commentRef = createRef();
+    this.ratingRef = React.createRef();
+    this.commentRef = React.createRef();
     this.state = {
       isActiveButton: false,
     };
@@ -148,20 +161,20 @@ class AddComment extends PureComponent {
     );
   }
 }
-
-AddComment.propTypes = {
-  activeFilm: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    backgroundImage: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    released: PropTypes.number.isRequired,
-    posterImage: PropTypes.string.isRequired,
-    backgroundColor: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
-    isFavorite: PropTypes.bool.isRequired,
-  }).isRequired,
-  postReview: PropTypes.func.isRequired,
-};
+//
+// AddComment.propTypes = {
+//   activeFilm: PropTypes.shape({
+//     name: PropTypes.string.isRequired,
+//     backgroundImage: PropTypes.string.isRequired,
+//     genre: PropTypes.string.isRequired,
+//     released: PropTypes.number.isRequired,
+//     posterImage: PropTypes.string.isRequired,
+//     backgroundColor: PropTypes.string.isRequired,
+//     id: PropTypes.number.isRequired,
+//     isFavorite: PropTypes.bool.isRequired,
+//   }).isRequired,
+//   postReview: PropTypes.func.isRequired,
+// };
 
 const mapStateToDispatch = (dispatch) => ({
   postReview: (id, review) => {

@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import Footer from "../footer/footer";
 import GenreList from "../genre-list/genre-list";
 import FilmList from "../film-list/film-list";
