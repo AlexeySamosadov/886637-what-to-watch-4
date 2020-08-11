@@ -1,8 +1,12 @@
 import * as React from "react";
 import {connect} from "react-redux";
-import PropTypes from "prop-types";
 import {formatDateForReview} from "../utils/utils";
 import {getReviews} from "../../reducer/data/selectors";
+import {Review} from "../type";
+
+interface Props {
+  reviews: Review[]
+}
 
 const renderComment = (review) => {
   const {id, comment, user, rating, date} = review;
@@ -21,7 +25,7 @@ const renderComment = (review) => {
   );
 };
 
-const FilmInfoDescriptionReviews = ({reviews}) => {
+const FilmInfoDescriptionReviews:React.FC<Props>  = ({reviews}: Props) => {
   return (
     <div className="movie-card__reviews movie-card__row">
       <div className="movie-card__reviews-col">
@@ -34,18 +38,18 @@ const FilmInfoDescriptionReviews = ({reviews}) => {
   );
 };
 
-FilmInfoDescriptionReviews.propTypes = {
-  reviews: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    comment: PropTypes.string.isRequired,
-    user: PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-    }).isRequired,
-    rating: PropTypes.number.isRequired,
-    date: PropTypes.string.isRequired,
-  }).isRequired).isRequired,
-};
+// FilmInfoDescriptionReviews.propTypes = {
+//   reviews: PropTypes.arrayOf(PropTypes.shape({
+//     id: PropTypes.number.isRequired,
+//     comment: PropTypes.string.isRequired,
+//     user: PropTypes.shape({
+//       id: PropTypes.number.isRequired,
+//       name: PropTypes.string.isRequired,
+//     }).isRequired,
+//     rating: PropTypes.number.isRequired,
+//     date: PropTypes.string.isRequired,
+//   }).isRequired).isRequired,
+// };
 
 const mapStateToProps = (state) => ({
   reviews: getReviews(state),

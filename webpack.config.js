@@ -15,7 +15,7 @@ module.exports = {
     host: `0.0.0.0`,
     open: true,
     inline: true,
-    port: 1338,
+    port: 1337,
     historyApiFallback: true,
   },
   module: {
@@ -37,5 +37,6 @@ module.exports = {
       }
     ]
   },
+
   devtool: `source-map`
 };
