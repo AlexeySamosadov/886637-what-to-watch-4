@@ -13,6 +13,8 @@ export interface Film {
   rating: number,
   description: string,
   scoresCount: number,
+  previewImage: string,
+  previewVideoLink: string,
 }
 
 interface User {

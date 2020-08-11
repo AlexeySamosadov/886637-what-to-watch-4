@@ -3,10 +3,21 @@ import history from "../../history/history";
 import {AppRoute, AuthorizationStatus} from "../const/const";
 import {connect} from "react-redux";
 import {Operation} from "../../reducer/user/user";
-import PropTypes from "prop-types";
 import {getAuthorizationStatus} from "../../reducer/user/selectors";
 
-class SignIn extends React.PureComponent {
+interface Ref {
+  login: string, password: string
+}
+
+interface Props {
+  onSignIn: (Ref) => void,
+}
+
+
+class SignIn extends React.PureComponent<Props> {
+  private loginRef: React.RefObject<HTMLInputElement>;
+  private passwordRef: React.RefObject<HTMLInputElement>;
+
   constructor(props) {
     super(props);
     this.loginRef = React.createRef();
@@ -90,10 +101,10 @@ class SignIn extends React.PureComponent {
   }
 }
 
-SignIn.propTypes = {
-  onSignIn: PropTypes.func.isRequired,
-  authorizationStatus: PropTypes.string.isRequired,
-};
+// SignIn.propTypes = {
+//   onSignIn: PropTypes.func.isRequired,
+//   authorizationStatus: PropTypes.string.isRequired,
+// };
 
 const mapStateToProps = (state) => ({
   authorizationStatus: getAuthorizationStatus(state)

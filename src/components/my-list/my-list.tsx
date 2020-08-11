@@ -1,12 +1,16 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import history from "../../history/history";
 import {AppRoute} from "../const/const";
 import {getFavouriteFilmList} from "../../reducer/data/selectors";
 import FilmList from "../film-list/film-list";
+import {Film} from "../type";
 
-const MyList = ({favouriteFilmList}) => {
+interface Props {
+  favouriteFilmList: Film[],
+}
+
+const MyList:React.FC<Props> = ({favouriteFilmList}: Props) => {
   return (
     <div className="user-page">
       <header className="page-header user-page__head">
@@ -58,18 +62,18 @@ const MyList = ({favouriteFilmList}) => {
   );
 };
 
-MyList.propTypes = {
-  favouriteFilmList: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    backgroundImage: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    released: PropTypes.number.isRequired,
-    posterImage: PropTypes.string.isRequired,
-    backgroundColor: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
-    isFavorite: PropTypes.bool.isRequired,
-  })).isRequired,
-};
+// MyList.propTypes = {
+//   favouriteFilmList: PropTypes.arrayOf(PropTypes.shape({
+//     name: PropTypes.string.isRequired,
+//     backgroundImage: PropTypes.string.isRequired,
+//     genre: PropTypes.string.isRequired,
+//     released: PropTypes.number.isRequired,
+//     posterImage: PropTypes.string.isRequired,
+//     backgroundColor: PropTypes.string.isRequired,
+//     id: PropTypes.number.isRequired,
+//     isFavorite: PropTypes.bool.isRequired,
+//   })).isRequired,
+// };
 
 const MapStateToProps = (state) => ({
   favouriteFilmList: getFavouriteFilmList(state),

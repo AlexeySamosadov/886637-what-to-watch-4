@@ -1,14 +1,20 @@
 import * as React from "react";
 import {connect} from "react-redux";
 import PageContent from "../page-content/page-content";
-import PropTypes from "prop-types";
 import {Operation as DataOperation} from "../../reducer/data/data";
 import history from "../../history/history";
 import {AppRoute, AuthorizationStatus} from "../const/const";
 import {getPromoFilm} from "../../reducer/data/selectors";
 import {getAuthorizationStatus} from "../../reducer/user/selectors";
+import {Film} from "../type";
 
-const Main = ({promoFilm, authorizationStatus, onUpdateFavouriteFilms}) => {
+interface Props {
+  promoFilm: Film,
+  authorizationStatus: string,
+  onUpdateFavouriteFilms: (id:number, ar:number) => void,
+}
+
+const Main:React.FC<Props> = ({promoFilm, authorizationStatus, onUpdateFavouriteFilms}: Props) => {
   const {name, genre, released, posterImage, backgroundImage, id, isFavorite} = promoFilm;
 
   const changeFavorite = () => {
@@ -119,19 +125,19 @@ const Main = ({promoFilm, authorizationStatus, onUpdateFavouriteFilms}) => {
   );
 };
 
-Main.propTypes = {
-  promoFilm: PropTypes.shape({
-    id: PropTypes.number,
-    name: PropTypes.string,
-    genre: PropTypes.string,
-    released: PropTypes.number,
-    isFavorite: PropTypes.bool,
-    posterImage: PropTypes.string,
-    backgroundImage: PropTypes.string,
-  }),
-  onUpdateFavouriteFilms: PropTypes.func.isRequired,
-  authorizationStatus: PropTypes.string.isRequired,
-};
+// Main.propTypes = {
+//   promoFilm: PropTypes.shape({
+//     id: PropTypes.number,
+//     name: PropTypes.string,
+//     genre: PropTypes.string,
+//     released: PropTypes.number,
+//     isFavorite: PropTypes.bool,
+//     posterImage: PropTypes.string,
+//     backgroundImage: PropTypes.string,
+//   }),
+//   onUpdateFavouriteFilms: PropTypes.func.isRequired,
+//   authorizationStatus: PropTypes.string.isRequired,
+// };
 
 const mapStateToProps = (state) => ({
   promoFilm: getPromoFilm(state),

@@ -1,13 +1,19 @@
 import * as React from "react";
 import {connect} from "react-redux";
-import PropTypes from "prop-types";
 import {ActionCreators} from "../../reducer/app-status/app-status";
 import {changeFirstLetterUppercase} from "../utils/utils";
 import {GenreType} from "../const/const";
 import {getFilms} from "../../reducer/data/selectors";
 import {getActiveGenre} from "../../reducer/app-status/selectors";
+import {Film} from "../type";
 
-const GenreList = ({films, activeGenre, onSetGenre}) => {
+interface Props {
+  films: Film[],
+  activeGenre: string,
+  onSetGenre: (string) => void,
+}
+
+const GenreList: React.FC<Props> = ({films, activeGenre, onSetGenre}: Props) => {
   const setGenres = new Set();
   setGenres.add(GenreType.ALL);
   films.forEach((it)=> setGenres.add(it.genre));
@@ -27,20 +33,20 @@ const GenreList = ({films, activeGenre, onSetGenre}) => {
   );
 };
 
-GenreList.propTypes = {
-  films: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    backgroundImage: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    released: PropTypes.number.isRequired,
-    posterImage: PropTypes.string.isRequired,
-    backgroundColor: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
-    isFavorite: PropTypes.bool.isRequired,
-  })).isRequired,
-  activeGenre: PropTypes.string.isRequired,
-  onSetGenre: PropTypes.func.isRequired,
-};
+// GenreList.propTypes = {
+//   films: PropTypes.arrayOf(PropTypes.shape({
+//     name: PropTypes.string.isRequired,
+//     backgroundImage: PropTypes.string.isRequired,
+//     genre: PropTypes.string.isRequired,
+//     released: PropTypes.number.isRequired,
+//     posterImage: PropTypes.string.isRequired,
+//     backgroundColor: PropTypes.string.isRequired,
+//     id: PropTypes.number.isRequired,
+//     isFavorite: PropTypes.bool.isRequired,
+//   })).isRequired,
+//   activeGenre: PropTypes.string.isRequired,
+//   onSetGenre: PropTypes.func.isRequired,
+// };
 
 const mapStateToProps = (state) => ({
   films: getFilms(state),

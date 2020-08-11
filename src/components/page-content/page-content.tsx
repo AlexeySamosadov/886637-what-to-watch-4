@@ -3,12 +3,17 @@ import Footer from "../footer/footer";
 import GenreList from "../genre-list/genre-list";
 import FilmList from "../film-list/film-list";
 import ShowMoreButton from "../show-more-button/show-more-button";
-import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {getFilmsToRender} from "../../reducer/data/selectors";
 import {getShowingFilmsNumber} from "../../reducer/app-status/selectors";
+import {Film} from "../type";
 
-const PageContent = ({filmsToRender, showingFilmsNumber}) => {
+interface Props {
+  filmsToRender: Film[],
+  showingFilmsNumber: number,
+}
+
+const PageContent:React.FC<Props> = ({filmsToRender, showingFilmsNumber}: Props) => {
   let isRenderButton = true;
   if (filmsToRender.length < showingFilmsNumber) {
     isRenderButton = false;
@@ -28,19 +33,19 @@ const PageContent = ({filmsToRender, showingFilmsNumber}) => {
   );
 };
 
-PageContent.propTypes = {
-  filmsToRender: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    backgroundImage: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    released: PropTypes.number.isRequired,
-    posterImage: PropTypes.string.isRequired,
-    backgroundColor: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
-    isFavorite: PropTypes.bool.isRequired,
-  })).isRequired,
-  showingFilmsNumber: PropTypes.number.isRequired,
-};
+// PageContent.propTypes = {
+//   filmsToRender: PropTypes.arrayOf(PropTypes.shape({
+//     name: PropTypes.string.isRequired,
+//     backgroundImage: PropTypes.string.isRequired,
+//     genre: PropTypes.string.isRequired,
+//     released: PropTypes.number.isRequired,
+//     posterImage: PropTypes.string.isRequired,
+//     backgroundColor: PropTypes.string.isRequired,
+//     id: PropTypes.number.isRequired,
+//     isFavorite: PropTypes.bool.isRequired,
+//   })).isRequired,
+//   showingFilmsNumber: PropTypes.number.isRequired,
+// };
 
 const mapStateToProps = (state) => ({
   showingFilmsNumber: getShowingFilmsNumber(state),
