@@ -5,8 +5,13 @@ import {connect} from "react-redux";
 import {ActiveMenu} from "../const/const";
 import FilmInfoDescriptionReviews from "../film-info-description-reviews/film-info-description-reviews";
 import FilmInfoDescriptionDetails from "../film-info-description-details/film-info-description-details";
-import PropTypes from "prop-types";
 import {getActiveMenuFilmInfo} from "../../reducer/app-status/selectors";
+import {Film} from "../type";
+
+interface Props {
+  activeFilm: Film,
+  activeMenuFilmInfo: string
+}
 
 const renderAdditionalInfo = (activeFilm, activeMenu) => {
   switch (activeMenu) {
@@ -26,7 +31,7 @@ const renderAdditionalInfo = (activeFilm, activeMenu) => {
 };
 
 
-const FilmInfoDescription = ({activeFilm, activeMenuFilmInfo}) => {
+const FilmInfoDescription: React.FC<Props> = ({activeFilm, activeMenuFilmInfo}: Props) => {
   return (
     <div className="movie-card__desc">
       <FilmInfoDescriptionNav activeFilm={activeFilm}/>
@@ -35,19 +40,19 @@ const FilmInfoDescription = ({activeFilm, activeMenuFilmInfo}) => {
   );
 };
 
-FilmInfoDescription.propTypes = {
-  activeFilm: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    backgroundImage: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    released: PropTypes.number.isRequired,
-    posterImage: PropTypes.string.isRequired,
-    backgroundColor: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
-    isFavorite: PropTypes.bool.isRequired,
-  }).isRequired,
-  activeMenuFilmInfo: PropTypes.string.isRequired,
-};
+// FilmInfoDescription.propTypes = {
+//   activeFilm: PropTypes.shape({
+//     name: PropTypes.string.isRequired,
+//     backgroundImage: PropTypes.string.isRequired,
+//     genre: PropTypes.string.isRequired,
+//     released: PropTypes.number.isRequired,
+//     posterImage: PropTypes.string.isRequired,
+//     backgroundColor: PropTypes.string.isRequired,
+//     id: PropTypes.number.isRequired,
+//     isFavorite: PropTypes.bool.isRequired,
+//   }).isRequired,
+//   activeMenuFilmInfo: PropTypes.string.isRequired,
+// };
 
 const mapStateToProps = (state) => ({
   activeMenuFilmInfo: getActiveMenuFilmInfo(state),

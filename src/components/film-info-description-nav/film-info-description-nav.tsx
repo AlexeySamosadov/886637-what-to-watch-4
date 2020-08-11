@@ -3,10 +3,17 @@ import {connect} from "react-redux";
 import {Operation} from "../../reducer/data/data";
 import {ActionCreators} from "../../reducer/app-status/app-status";
 import {ActiveMenu} from "../const/const";
-import PropTypes from "prop-types";
 import {getActiveMenuFilmInfo} from "../../reducer/app-status/selectors";
+import {Film} from "../type";
 
-const FilmInfoDescriptionNav = ({onActiveMenuFilmInfo, activeMenuFilmInfo, activeFilm, onLoadReviews}) => {
+interface Props {
+  onActiveMenuFilmInfo: (activeMenu:string) => void,
+    activeMenuFilmInfo: string,
+    activeFilm: Film,
+    onLoadReviews: (id:number) => void,
+}
+
+const FilmInfoDescriptionNav: React.FC<Props> = ({onActiveMenuFilmInfo, activeMenuFilmInfo, activeFilm, onLoadReviews}) => {
   return (
     <nav className="movie-nav movie-card__nav">
       <ul className="movie-nav__list">
@@ -34,21 +41,21 @@ const FilmInfoDescriptionNav = ({onActiveMenuFilmInfo, activeMenuFilmInfo, activ
   );
 };
 
-FilmInfoDescriptionNav.propTypes = {
-  onActiveMenuFilmInfo: PropTypes.func.isRequired,
-  activeMenuFilmInfo: PropTypes.string.isRequired,
-  onLoadReviews: PropTypes.func.isRequired,
-  activeFilm: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    backgroundImage: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    released: PropTypes.number.isRequired,
-    posterImage: PropTypes.string.isRequired,
-    backgroundColor: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
-    isFavorite: PropTypes.bool.isRequired,
-  }).isRequired,
-};
+// FilmInfoDescriptionNav.propTypes = {
+//   onActiveMenuFilmInfo: PropTypes.func.isRequired,
+//   activeMenuFilmInfo: PropTypes.string.isRequired,
+//   onLoadReviews: PropTypes.func.isRequired,
+//   activeFilm: PropTypes.shape({
+//     name: PropTypes.string.isRequired,
+//     backgroundImage: PropTypes.string.isRequired,
+//     genre: PropTypes.string.isRequired,
+//     released: PropTypes.number.isRequired,
+//     posterImage: PropTypes.string.isRequired,
+//     backgroundColor: PropTypes.string.isRequired,
+//     id: PropTypes.number.isRequired,
+//     isFavorite: PropTypes.bool.isRequired,
+//   }).isRequired,
+// };
 
 const mapStateToDispatch = (dispatch) => ({
   onActiveMenuFilmInfo: (activeMenu) => {
@@ -65,3 +72,5 @@ const mapStateToProps = (state) => ({
 
 export {FilmInfoDescriptionNav};
 export default connect(mapStateToProps, mapStateToDispatch)(FilmInfoDescriptionNav);
+
+
